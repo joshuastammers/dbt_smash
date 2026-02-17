@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "afaa9387b26061cd51b2",
+  "position": {
+    "x": 18.805970149253731,
+    "y": 684.17910447761187,
+    "z": 19000,
+    "height": 29.552238805970148,
+    "width": 1059.4029850746269,
+    "tabOrder": 19000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Recovery (YTD) = (sum of Revenue YTD) / (sum of Outcome YTD) from 01/07 to the end of the current month.",
+                    "textStyle": {
+                      "fontSize": "8pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

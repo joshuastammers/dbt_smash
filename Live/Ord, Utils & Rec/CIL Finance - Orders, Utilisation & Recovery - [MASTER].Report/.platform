@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "CIL Finance - Orders, Utilisation & Recovery - [MASTER]"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e46a24d3-0b70-4812-8a9f-d7c99ac2c83e"
+  }
+}
