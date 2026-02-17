@@ -1,0 +1,29 @@
+table Query1
+	lineageTag: 35ea1560-c501-4ad0-8556-72590288c238
+
+	measure 'Last Refreshed' = SELECTEDVALUE(_refresh[last_refresh])
+		formatString: Dd/mm/yyyy hh:mm:ss
+		lineageTag: 2881d101-6a75-4d30-a544-a42411b36772
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	column Query1
+		dataType: string
+		lineageTag: c0dcd3aa-32fd-4d3a-a972-4add5a9d2739
+		summarizeBy: none
+		sourceColumn: Query1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Query1 = m
+		mode: import
+		source =
+				let
+				    Source = "Last Refreshed = FORMAT(NOW(), ""dd-mmm-yyyy hh:mm:ss"")"
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

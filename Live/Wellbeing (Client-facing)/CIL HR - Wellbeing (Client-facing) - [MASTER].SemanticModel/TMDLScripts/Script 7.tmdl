@@ -1,0 +1,19 @@
+createOrReplace
+
+	ref table dim_date
+
+		column 'flag w-2' = ```
+				
+				
+				VAR TodayDate = TODAY() 
+				VAR StartThisWeek = TodayDate - WEEKDAY(TodayDate, 2) + 1 
+				VAR StartLastWeek = StartThisWeek - 14
+				RETURN 
+				IF(dim_date[date_week_commencing] = StartLastWeek, 1, 0)
+				```
+			formatString: 0
+			lineageTag: 934a12c8-ed0c-4b3b-8716-b2f52b95786c
+			summarizeBy: sum
+
+			annotation SummarizationSetBy = Automatic
+

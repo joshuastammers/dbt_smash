@@ -1,0 +1,56 @@
+model Model
+	culture: en-GB
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: en-GB
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["openair_toil","openair_timesheets_weekly","dim_capability_lookup","dim_date","dim_grades","dim_users","dim_projects","fact_timesheets","Query1","TOIL - Management List MASTER - 15 10 - JS","_measure","_refresh"]
+
+annotation PBI_ProTooling = ["CalcGroup","TMDLView_Desktop","DevMode"]
+
+ref table openair_toil
+ref table DateTableTemplate_456bf9d6-ca56-477e-8435-06e2dd8eaa2b
+ref table openair_timesheets_weekly
+ref table dim_capability_lookup
+ref table dim_date
+ref table LocalDateTable_1d468fc1-55fd-4b56-afbe-fb06167c46b0
+ref table LocalDateTable_dc69e3b6-e7ca-4aac-b5c2-555e453e423a
+ref table LocalDateTable_39b116bd-4640-4ea2-90c4-6b38cc0890b9
+ref table LocalDateTable_a59dacdc-ec8c-48f8-86a8-128d424fa238
+ref table dim_grades
+ref table dim_users
+ref table LocalDateTable_413ce70f-c777-4d9e-b0c8-62efb3f51e9b
+ref table LocalDateTable_df5bff9d-a05b-42c3-a813-89cc2cc5ab59
+ref table LocalDateTable_73b71bcc-12cd-4a7e-b98c-520740d315dc
+ref table dim_projects
+ref table LocalDateTable_151791bc-532f-4cb9-aab4-042e61fe26cd
+ref table LocalDateTable_893d5dc9-e376-4122-8e65-e66b4281ec19
+ref table LocalDateTable_fef56edc-6170-4695-8776-17fbb3f1fbbf
+ref table LocalDateTable_e52abfdd-1518-4dad-a819-a20c06e311ce
+ref table fact_timesheets
+ref table LocalDateTable_04bbf1b5-0610-4095-a4ba-89bfc0f026fa
+ref table LocalDateTable_b9469569-f7dd-4a03-b183-a547d7a5b4ed
+ref table LocalDateTable_aab56fe6-6103-490c-8744-b3fac2e784d8
+ref table LocalDateTable_f0aa8d39-c76a-4370-94d1-76ffcf722db1
+ref table LocalDateTable_02785d42-cdfb-46b1-a016-25799ffb07b0
+ref table Query1
+ref table LocalDateTable_366a488e-0e95-4a44-947c-334a93571d2b
+ref table 'TOIL - Management List MASTER - 15 10 - JS'
+ref table 'CY vs PY'
+ref table 'Time Intelligence'
+ref table _measure
+ref table LocalDateTable_35ad9b98-429f-4ba7-9227-02cc113c75ef
+ref table 'Time Intelligence_%'
+ref table Person_slicer
+ref table _refresh
+ref table LocalDateTable_0d071096-59fd-4a86-be19-6abd61f31ffa
+ref table LocalDateTable_8de775db-1e3d-432f-a827-4eef7ce34246
+ref table LocalDateTable_e04364b2-4b8e-4469-b333-084c9a77dda3
+
+ref cultureInfo en-GB
+

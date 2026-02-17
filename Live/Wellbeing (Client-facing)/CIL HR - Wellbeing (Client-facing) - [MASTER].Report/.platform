@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "CIL HR - Wellbeing (Client-facing) - [MASTER]"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "74e8cc66-8577-49f2-8a91-0e6367df922e"
+  }
+}

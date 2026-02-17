@@ -1,0 +1,86 @@
+table 'Time Intelligence_%'
+	lineageTag: e548fa87-fb3a-448c-82e9-5db71b8dee2c
+
+	calculationGroup
+		precedence: 3
+
+		calculationItem 'Last Wk' =
+				CALCULATE(
+					SELECTEDMEASURE(),
+					dim_date[Flag W-1] = 1
+				)
+
+		calculationItem WoW =
+				DIVIDE(
+					CALCULATE(
+						SELECTEDMEASURE(),
+						dim_date[Flag W-1] = 1
+					)
+				,	CALCULATE(
+						SELECTEDMEASURE(),
+						dim_date[Flag W-2] = 1
+					)
+				) - 1
+
+		calculationItem 'Last Wk YoY' =
+				DIVIDE(
+					CALCULATE(
+						SELECTEDMEASURE(),
+						dim_date[Flag W-2] = 1
+					)
+					,CALCULATE(
+						SELECTEDMEASURE(),
+						dim_date[Flag W-1 PY] = 1
+					)
+				) - 1
+
+		calculationItem MTD = TOTALMTD(SELECTEDMEASURE(), dim_date[Date])
+
+		calculationItem 'MTD YoY' =
+				DIVIDE(
+					TOTALMTD(SELECTEDMEASURE(), dim_date[Date])
+				
+					,CALCULATE(
+					TOTALMTD(SELECTEDMEASURE(), dim_date[Date]),
+					SAMEPERIODLASTYEAR(dim_date[Date])
+					)
+				
+				) - 1
+
+		calculationItem QTD = TOTALQTD(SELECTEDMEASURE(), dim_date[Date])
+
+		calculationItem 'QTD YoY' =
+				DIVIDE(
+					TOTALQTD(SELECTEDMEASURE(), dim_date[Date])
+				
+					,CALCULATE(
+					TOTALQTD(SELECTEDMEASURE(), dim_date[Date]),
+					SAMEPERIODLASTYEAR(dim_date[Date])
+					)
+				) - 1
+
+		calculationItem YTD = TOTALYTD(SELECTEDMEASURE(), dim_date[Date])
+
+		calculationItem 'YTD YoY' =
+				DIVIDE(
+					TOTALYTD(SELECTEDMEASURE(), dim_date[Date])
+				
+					,CALCULATE(
+					TOTALYTD(SELECTEDMEASURE(), dim_date[Date]),
+					SAMEPERIODLASTYEAR(dim_date[Date])
+					)
+				) - 1
+
+	column Ordinal
+		dataType: int64
+		formatString: 0
+		lineageTag: 647bba2d-2fb6-43e4-af93-10ebfcb31448
+		summarizeBy: none
+		sourceColumn: Ordinal
+
+	column 'Time calcs'
+		dataType: string
+		lineageTag: e521b322-bf18-49b4-b995-52bea5937d66
+		sourceColumn: Name
+		sortByColumn: Ordinal
+

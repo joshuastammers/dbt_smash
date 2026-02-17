@@ -1,0 +1,242 @@
+table dim_date
+	lineageTag: 5e993238-34fa-4c76-811d-929c9c61b03e
+
+	measure 'Measure 3'
+		lineageTag: 6cdf3899-2d5a-4b7f-8443-9a1c0c482da0
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	column date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 17814d66-b17d-4e0e-b6ef-de7a8fa2d88e
+		summarizeBy: none
+		sourceColumn: date
+
+		variation Variation
+			isDefault
+			relationship: 0ee1d6e2-1254-4f87-894c-4005c97d4d0a
+			defaultHierarchy: LocalDateTable_1d468fc1-55fd-4b56-afbe-fb06167c46b0.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	column year
+		dataType: string
+		lineageTag: 6645a69f-d85f-443e-9b8a-946f8a2dff02
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_no
+		dataType: int64
+		formatString: 0
+		lineageTag: 1cad13bf-3b6e-45b7-9073-6bd318781772
+		summarizeBy: sum
+		sourceColumn: month_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: string
+		lineageTag: f8ddfec0-803b-4779-897f-86ddeea27dbd
+		summarizeBy: none
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter
+		dataType: string
+		lineageTag: 70759328-9afd-48ae-8b9b-a97eb5ac74b5
+		summarizeBy: none
+		sourceColumn: quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_month
+		dataType: string
+		lineageTag: 5ce79833-7ca5-4d8b-8873-1bfc9b544558
+		summarizeBy: none
+		sourceColumn: year_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekday_no
+		dataType: int64
+		formatString: 0
+		lineageTag: 4aa1c157-6ce9-4750-8e52-6cd651876d8c
+		summarizeBy: sum
+		sourceColumn: weekday_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekday
+		dataType: string
+		lineageTag: f1b12822-6e40-440f-8aec-4ac49ad2982f
+		summarizeBy: none
+		sourceColumn: weekday
+
+		annotation SummarizationSetBy = Automatic
+
+	column week_day_end
+		dataType: int64
+		formatString: 0
+		lineageTag: 4f184a5a-e669-4476-a274-5c865d991f78
+		summarizeBy: sum
+		sourceColumn: week_day_end
+
+		annotation SummarizationSetBy = Automatic
+
+	column week_end_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c0fa3116-1b73-4635-9687-97aa5667fff4
+		summarizeBy: none
+		sourceColumn: week_end_date
+
+		variation Variation
+			isDefault
+			relationship: 934a8d6a-16d5-4e46-8d2f-37d6f10287fe
+			defaultHierarchy: LocalDateTable_dc69e3b6-e7ca-4aac-b5c2-555e453e423a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column week_no
+		dataType: int64
+		formatString: 0
+		lineageTag: 3390b88d-1b1b-40d8-8710-1a5b1406d60c
+		summarizeBy: sum
+		sourceColumn: week_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_week_commencing
+		dataType: dateTime
+		formatString: dd mmm yy
+		lineageTag: bad64935-ece5-4f29-9305-32cc3e548c41
+		summarizeBy: none
+		sourceColumn: date_week_commencing
+
+		variation Variation
+			isDefault
+			relationship: 10a265be-fec2-4595-8fc5-b320fffa1e2b
+			defaultHierarchy: LocalDateTable_39b116bd-4640-4ea2-90c4-6b38cc0890b9.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	column cat_week_commencing
+		dataType: string
+		lineageTag: b043f314-ea0a-4d89-baa0-87aae2cd0f6e
+		summarizeBy: none
+		sourceColumn: cat_week_commencing
+		sortByColumn: week_no
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_month
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8e792f95-9fa3-4fa3-ba10-6dab631b205a
+		summarizeBy: none
+		sourceColumn: date_month
+
+		variation Variation
+			isDefault
+			relationship: 6dc30144-4346-466e-8382-36f881b6aeb7
+			defaultHierarchy: LocalDateTable_a59dacdc-ec8c-48f8-86a8-128d424fa238.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column cat_month_and_year
+		dataType: string
+		lineageTag: 5861f917-6530-4730-9267-41f7476c5356
+		summarizeBy: none
+		sourceColumn: cat_month_and_year
+		sortByColumn: year_month
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column FY
+		dataType: string
+		lineageTag: a41f62bd-e514-4530-a09d-df7531c2b841
+		summarizeBy: none
+		sourceColumn: FY
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy_rank
+		dataType: int64
+		formatString: 0
+		lineageTag: 4ae4f8f5-2ed2-475f-8a78-e1f99dd13447
+		summarizeBy: sum
+		sourceColumn: fy_rank
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'flag w-1' = ```
+			
+			
+			VAR TodayDate = TODAY() 
+			VAR StartThisWeek = TodayDate - WEEKDAY(TodayDate, 2) + 1 
+			VAR StartLastWeek = StartThisWeek - 7
+			RETURN 
+			IF(dim_date[date_week_commencing] = StartLastWeek, 1, 0)
+			```
+		formatString: 0
+		lineageTag: fd41cf72-1892-4636-bb13-56c00381105e
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'flag w-2' = ```
+			
+			
+			VAR TodayDate = TODAY() 
+			VAR StartThisWeek = TodayDate - WEEKDAY(TodayDate, 2) + 1 
+			VAR StartLastWeek = StartThisWeek - 14
+			RETURN 
+			IF(dim_date[date_week_commencing] = StartLastWeek, 1, 0)
+			```
+		formatString: 0
+		lineageTag: 934a12c8-ed0c-4b3b-8716-b2f52b95786c
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'flag W-1 PY' = IF(WEEKNUM([Date], 21) = WEEKNUM(TODAY() - 7, 21) && YEAR([Date]) = (YEAR(TODAY() -  7) - 1) , 1, 0) -- last week in the previous year
+		formatString: 0
+		lineageTag: c64d0a8d-33b4-44dc-bd33-0e4a2a520169
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_date = m
+		mode: import
+		source =
+				let
+				    Source = Databricks.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "/sql/1.0/warehouses/27755f6f39df3c3f", [Catalog=null, Database=null, EnableAutomaticProxyDiscovery=null, Implementation=null]),
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    dim_date_View = production_modelled_Schema{[Name="dim_date",Kind="View"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(dim_date_View,{{"date_week_commencing", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

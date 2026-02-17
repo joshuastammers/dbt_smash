@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "CIL HR - Wellbeing (Client-facing) - [MASTER]"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "536dbdb8-b79e-4b3e-8745-f091984451e2"
+  }
+}
