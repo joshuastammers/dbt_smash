@@ -1,0 +1,153 @@
+table fact_contact
+	lineageTag: 2cec533a-f4e5-4809-adc0-bb0e76a4ce26
+
+	column contact_id
+		dataType: string
+		lineageTag: 1158640b-345d-41a6-b927-38dd2f5a33ff
+		summarizeBy: none
+		sourceColumn: contact_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column full_name
+		dataType: string
+		lineageTag: 0c0c4dc5-0f7b-4078-a5f5-e24a3105e45b
+		summarizeBy: none
+		sourceColumn: full_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column job_title
+		dataType: string
+		lineageTag: 7d45d8b1-bba4-4ebc-86ff-d6201b78a4ec
+		summarizeBy: none
+		sourceColumn: job_title
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: e882660f-06b8-4438-9e8a-3b4e391fd832
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column sector
+		dataType: string
+		lineageTag: 9d135ba8-61a8-4a17-9e76-76d796f67c92
+		summarizeBy: none
+		sourceColumn: sector
+
+		annotation SummarizationSetBy = Automatic
+
+	column subsector
+		dataType: string
+		lineageTag: 256445ed-bd1b-421b-8ddd-864d80435622
+		summarizeBy: none
+		sourceColumn: subsector
+
+		annotation SummarizationSetBy = Automatic
+
+	column email
+		dataType: string
+		lineageTag: c2182626-ee9a-4681-b94f-d913dd76185b
+		summarizeBy: none
+		sourceColumn: email
+
+		annotation SummarizationSetBy = Automatic
+
+	column contact_number
+		dataType: string
+		lineageTag: 73d6da67-b663-4302-bc28-30dea1b97e6c
+		summarizeBy: none
+		sourceColumn: contact_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column deal_news
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: cdf023bf-0f5f-4af0-9814-2b16b5ffb646
+		summarizeBy: none
+		sourceColumn: deal_news
+
+		annotation SummarizationSetBy = Automatic
+
+	column insights_pieces
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b2f55146-4ca9-4a3c-b059-14f045588385
+		summarizeBy: none
+		sourceColumn: insights_pieces
+
+		annotation SummarizationSetBy = Automatic
+
+	column involved_on_project
+		dataType: string
+		lineageTag: c7ff7508-b1a1-424d-bcdd-c746073c87b1
+		summarizeBy: none
+		sourceColumn: involved_on_project
+
+		annotation SummarizationSetBy = Automatic
+
+	column large_pe
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 2faf5466-83a4-49e6-967e-0a414475b3aa
+		summarizeBy: none
+		sourceColumn: large_pe
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_modified
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: dcbe014d-598d-48f6-a881-c88fda5158f6
+		summarizeBy: none
+		sourceColumn: last_modified
+
+		variation Variation
+			isDefault
+			relationship: 158f7b4c-4dfc-4e38-838d-2adfc4a3dbed
+			defaultHierarchy: LocalDateTable_3cf45d33-d4ff-46bd-8b3c-27006fafba3d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_id
+		dataType: string
+		lineageTag: b9a8a453-d9b0-471b-896c-4edcd9754d36
+		summarizeBy: none
+		sourceColumn: company_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Company
+		dataType: string
+		lineageTag: de8963ce-2e65-461f-b54f-049bdf5c3463
+		summarizeBy: none
+		sourceColumn: Company
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_contact = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksImport,
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_visualisation_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_visualisation",Kind="Schema"]}[Data],
+				    fusioo_contact_View = production_visualisation_Schema{[Name="fusioo_contact",Kind="View"]}[Data],
+				    #"Merged Queries" = Table.NestedJoin(fusioo_contact_View, {"contact_id"}, bridge_contact_companies, {"contact_id"}, "bridge_contact_companies", JoinKind.LeftOuter),
+				    #"Expanded bridge_contact_companies" = Table.ExpandTableColumn(#"Merged Queries", "bridge_contact_companies", {"company_id"}, {"company_id"}),
+				    #"Merged Queries1" = Table.NestedJoin(#"Expanded bridge_contact_companies", {"company_id"}, fact_companies, {"company_id"}, "fact_companies", JoinKind.LeftOuter),
+				    #"Expanded fact_companies" = Table.ExpandTableColumn(#"Merged Queries1", "fact_companies", {"company_name"}, {"company_name"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Expanded fact_companies",{{"company_name", "Company"}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Renamed Columns", {"contact_id", "full_name", "job_title", "status", "sector", "subsector", "email", "contact_number", "deal_news", "insights_pieces", "involved_on_project", "large_pe", "last_modified"})
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

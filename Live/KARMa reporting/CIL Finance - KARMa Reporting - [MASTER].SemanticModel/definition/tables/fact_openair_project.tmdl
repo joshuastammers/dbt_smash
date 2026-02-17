@@ -1,0 +1,534 @@
+table fact_openair_project
+	lineageTag: 777dc74e-e24e-44c0-82c1-2e911580f29b
+
+	column project_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 01e6df8d-6617-4ed4-b15f-63e5f2a5d0fd
+		summarizeBy: none
+		sourceColumn: project_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_name
+		dataType: string
+		lineageTag: d9a0a471-fe14-475b-bb9e-c75d7229bea6
+		summarizeBy: none
+		sourceColumn: project_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: f0cca41f-f4c1-49a4-b2e8-d970af607cfe
+		summarizeBy: sum
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_stage
+		dataType: string
+		lineageTag: 77e7cba8-20ae-4a36-8721-9d0691880082
+		summarizeBy: none
+		sourceColumn: project_stage
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost_center
+		dataType: string
+		lineageTag: 1562a2e7-2f37-475d-b142-ff6110ff9df0
+		summarizeBy: none
+		sourceColumn: cost_center
+
+		annotation SummarizationSetBy = Automatic
+
+	column currency
+		dataType: string
+		lineageTag: 68dd9524-d262-4821-9fa9-f3ed653cc59b
+		summarizeBy: none
+		sourceColumn: currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column audit_notes
+		dataType: string
+		lineageTag: 29275fb8-b5ca-41ea-a7a9-5e62a5acacd7
+		summarizeBy: none
+		sourceColumn: audit_notes
+
+		annotation SummarizationSetBy = Automatic
+
+	column backstop_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b33cc70c-e3d8-4126-b2d2-2f67448c022b
+		summarizeBy: none
+		sourceColumn: backstop_date
+
+		variation Variation
+			isDefault
+			relationship: 1cef1846-77fc-4b1e-840e-7957efeb3557
+			defaultHierarchy: LocalDateTable_4ca67189-51cc-433e-b870-83301fbe2b4f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column client_name
+		dataType: string
+		lineageTag: af6893e5-f9a4-40c9-9085-1c42dabf7c76
+		summarizeBy: none
+		sourceColumn: client_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_code
+		dataType: int64
+		formatString: 0
+		lineageTag: ccac4c0d-5002-4b08-9f7c-99a4b69682d0
+		summarizeBy: none
+		sourceColumn: project_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column fee_budgeted_gbp
+		dataType: double
+		lineageTag: d5a8ad01-4a7c-47b2-bc39-d6fa633657ea
+		summarizeBy: sum
+		sourceColumn: fee_budgeted_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fee_final_gbp
+		dataType: double
+		formatString: "£"#,0.00;-"£"#,0.00;"£"#,0.00
+		lineageTag: dfc5cad5-7964-443d-b801-a5908cd29386
+		summarizeBy: sum
+		sourceColumn: fee_final_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	column fee_minimum_gbp
+		dataType: double
+		lineageTag: d155db0b-3115-47a1-b745-1ca9013c5f77
+		summarizeBy: sum
+		sourceColumn: fee_minimum_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fee_notes
+		dataType: string
+		lineageTag: e574e441-460b-4a8f-8f07-d7ba71e8e11f
+		summarizeBy: none
+		sourceColumn: fee_notes
+
+		annotation SummarizationSetBy = Automatic
+
+	column fee_phases_gbp
+		dataType: double
+		lineageTag: e1068c13-fc22-4822-8574-5deacb5f7b36
+		summarizeBy: sum
+		sourceColumn: fee_phases_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fee_reduction_gbp
+		dataType: double
+		lineageTag: 3b64249a-279d-49c9-b8b0-0a05d097a1b6
+		summarizeBy: sum
+		sourceColumn: fee_reduction_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fee_success_gbp
+		dataType: double
+		lineageTag: 3d9e9bbe-8478-4bac-99a6-38489272619e
+		summarizeBy: sum
+		sourceColumn: fee_success_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fee_uplift_gbp
+		dataType: double
+		lineageTag: 33548557-cfe8-459e-9303-8b891b6c3e61
+		summarizeBy: sum
+		sourceColumn: fee_uplift_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column invoice_instructions
+		dataType: string
+		lineageTag: fa9245bf-12fa-4303-ba40-b71b67cc5bb4
+		summarizeBy: none
+		sourceColumn: invoice_instructions
+
+		annotation SummarizationSetBy = Automatic
+
+	column live_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: ec8441ca-c0ac-4dda-bd84-968ab432c232
+		summarizeBy: none
+		sourceColumn: live_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column days_since_live
+		dataType: int64
+		formatString: 0
+		lineageTag: e10304f5-e20b-4fbd-961c-c170b402a85a
+		summarizeBy: sum
+		sourceColumn: days_since_live
+
+		annotation SummarizationSetBy = Automatic
+
+	column loe_status
+		dataType: string
+		lineageTag: 191a93f2-e39f-4105-94fa-65f67165cd32
+		summarizeBy: none
+		sourceColumn: loe_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column owning_entity
+		dataType: string
+		lineageTag: 63e3a40b-65c0-4af7-bda2-7b5e6f37509e
+		summarizeBy: none
+		sourceColumn: owning_entity
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_terms
+		dataType: string
+		lineageTag: 7329f3aa-5157-4b27-83dc-475874e0224a
+		summarizeBy: none
+		sourceColumn: payment_terms
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_leader
+		dataType: string
+		lineageTag: b4509fba-0e8c-4235-830a-dd834bf0f725
+		summarizeBy: none
+		sourceColumn: project_leader
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_name
+		dataType: string
+		lineageTag: 8061aa13-a568-4a28-971d-6a5f1156a057
+		summarizeBy: none
+		sourceColumn: target_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column rate_from_gbp
+		dataType: double
+		lineageTag: 996ca0e9-1b67-40a6-86f6-f06fbeeaa2e2
+		summarizeBy: sum
+		sourceColumn: rate_from_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'KARMa Account' =
+			IF(CONTAINSSTRING(fact_openair_project[client_name],"Acacium"),"Acacium Group",
+			IF(CONTAINSSTRING(fact_openair_project[client_name],"HALMA"),"HALMA",
+			IF(CONTAINSSTRING(fact_openair_project[client_name],"Grafton"),"Grafton",
+			IF(CONTAINSSTRING(fact_openair_project[client_name],"Five Arrows"),"Five Arrows",
+			IF(CONTAINSSTRING(fact_openair_project[client_name],"BridgePoint"),"BridgePoint",
+			IF(CONTAINSSTRING(fact_openair_project[client_name],"RLDatix"),"RLDatix",
+			"Other"))))))
+		lineageTag: 6dbb9bed-13ac-4172-8bb7-252e158595cf
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_owner_name
+		dataType: string
+		lineageTag: c5ef49cb-9a0e-45b3-80f3-53f918afb4e3
+		summarizeBy: none
+		sourceColumn: project_owner_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column sector
+		dataType: string
+		lineageTag: 2d1c19fa-063f-4e73-a2c4-d30d8de45789
+		summarizeBy: none
+		sourceColumn: sector
+
+		annotation SummarizationSetBy = Automatic
+
+	column setting
+		dataType: string
+		lineageTag: 3221fb53-56a0-4ca1-afa8-0a5b1a50ec0f
+		summarizeBy: none
+		sourceColumn: setting
+
+		annotation SummarizationSetBy = Automatic
+
+	column geography
+		dataType: string
+		lineageTag: f867f1a9-bcc4-4fd3-993d-bf72248f8b88
+		summarizeBy: none
+		sourceColumn: geography
+
+		annotation SummarizationSetBy = Automatic
+
+	column business_unit
+		dataType: string
+		lineageTag: d206645a-4e7c-47b8-874a-aa8d06ff2389
+		summarizeBy: none
+		sourceColumn: business_unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column owning_partner
+		dataType: string
+		lineageTag: 80a5aac1-04ee-4b16-9fda-ddb593ab3c6d
+		summarizeBy: none
+		sourceColumn: owning_partner
+
+		annotation SummarizationSetBy = Automatic
+
+	column fee_budgeted
+		dataType: double
+		lineageTag: 96bab9c9-8f60-42f3-9032-50f1d6e3408f
+		summarizeBy: sum
+		sourceColumn: fee_budgeted
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fee_minimum
+		dataType: double
+		lineageTag: 128b8fb5-00b6-4426-b7a5-2ae2423b3ffd
+		summarizeBy: sum
+		sourceColumn: fee_minimum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fee_reduction
+		dataType: double
+		lineageTag: bbd39d51-8f02-4cad-8ccd-b5878ee570ad
+		summarizeBy: sum
+		sourceColumn: fee_reduction
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fee_bidder_meeetings
+		dataType: int64
+		formatString: 0
+		lineageTag: d302bb26-01c9-4a0f-b6cc-fd1a242f7833
+		summarizeBy: sum
+		sourceColumn: fee_bidder_meeetings
+
+		annotation SummarizationSetBy = Automatic
+
+	column fee_phases
+		dataType: string
+		lineageTag: 2f3698cb-8a02-4859-a1ee-1af133656d1a
+		summarizeBy: none
+		sourceColumn: fee_phases
+
+		annotation SummarizationSetBy = Automatic
+
+	column fee_uplift
+		dataType: double
+		lineageTag: 49127c8f-2cc8-465a-a682-12cc0d2a8822
+		summarizeBy: sum
+		sourceColumn: fee_uplift
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fee_success
+		dataType: double
+		lineageTag: 72aca8df-effd-4318-9d44-6f92d2d95545
+		summarizeBy: sum
+		sourceColumn: fee_success
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fee_final
+		dataType: double
+		lineageTag: 201daa7a-8e32-4a23-8e1a-ba72cde3c8c0
+		summarizeBy: sum
+		sourceColumn: fee_final
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fusioo_project_id
+		dataType: string
+		lineageTag: 87851ada-810b-4811-a303-db914357eb79
+		summarizeBy: none
+		sourceColumn: fusioo_project_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column invoice_preparartion
+		dataType: string
+		lineageTag: 613344aa-a4fd-4ef3-a334-323a3635c255
+		summarizeBy: none
+		sourceColumn: invoice_preparartion
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3c83e2dc-fb6b-46f8-bb56-bc7da86453a6
+		summarizeBy: none
+		sourceColumn: created_date
+
+		variation Variation
+			isDefault
+			relationship: 09b69c49-d6dc-47ea-a37f-8d5d58d2a562
+			defaultHierarchy: LocalDateTable_67a833fb-9115-4ee0-8c9b-fafca6da6016.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column updated_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 58e0da0e-eac8-47c3-8281-d5f0252c31d2
+		summarizeBy: none
+		sourceColumn: updated_date
+
+		variation Variation
+			isDefault
+			relationship: 0a3a8760-7ef1-49de-9c14-7b5b315b5ca2
+			defaultHierarchy: LocalDateTable_e889e7eb-7a05-41e6-bc79-8ecd048da379.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column client_target_size
+		dataType: string
+		lineageTag: 254e4c11-7868-4f95-a10c-f582289e6dea
+		summarizeBy: none
+		sourceColumn: client_target_size
+
+		annotation SummarizationSetBy = Automatic
+
+	column fee_bidder_meeetings_gbp
+		dataType: double
+		lineageTag: 8235b8dc-1b20-4090-ac51-6463aedef621
+		summarizeBy: sum
+		sourceColumn: fee_bidder_meeetings_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fee_discount_gbp
+		dataType: double
+		lineageTag: a99edb6a-9e66-4272-8230-ae051494601d
+		summarizeBy: sum
+		sourceColumn: fee_discount_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column discount_percent
+		dataType: double
+		lineageTag: 386bcd7f-0dcd-4876-82be-5109d3cc2f8f
+		summarizeBy: sum
+		sourceColumn: discount_percent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FY
+		dataType: string
+		lineageTag: b7b9c4ae-971a-48a5-bcf6-9849ada6c9fe
+		summarizeBy: none
+		sourceColumn: FY
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy_rank
+		dataType: int64
+		formatString: 0
+		lineageTag: 07d56eac-183e-4fb6-9124-1412f2642adb
+		summarizeBy: sum
+		sourceColumn: fy_rank
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 714a53f0-7956-48b0-8632-08bf6203a2d2
+		summarizeBy: none
+		sourceColumn: start_date
+
+		variation Variation
+			isDefault
+			relationship: 667e6817-1f60-41ce-8303-e31b69fe075e
+			defaultHierarchy: LocalDateTable_24df8bf3-efb4-4310-9cc7-49094140c25b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column days_since_start
+		dataType: int64
+		formatString: 0
+		lineageTag: 85fa58e6-2cd0-4f3c-bd88-ec5ebff80b0f
+		summarizeBy: sum
+		sourceColumn: days_since_start
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_openair_project = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksImport,
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    dim_projects_View = production_modelled_Schema{[Name="dim_projects",Kind="View"]}[Data],
+				    #"Duplicated Column" = Table.DuplicateColumn(dim_projects_View, "owning_partner", "owning_partner - Copy"),
+				    #"Duplicated Column1" = Table.DuplicateColumn(#"Duplicated Column", "owning_partner - Copy", "owning_partner - Copy - Copy"),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Duplicated Column1",{{"owning_partner - Copy", "owner_forename"}, {"owning_partner - Copy - Copy", "owner_surname"}}),
+				    #"Extracted Text After Delimiter" = Table.TransformColumns(#"Renamed Columns1", {{"owner_forename", each Text.AfterDelimiter(_, ", "), type text}}),
+				    #"Extracted Text Before Delimiter" = Table.TransformColumns(#"Extracted Text After Delimiter", {{"owner_surname", each Text.BeforeDelimiter(_, ","), type text}}),
+				    #"Merged Columns" = Table.CombineColumns(#"Extracted Text Before Delimiter",{"owner_forename", "owner_surname"},Combiner.CombineTextByDelimiter(" ", QuoteStyle.None),"project_owner_name")
+				in
+				    #"Merged Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

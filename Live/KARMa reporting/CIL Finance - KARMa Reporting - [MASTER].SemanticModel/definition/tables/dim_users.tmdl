@@ -1,0 +1,157 @@
+table dim_users
+	lineageTag: e0e0142f-6a22-41c0-bac9-10df85b4be57
+
+	column user_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 921b5303-05a2-41a0-89b5-f2b5ddeba0ac
+		summarizeBy: none
+		sourceColumn: user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: c5e51327-ca9b-49ed-851e-8c0cbe838889
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_location
+		dataType: string
+		lineageTag: 4a22ece7-9156-4c51-9678-8b8eff7ed528
+		summarizeBy: none
+		sourceColumn: user_location
+
+		annotation SummarizationSetBy = Automatic
+
+	column currency
+		dataType: string
+		lineageTag: 40a1da62-fd85-4421-afa5-5006738593d6
+		summarizeBy: none
+		sourceColumn: currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost_center
+		dataType: string
+		lineageTag: c181dc05-00a2-4d62-910a-21f02c6cc0e3
+		summarizeBy: none
+		sourceColumn: cost_center
+
+		annotation SummarizationSetBy = Automatic
+
+	column job_code_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 09c5c23b-88f8-4366-a743-b6b4c183b200
+		summarizeBy: sum
+		sourceColumn: job_code_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column job_code_current
+		dataType: string
+		lineageTag: 940edd82-ae8f-48ef-8225-17371834747b
+		summarizeBy: none
+		sourceColumn: job_code_current
+
+		annotation SummarizationSetBy = Automatic
+
+	column career_manager
+		dataType: string
+		lineageTag: 5bebced8-3b2a-4337-b803-d156aee02b62
+		summarizeBy: none
+		sourceColumn: career_manager
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_start_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a60af872-1e3c-49b0-a912-6eaa68b0363f
+		summarizeBy: none
+		sourceColumn: employee_start_date
+
+		variation Variation
+			isDefault
+			relationship: a42a2fbb-a8a3-449c-911c-6bcf57b85c2b
+			defaultHierarchy: LocalDateTable_3a794f24-8f2c-4c12-be94-6e4315dbada1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column freelancer_level
+		dataType: string
+		lineageTag: 20171618-dfaa-4ddf-9758-8707565a87c7
+		summarizeBy: none
+		sourceColumn: freelancer_level
+
+		annotation SummarizationSetBy = Automatic
+
+	column fusioo_user_id
+		dataType: string
+		lineageTag: 8bbf854e-d539-4dfd-a9d6-1256a39ff25e
+		summarizeBy: none
+		sourceColumn: fusioo_user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column active
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4b1b8b8b-2f0e-4584-81b5-8435806989b3
+		summarizeBy: none
+		sourceColumn: active
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 411874e6-81cf-4a82-8eb5-d9d9e31402c0
+		summarizeBy: none
+		sourceColumn: created_date
+
+		variation Variation
+			isDefault
+			relationship: a3689d44-97ec-4e6b-a6b7-5ac4e7c02287
+			defaultHierarchy: LocalDateTable_d03a8811-7b64-4b7d-a58c-de2c52cb1c88.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column updated_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2128f50d-eb4f-4e8f-b16b-a3c2a3717531
+		summarizeBy: none
+		sourceColumn: updated_date
+
+		variation Variation
+			isDefault
+			relationship: c8e6f877-4a11-4750-8615-0e60886e6988
+			defaultHierarchy: LocalDateTable_d7dbb839-8db5-4ee5-b46f-0d46dd372ece.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column email
+		dataType: string
+		lineageTag: f6bbf9b9-aed3-4ec3-8d0d-3fae6057064f
+		summarizeBy: none
+		sourceColumn: email
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_users = m
+		mode: import
+		source =
+				let
+				    Source = Databricks.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "/sql/1.0/warehouses/27755f6f39df3c3f", null),
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    dim_users_View = production_modelled_Schema{[Name="dim_users",Kind="View"]}[Data]
+				in
+				    dim_users_View
+

@@ -1,0 +1,39 @@
+table dim_internal_sector_sort
+	lineageTag: 8e87f427-3ad2-4d3b-bf32-becb43f37b4c
+
+	column 'CIL team formatted'
+		dataType: string
+		lineageTag: 01716b89-6d77-4eb0-9613-2473d3d4b320
+		summarizeBy: none
+		sourceColumn: CIL team formatted
+		sortByColumn: CILTeamSort
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column CILTeamSort
+		dataType: double
+		lineageTag: f83a6700-6746-437a-a4e6-8bffe187cc3f
+		summarizeBy: none
+		sourceColumn: CILTeamSort
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition dim_internal_sector_sort = m
+		mode: import
+		source =
+				let
+				    Source = dim_internal_sectors,
+				    #"Grouped Rows" = Table.Group(Source, {"CIL team formatted"}, {{"CILTeamSort", each List.Min([CILTeamSort]), type nullable number}}),
+				    #"Sorted Rows" = Table.Sort(#"Grouped Rows",{{"CILTeamSort", Order.Ascending}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Sorted Rows", each ([CIL team formatted] <> null))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

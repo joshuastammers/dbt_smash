@@ -1,0 +1,23 @@
+table Date__c
+	lineageTag: 38d77ede-c764-42ea-a5ae-b02456d22081
+
+	column Date
+		formatString: General Date
+		lineageTag: 9afda263-f456-4d9e-9917-d4c7f8281ed3
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 3a8562c8-a26b-4777-b3b8-c1381eaf254b
+			defaultHierarchy: LocalDateTable_e0856ef8-5788-4524-b71f-f68483118f2a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Date__c = calculated
+		mode: import
+		source = CALENDAR([Earliest Date (2)],TODAY())
+
+	annotation PBI_Id = ca0ba47cfe2148c283680b560401bc91
+

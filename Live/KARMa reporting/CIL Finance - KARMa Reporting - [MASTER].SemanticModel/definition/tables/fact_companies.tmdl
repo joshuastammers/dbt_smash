@@ -1,0 +1,145 @@
+table fact_companies
+	lineageTag: 76b0a1d7-3616-42f0-bf13-664f88fbce80
+
+	column company_id
+		dataType: string
+		lineageTag: 8785f4fd-ed6b-42a3-abc7-3d0887319bc2
+		summarizeBy: none
+		sourceColumn: company_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column large_pe
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c26962c8-d4a9-4930-a9b2-6da318269409
+		summarizeBy: none
+		sourceColumn: large_pe
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: 82462065-bfc5-4d44-bead-a405dd91f99f
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column created
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 613a87c0-3fb8-4f4d-9040-c1ee43c01325
+		summarizeBy: none
+		sourceColumn: created
+
+		variation Variation
+			isDefault
+			relationship: 7c85f773-37e4-44d9-8ea5-c93c89d837a2
+			defaultHierarchy: LocalDateTable_ce9d4eb6-d4d7-431a-8b1d-25e75aa60cb8.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_by
+		dataType: string
+		lineageTag: 615de49f-0881-46b5-8228-612fc7f07eb4
+		summarizeBy: none
+		sourceColumn: created_by
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_modified
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9da826f5-e67f-47e1-a1a5-3e90daa48437
+		summarizeBy: none
+		sourceColumn: last_modified
+
+		variation Variation
+			isDefault
+			relationship: 9c187f78-79c5-45b1-b70c-e66394715b0d
+			defaultHierarchy: LocalDateTable_dcecfb9f-3708-4f9c-aefc-1db7034bb190.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_modified_by
+		dataType: string
+		lineageTag: 131f39ae-2236-4f66-87c2-3c95c9f28fdf
+		summarizeBy: none
+		sourceColumn: last_modified_by
+
+		annotation SummarizationSetBy = Automatic
+
+	column public_company_do_not_trade
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: fd317afe-c09a-4d66-b196-31fd6910e0e7
+		summarizeBy: none
+		sourceColumn: public_company_do_not_trade
+
+		annotation SummarizationSetBy = Automatic
+
+	column website
+		dataType: string
+		lineageTag: a80f3792-ec4d-4c23-8ee2-314b592c7f54
+		summarizeBy: none
+		sourceColumn: website
+
+		annotation SummarizationSetBy = Automatic
+
+	column cil_account_tier
+		dataType: string
+		lineageTag: 2f682fb0-b10a-427c-ae5b-afa84fccfcb1
+		summarizeBy: none
+		sourceColumn: cil_account_tier
+
+		annotation SummarizationSetBy = Automatic
+
+	column business_type
+		dataType: string
+		lineageTag: 0a30de6d-bc2b-4ac2-a8ee-5e86b14ddfe9
+		summarizeBy: none
+		sourceColumn: business_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_name
+		dataType: string
+		lineageTag: fafec5db-0d80-4269-ab5a-75dbe6c86172
+		summarizeBy: none
+		sourceColumn: company_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_of_entry_to_dnt_list
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c1bafdc8-21e9-4697-bf36-e320dea7a162
+		summarizeBy: none
+		sourceColumn: date_of_entry_to_dnt_list
+
+		variation Variation
+			isDefault
+			relationship: 74679c12-e906-430c-ada4-acc61c5a1d2d
+			defaultHierarchy: LocalDateTable_9146faab-5e8c-41f1-91f6-2c1ae246544c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition fact_companies = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksImport,
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_visualisation_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_visualisation",Kind="Schema"]}[Data],
+				    fusioo_company_View = production_visualisation_Schema{[Name="fusioo_company",Kind="View"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(fusioo_company_View,{"ready_for_deletion"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

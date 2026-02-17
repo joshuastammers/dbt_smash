@@ -1,0 +1,43 @@
+table bridge_contact_companies
+	isHidden
+	lineageTag: 74a6b548-233a-43df-87b2-8686ad32d5cc
+
+	column contact_id
+		dataType: string
+		isHidden
+		lineageTag: 680bc95d-8a2d-40e1-be08-204f62ecb86a
+		summarizeBy: none
+		sourceColumn: contact_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_id
+		dataType: string
+		isHidden
+		lineageTag: 27e51e65-05fc-4adf-ba52-6461722f2d83
+		summarizeBy: none
+		sourceColumn: company_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition bridge_contact_companies = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksImport,
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_visualisation_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_visualisation",Kind="Schema"]}[Data],
+				    contact_companies_View = production_visualisation_Schema{[Name="contact_companies",Kind="View"]}[Data]
+				in
+				    contact_companies_View
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

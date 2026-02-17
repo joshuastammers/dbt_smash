@@ -1,0 +1,273 @@
+relationship 445e2059-55d5-42c3-8f87-04012892c08b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_opportunities.last_modified
+	toColumn: LocalDateTable_c9c45034-9265-44e9-aad3-a028f2d328a3.Date
+
+relationship c5b5dcc3-c958-4c68-a1af-848325209a92
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_narrative.created
+	toColumn: LocalDateTable_3211d44e-2201-4eb1-80e9-31ef0506c17f.Date
+
+relationship c288e035-e1bd-4b76-b0f6-ba161908edeb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_narrative.last_modified
+	toColumn: LocalDateTable_23897f5b-f3a5-4d3c-93aa-3ed84b8c7a76.Date
+
+relationship 158f7b4c-4dfc-4e38-838d-2adfc4a3dbed
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_contact.last_modified
+	toColumn: LocalDateTable_3cf45d33-d4ff-46bd-8b3c-27006fafba3d.Date
+
+relationship 1cc7f058-e69a-acc7-6c89-ecf78b67c813
+	crossFilteringBehavior: bothDirections
+	fromColumn: bridge_narrative_contacts.external_id
+	toColumn: fact_contact.contact_id
+
+relationship 7c85f773-37e4-44d9-8ea5-c93c89d837a2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_companies.created
+	toColumn: LocalDateTable_ce9d4eb6-d4d7-431a-8b1d-25e75aa60cb8.Date
+
+relationship 9c187f78-79c5-45b1-b70c-e66394715b0d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_companies.last_modified
+	toColumn: LocalDateTable_dcecfb9f-3708-4f9c-aefc-1db7034bb190.Date
+
+relationship 1cef1846-77fc-4b1e-840e-7957efeb3557
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_openair_project.backstop_date
+	toColumn: LocalDateTable_4ca67189-51cc-433e-b870-83301fbe2b4f.Date
+
+relationship 70c897c3-15c2-4186-a074-e3f9bc899a54
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_historic_opportunities.last_modified
+	toColumn: LocalDateTable_0efc8d08-d72f-4080-b4b7-b6cad2d708ac.Date
+
+relationship AutoDetected_efaadacd-65f2-4fe1-9156-ade001f34086
+	fromColumn: dim_internal_sectors.'CIL team formatted'
+	toColumn: dim_internal_sector_sort.'CIL team formatted'
+
+relationship AutoDetected_fa353e1e-637c-4950-a042-2583792f5dc4
+	crossFilteringBehavior: bothDirections
+	fromColumn: dim_narrative_contact_accountmanagers.contact_id
+	toColumn: fact_contact.contact_id
+
+relationship 9646e2d9-5c49-452b-bf3d-317eecae7629
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Last Refresh Date'.'Last Refresh Date'
+	toColumn: LocalDateTable_f9d19f82-3aad-4f59-8361-c9853759dd3e.Date
+
+relationship 5cc14eba-680e-92d8-08f7-507dc75bf265
+	fromColumn: bridge_contact_companies.company_id
+	toColumn: fact_companies.company_id
+
+relationship 351963fd-b944-8b0f-9d8b-be9902b721e0
+	crossFilteringBehavior: bothDirections
+	fromColumn: bridge_contact_companies.contact_id
+	toColumn: fact_contact.contact_id
+
+relationship 2cf9aad6-9362-d35b-a23c-bd74c027e078
+	crossFilteringBehavior: bothDirections
+	fromColumn: bridge_narrative_contacts.narrative_id
+	toColumn: fact_narrative.narrative_id
+
+relationship 048428dc-ea7b-4cf8-36e0-ef815939b811
+	fromColumn: bridge_opportunities_client.client
+	toColumn: fact_companies.company_id
+
+relationship 2d9d5b96-c46f-6aea-2a67-e9a334fa42d0
+	crossFilteringBehavior: bothDirections
+	fromColumn: bridge_opportunities_client.opportunity_id
+	toColumn: fact_opportunities.opportunity_id
+
+relationship 02105142-9e9d-7379-2ed3-eeec537a62d2
+	fromColumn: fact_historic_opportunities.opportunity_id
+	toColumn: fact_opportunities.opportunity_id
+
+relationship f70f1a2e-cc65-93ce-14b2-9b88b219ac92
+	crossFilteringBehavior: bothDirections
+	fromColumn: dim_narrative_internal.narrative_id
+	toColumn: fact_narrative.narrative_id
+
+relationship 31fbdc6f-f23e-c1ac-f72b-72e69afce456
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: dim_internal_sectors.Name
+	toColumn: fact_team.name
+
+relationship 82bb35ce-8e81-3f2f-efc7-407a4620631d
+	crossFilteringBehavior: bothDirections
+	fromColumn: dim_opportunities_responsible.opportunity_id
+	toColumn: fact_opportunities.opportunity_id
+
+relationship e23f7ac4-f776-d006-a890-d2d487be5fb0
+	fromColumn: dim_narrative_company_accountmanagers.company_id
+	toColumn: fact_companies.company_id
+
+relationship AutoDetected_80f60d39-5483-4db7-b04e-4de90abe0864
+	crossFilteringBehavior: bothDirections
+	fromColumn: fact_openair_project.project_id
+	toColumn: fact_openair_project_normalised_fee.project_id
+
+relationship a9263130-75e2-bd1d-9c01-23c2b1fbbfc5
+	fromColumn: dim_narrative_internal.cil_employee
+	toColumn: dim_internal_sectors.Name
+
+relationship c5ba1ca2-c487-816a-c757-a64be1d77404
+	fromColumn: dim_opportunities_responsible.employee_responsible
+	toColumn: dim_internal_sectors.Name
+
+relationship 912da118-0355-3e47-b319-959a4f2ece9b
+	fromColumn: fact_openair_project.project_owner_name
+	toColumn: dim_internal_sectors.Name
+
+relationship e3c07c13-3ce8-4c8b-9db8-16766aabe039
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fusioo_project.completed_date
+	toColumn: LocalDateTable_3077da46-953f-419b-9b06-44a64d3049f8.Date
+
+relationship a62db7d1-4b69-4098-a51e-5a982a880451
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fusioo_project.created
+	toColumn: LocalDateTable_19f838f2-b1f0-4758-a587-270f50cff1b0.Date
+
+relationship 6b51c145-0dec-4409-96fd-afbb5fdde97f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fusioo_project.date_of_report
+	toColumn: LocalDateTable_f269eb11-b190-4352-8ed8-0caeecff5752.Date
+
+relationship eef1389c-1e5e-1d9e-485a-4274135e94b1
+	fromColumn: fusioo_project.client
+	toColumn: fact_companies.company_id
+
+relationship 3a8562c8-a26b-4777-b3b8-c1381eaf254b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Date__c.Date
+	toColumn: LocalDateTable_e0856ef8-5788-4524-b71f-f68483118f2a.Date
+
+relationship f6c0cbb3-6fb3-011e-4bbb-071b1645bcaf
+	fromColumn: fact_openair_project.live_date
+	toColumn: Date__c.Date
+
+relationship 74679c12-e906-430c-ada4-acc61c5a1d2d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_companies.date_of_entry_to_dnt_list
+	toColumn: LocalDateTable_9146faab-5e8c-41f1-91f6-2c1ae246544c.Date
+
+relationship f8f9d3e7-fc93-4339-b62c-59a7d501eec8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_historic_opportunities.created
+	toColumn: LocalDateTable_0ac280a3-7894-47c3-bebc-0b693855baa9.Date
+
+relationship 9bda2169-1ce3-45d2-b999-9a8ce33328be
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_team.created
+	toColumn: LocalDateTable_81d453ab-2e08-4a29-bd0c-669f1d59493e.Date
+
+relationship ba58a596-30cf-46a4-a69d-72bebb3af9d6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_team.last_modified
+	toColumn: LocalDateTable_101f24f4-f015-4e03-afc8-1d0ec2735eab.Date
+
+relationship 8c10b889-3ba2-4f0f-829d-30a2d44caf32
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fusioo_project.last_modified
+	toColumn: LocalDateTable_5a95a4a2-5b97-4b20-a9af-ccd91cc4a1e8.Date
+
+relationship f4b8010a-19fb-423a-a9a8-6814fcf42a51
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fusioo_project.start_date
+	toColumn: LocalDateTable_aaf8ffa0-c7b6-466f-9c8a-61a9db9c7d53.Date
+
+relationship a4cd9d7d-6340-65cf-9089-231a41fb7e4b
+	fromColumn: fact_narrative.activity_date
+	toColumn: Date__c.Date
+
+relationship fc9d8566-561c-cb60-9a7a-5f7c87fed1a5
+	fromColumn: fact_companies.company_name
+	toColumn: Company__c.Company
+
+relationship AutoDetected_78e84bc5-3013-4f35-b5a9-6db7d9debbbe
+	isActive: false
+	fromColumn: fact_contact.Company
+	toColumn: Company__c.Company
+
+relationship 31d12de8-9b0e-276c-8167-602f2d676b7a
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: fusioo_project.project_code
+	toColumn: fact_openair_project.project_code
+
+relationship 09b69c49-d6dc-47ea-a37f-8d5d58d2a562
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_openair_project.created_date
+	toColumn: LocalDateTable_67a833fb-9115-4ee0-8c9b-fafca6da6016.Date
+
+relationship 0a3a8760-7ef1-49de-9c14-7b5b315b5ca2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_openair_project.updated_date
+	toColumn: LocalDateTable_e889e7eb-7a05-41e6-bc79-8ecd048da379.Date
+
+relationship 26d996fa-6ad7-46b3-bc36-1064d59f8f47
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.date
+	toColumn: LocalDateTable_351e0890-d0d3-4876-ba6e-eb774589121f.Date
+
+relationship 6be71bc2-6af4-4c37-85ce-24e88eb495e2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.week_end_date
+	toColumn: LocalDateTable_3de139c0-8f1c-487d-958c-4ef433365f1f.Date
+
+relationship 5fb1bd7c-fcc9-4964-a764-ee77586fc756
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.date_week_commencing
+	toColumn: LocalDateTable_8162fd55-84a4-451f-8620-a20065253cdf.Date
+
+relationship d6e67d94-b248-483e-9421-c6bd742e02f0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.date_month
+	toColumn: LocalDateTable_e4093873-ba30-424f-9c3d-82cacda17c2c.Date
+
+relationship efdfb49a-ab1e-8b69-4518-840527dcf6ea
+	fromColumn: fact_openair_project.live_date
+	toColumn: dim_date.date
+
+relationship 5a22d600-1cc2-8b81-6eda-80799b6fe860
+	fromColumn: 'Openair Tasks + Bookings KARMa'.project_id
+	toColumn: fact_openair_project.project_id
+
+relationship a42a2fbb-a8a3-449c-911c-6bcf57b85c2b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_users.employee_start_date
+	toColumn: LocalDateTable_3a794f24-8f2c-4c12-be94-6e4315dbada1.Date
+
+relationship a3689d44-97ec-4e6b-a6b7-5ac4e7c02287
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_users.created_date
+	toColumn: LocalDateTable_d03a8811-7b64-4b7d-a58c-de2c52cb1c88.Date
+
+relationship c8e6f877-4a11-4750-8615-0e60886e6988
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_users.updated_date
+	toColumn: LocalDateTable_d7dbb839-8db5-4ee5-b46f-0d46dd372ece.Date
+
+relationship AutoDetected_140f62c4-f139-4920-a6ed-ebf8d2b4f4a7
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Openair Tasks + Bookings KARMa'.user_id
+	toColumn: dim_users.user_id
+
+relationship 15b5a479-fdde-6e55-7f6f-cea7acca39a2
+	isActive: false
+	fromColumn: 'Openair Tasks + Bookings KARMa'.date_stamp
+	toColumn: dim_date.date
+
+relationship 667e6817-1f60-41ce-8303-e31b69fe075e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_openair_project.start_date
+	toColumn: LocalDateTable_24df8bf3-efb4-4310-9cc7-49094140c25b.Date
+
+relationship fd1d3d48-c706-452f-892f-b05d921bc2c5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_opportunities.created_date
+	toColumn: LocalDateTable_6241fb78-bbd5-49b1-a05a-d7afe91ac03c.Date
+

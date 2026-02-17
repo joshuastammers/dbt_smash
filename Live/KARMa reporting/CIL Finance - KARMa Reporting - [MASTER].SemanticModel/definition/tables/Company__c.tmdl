@@ -1,0 +1,62 @@
+table Company__c
+	lineageTag: 8a0cde77-a5c6-4d1f-a3cc-04b076f7ba92
+
+	column cil_account_tier
+		dataType: string
+		lineageTag: f5277bb6-289f-4bda-88e7-08795b8f49ce
+		summarizeBy: none
+		sourceColumn: cil_account_tier
+
+		annotation SummarizationSetBy = Automatic
+
+	column business_type
+		dataType: string
+		lineageTag: af820ba5-9764-410d-b836-27d250e0070d
+		summarizeBy: none
+		sourceColumn: business_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Business_Type_CF/PE&C
+		dataType: string
+		lineageTag: 6e9dd0b3-e484-43bc-a6d9-2e97f479713b
+		summarizeBy: none
+		sourceColumn: Business_Type_CF/PE&C
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KARMa tier' = IF(Company__c[cil_account_tier]=BLANK(),"Other",Company__c[cil_account_tier])
+		lineageTag: 88b4ac98-f69e-4138-892c-26da222f171a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Company
+		dataType: string
+		lineageTag: ba987340-ca1e-49f4-a6d0-082f547fc709
+		summarizeBy: none
+		sourceColumn: Company
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Company__c = m
+		mode: import
+		source =
+				let
+				    Source = fact_companies,
+				    #"Replaced Value" = Table.ReplaceValue(Source,null,"Other",Replacer.ReplaceValue,{"cil_account_tier"}),
+				    #"Grouped Rows" = Table.Group(#"Replaced Value", {"company_name", "cil_account_tier", "business_type"}, {{"Count", each Table.RowCount(_), Int64.Type}}),
+				    #"Sorted Rows" = Table.Sort(#"Grouped Rows",{{"Count", Order.Descending}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Sorted Rows",{{"Count", "CountD_IDs"}, {"company_name", "Company"}}),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Renamed Columns", "Company", "Company - Copy"),
+				    #"Lowercased Text" = Table.TransformColumns(#"Duplicated Column",{{"Company - Copy", Text.Lower, type text}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Lowercased Text", {"Company - Copy"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Removed Duplicates",{"CountD_IDs", "Company - Copy"}),
+				    #"Added Conditional Column" = Table.AddColumn(#"Removed Columns", "Business_Type_CF/PE&C", each if [business_type]=null then "Other" else if Text.Contains([business_type] , "Corporate finance") and Text.Contains([business_type] , "Private equity") then "Other" else if Text.Contains([business_type] , "Corporate finance") then "Corporate finance" else if Text.Contains([business_type] , "Corporate") then "Corporate" else if Text.Contains([business_type] , "Private equity") then "Private equity" else "Other")
+				in
+				    #"Added Conditional Column"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,143 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "7bc832fa38bef26ef897",
+  "displayName": "Fees by account & cohorts",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filter81c6d57246d33e398d3d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fact_openair_project"
+              }
+            },
+            "Property": "KARMa Account"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User",
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Filter07f3e8b00a2e689aa3bd",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "bridge_opportunities_client"
+              }
+            },
+            "Property": "ClientType"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "b",
+              "Entity": "bridge_opportunities_client",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "b"
+                          }
+                        },
+                        "Property": "ClientType"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'All'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      }
+    ]
+  },
+  "objects": {
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "182L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "4aba10f670cd81715744",
+      "target": "59d7a69fdc7f1bc8b924",
+      "type": "NoFilter"
+    },
+    {
+      "source": "4aba10f670cd81715744",
+      "target": "03f42bc865c90a6a757a",
+      "type": "NoFilter"
+    },
+    {
+      "source": "5ca9d3963878551c3d0e",
+      "target": "03f42bc865c90a6a757a",
+      "type": "NoFilter"
+    },
+    {
+      "source": "5ca9d3963878551c3d0e",
+      "target": "59d7a69fdc7f1bc8b924",
+      "type": "NoFilter"
+    },
+    {
+      "source": "003f5189fad948c53e98",
+      "target": "03f42bc865c90a6a757a",
+      "type": "NoFilter"
+    },
+    {
+      "source": "003f5189fad948c53e98",
+      "target": "59d7a69fdc7f1bc8b924",
+      "type": "NoFilter"
+    }
+  ]
+}

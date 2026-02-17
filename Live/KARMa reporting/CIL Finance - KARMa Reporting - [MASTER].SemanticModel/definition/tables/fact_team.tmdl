@@ -1,0 +1,139 @@
+table fact_team
+	lineageTag: 5ebecff7-eff6-4b80-ae43-169c5e6473ba
+
+	column name
+		dataType: string
+		lineageTag: f4f0357d-7112-4874-89be-4c053e007079
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column email
+		dataType: string
+		lineageTag: f2c2fdf8-e21d-4a7c-b954-ae05b2090698
+		summarizeBy: none
+		sourceColumn: email
+
+		annotation SummarizationSetBy = Automatic
+
+	column created
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 70d818f0-07a5-4218-8b89-d4984f150132
+		summarizeBy: none
+		sourceColumn: created
+
+		variation Variation
+			isDefault
+			relationship: 9bda2169-1ce3-45d2-b999-9a8ce33328be
+			defaultHierarchy: LocalDateTable_81d453ab-2e08-4a29-bd0c-669f1d59493e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_modified
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a331de48-f116-4059-91b6-599f9737ed6c
+		summarizeBy: none
+		sourceColumn: last_modified
+
+		variation Variation
+			isDefault
+			relationship: ba58a596-30cf-46a4-a69d-72bebb3af9d6
+			defaultHierarchy: LocalDateTable_101f24f4-f015-4e03-afc8-1d0ec2735eab.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column fusioo_user_id
+		dataType: string
+		lineageTag: c4e7ed36-6562-449e-b7c9-150cebbddf41
+		summarizeBy: none
+		sourceColumn: fusioo_user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column initials
+		dataType: string
+		lineageTag: 26f83410-d2f5-4977-9b98-eb2a656db8b2
+		summarizeBy: none
+		sourceColumn: initials
+
+		annotation SummarizationSetBy = Automatic
+
+	column tid
+		dataType: double
+		lineageTag: 9f74a5d1-1754-4ff5-a017-a9587f35a47e
+		summarizeBy: sum
+		sourceColumn: tid
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column is_active
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b73d158c-a9b3-47a3-a9bf-88c6a82101dc
+		summarizeBy: none
+		sourceColumn: is_active
+
+		annotation SummarizationSetBy = Automatic
+
+	column projects_worked_on
+		dataType: string
+		lineageTag: 30302a27-471b-4e40-ad2a-d3f588ad6d5f
+		summarizeBy: none
+		sourceColumn: projects_worked_on
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_by_user
+		dataType: string
+		lineageTag: fd8301c1-c408-428d-8687-545b903c40ad
+		summarizeBy: none
+		sourceColumn: created_by_user
+
+		annotation SummarizationSetBy = Automatic
+
+	column modified_by_user
+		dataType: string
+		lineageTag: ff28bb4e-b5f3-4a8e-bb88-20155819958d
+		summarizeBy: none
+		sourceColumn: modified_by_user
+
+		annotation SummarizationSetBy = Automatic
+
+	column linked_users
+		dataType: string
+		lineageTag: f135299b-0f43-4e0f-8bda-dd25b64f2288
+		summarizeBy: none
+		sourceColumn: linked_users
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_status
+		dataType: string
+		lineageTag: c21f1604-6465-4f0a-bec4-59754ca74cfc
+		summarizeBy: none
+		sourceColumn: user_status
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_team = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksImport,
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_visualisation_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_visualisation",Kind="Schema"]}[Data],
+				    fusioo_team_View = production_visualisation_Schema{[Name="fusioo_team",Kind="View"]}[Data],
+				    #"Sorted Rows" = Table.Sort(fusioo_team_View,{{"last_modified", Order.Descending}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Sorted Rows", {"name"})
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

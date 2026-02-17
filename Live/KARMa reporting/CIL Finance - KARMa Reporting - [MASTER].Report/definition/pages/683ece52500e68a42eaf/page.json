@@ -1,0 +1,59 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "683ece52500e68a42eaf",
+  "displayName": "KARMa hours report",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filter81c6d57246d33e398d3d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fact_openair_project"
+              }
+            },
+            "Property": "KARMa Account"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User",
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "9e265bba83afd37efd31",
+    "type": "Default",
+    "parameters": []
+  },
+  "visualInteractions": [
+    {
+      "source": "0ac15041ddb7cd8b286f",
+      "target": "6e031723bcee9dc04e42",
+      "type": "DataFilter"
+    },
+    {
+      "source": "0ac15041ddb7cd8b286f",
+      "target": "549ecaad12ceeca52f5c",
+      "type": "DataFilter"
+    }
+  ]
+}

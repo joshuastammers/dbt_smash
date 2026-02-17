@@ -1,0 +1,208 @@
+table 'Openair Tasks + Bookings KARMa'
+	lineageTag: 8443ee24-7599-472d-acc3-a68fc0d2eac6
+
+	column date_stamp
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6e3a9a32-5e9a-4e60-923a-7bbb902220fb
+		summarizeBy: none
+		sourceColumn: date_stamp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column user_id
+		dataType: int64
+		formatString: 0
+		lineageTag: c93d29b1-401e-4ffa-a640-ee5e947ba29c
+		summarizeBy: none
+		sourceColumn: user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column job_code_contemporaneous
+		dataType: string
+		lineageTag: 15b6a111-2869-4bff-84ec-a8d7003fc3fc
+		summarizeBy: none
+		sourceColumn: job_code_contemporaneous
+		sortByColumn: job_code_id
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_id
+		dataType: int64
+		formatString: 0
+		lineageTag: a23368d8-aa08-47c7-8afa-b6e675e4d5dd
+		summarizeBy: none
+		sourceColumn: project_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column booking_type
+		dataType: string
+		lineageTag: 769ecdd2-01c1-41bb-8857-cfd2e9b40883
+		summarizeBy: none
+		sourceColumn: booking_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column rate_card
+		dataType: string
+		lineageTag: 709ee1f5-3000-4bec-abe7-a9e95fddf810
+		summarizeBy: none
+		sourceColumn: rate_card
+
+		annotation SummarizationSetBy = Automatic
+
+	column outcome_gbp
+		dataType: double
+		lineageTag: 80b350a3-6583-45d6-ba73-1ae7b857e0c7
+		summarizeBy: sum
+		sourceColumn: outcome_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column project_task
+		dataType: string
+		lineageTag: 8dcccfa8-216b-48ae-969f-a23ae56bd790
+		summarizeBy: none
+		sourceColumn: project_task
+
+		annotation SummarizationSetBy = Automatic
+
+	column job_code_edited = IF('Openair Tasks + Bookings KARMa'[job_code_current]="HR & resource manager","Operations",'Openair Tasks + Bookings KARMa'[job_code_current])
+		lineageTag: c926b13a-db84-4d58-acaa-4c1bc3acaecc
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column time_id
+		dataType: string
+		lineageTag: d54a96c1-d66e-4c04-8b93-4c3302ed92cd
+		summarizeBy: none
+		sourceColumn: time_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column approval_status
+		dataType: string
+		lineageTag: aa939a87-c761-4104-b6c3-3308d6402281
+		summarizeBy: none
+		sourceColumn: approval_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column billable_type
+		dataType: string
+		lineageTag: 17acc68d-1dcf-47b3-92f9-6a9070a60daa
+		summarizeBy: none
+		sourceColumn: billable_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_hours
+		dataType: double
+		lineageTag: 810dcd06-a878-467c-bc26-5eff1b3bc209
+		summarizeBy: sum
+		sourceColumn: total_hours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cost_center
+		dataType: string
+		lineageTag: cc7dde49-ead3-4767-a7fd-0adbc8da9783
+		summarizeBy: none
+		sourceColumn: cost_center
+
+		annotation SummarizationSetBy = Automatic
+
+	column job_code_id
+		dataType: int64
+		formatString: 0
+		lineageTag: a6ad9a81-6743-42bc-a643-b6218eb4c508
+		summarizeBy: sum
+		sourceColumn: job_code_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column rate_card_id
+		dataType: int64
+		formatString: 0
+		lineageTag: e4770961-ecb2-432b-8933-a3e1981aedd5
+		summarizeBy: sum
+		sourceColumn: rate_card_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column hourly_rate_native
+		dataType: double
+		lineageTag: c6afbc6f-15cc-4bb5-97a0-b3cf376d3062
+		summarizeBy: sum
+		sourceColumn: hourly_rate_native
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column hourly_rate_gbp
+		dataType: double
+		lineageTag: 746fb198-455c-409d-baa4-b46ffe3d103d
+		summarizeBy: sum
+		sourceColumn: hourly_rate_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column hours_exception
+		dataType: double
+		lineageTag: c046144a-9543-4ea2-b02e-c8d862eb58ff
+		summarizeBy: sum
+		sourceColumn: hours_exception
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column hours_billable
+		dataType: double
+		lineageTag: c9424d56-65e9-4879-aa85-04a829f9d85b
+		summarizeBy: sum
+		sourceColumn: hours_billable
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column hours_non_billable
+		dataType: double
+		lineageTag: 1979dada-85be-4765-a675-f6935f98c124
+		summarizeBy: sum
+		sourceColumn: hours_non_billable
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Openair Tasks + Bookings KARMa' = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksImport,
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    fact_timesheets_View = production_modelled_Schema{[Name="fact_timesheets",Kind="View"]}[Data]
+				in
+				    fact_timesheets_View
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

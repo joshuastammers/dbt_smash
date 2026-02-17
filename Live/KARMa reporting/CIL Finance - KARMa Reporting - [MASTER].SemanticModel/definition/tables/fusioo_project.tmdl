@@ -1,0 +1,511 @@
+table fusioo_project
+	lineageTag: 864d735e-7086-4257-a28d-0e26e818e54e
+
+	column project_closure
+		dataType: string
+		lineageTag: e873076d-e3d7-4664-b476-91a8223ef85a
+		summarizeBy: none
+		sourceColumn: project_closure
+
+		annotation SummarizationSetBy = Automatic
+
+	column background
+		dataType: string
+		lineageTag: e3a0bd3f-1791-4fd4-8784-9a6424c5a5b7
+		summarizeBy: none
+		sourceColumn: background
+
+		annotation SummarizationSetBy = Automatic
+
+	column best_practicelessons_learned
+		dataType: string
+		lineageTag: bed1ad32-a8ad-4173-8feb-4f69f7d0ae0d
+		summarizeBy: none
+		sourceColumn: best_practicelessons_learned
+
+		annotation SummarizationSetBy = Automatic
+
+	column bidders
+		dataType: string
+		lineageTag: c0d34566-f2dd-44df-a6e3-c4cade0c69bc
+		summarizeBy: none
+		sourceColumn: bidders
+
+		annotation SummarizationSetBy = Automatic
+
+	column cleared_for_credentials
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: fc5c90f3-fa37-4e9f-b6c8-69058b59320e
+		summarizeBy: none
+		sourceColumn: cleared_for_credentials
+
+		annotation SummarizationSetBy = Automatic
+
+	column client
+		dataType: string
+		lineageTag: 86029a06-c131-4eee-b305-db0df09f5511
+		summarizeBy: none
+		sourceColumn: client
+
+		annotation SummarizationSetBy = Automatic
+
+	column completed_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b0bca6d4-3a6e-46de-86dc-087f4e57d2a6
+		summarizeBy: none
+		sourceColumn: completed_date
+
+		variation Variation
+			isDefault
+			relationship: e3c07c13-3ce8-4c8b-9db8-16766aabe039
+			defaultHierarchy: LocalDateTable_3077da46-953f-419b-9b06-44a64d3049f8.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column countries_with_offices
+		dataType: string
+		lineageTag: 288e59de-40ea-489c-b8b6-7e6e542a126d
+		summarizeBy: none
+		sourceColumn: countries_with_offices
+
+		annotation SummarizationSetBy = Automatic
+
+	column created
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: eb6ff67e-50ad-4cd8-91ca-ccb1d97113ee
+		summarizeBy: none
+		sourceColumn: created
+
+		variation Variation
+			isDefault
+			relationship: a62db7d1-4b69-4098-a51e-5a982a880451
+			defaultHierarchy: LocalDateTable_19f838f2-b1f0-4758-a587-270f50cff1b0.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_by
+		dataType: string
+		lineageTag: 6a386242-9e2a-4c23-b3a7-a321a9655e9f
+		summarizeBy: none
+		sourceColumn: created_by
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_of_report
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d8a2745c-1203-478d-8307-d87efbc6e16b
+		summarizeBy: none
+		sourceColumn: date_of_report
+
+		variation Variation
+			isDefault
+			relationship: 6b51c145-0dec-4409-96fd-afbb5fdde97f
+			defaultHierarchy: LocalDateTable_f269eb11-b190-4352-8ed8-0caeecff5752.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column deal_completed
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 11e0c421-79b3-4728-9080-93c530b2184e
+		summarizeBy: none
+		sourceColumn: deal_completed
+
+		annotation SummarizationSetBy = Automatic
+
+	column deal_size
+		dataType: string
+		lineageTag: 0499e98c-e2c4-4ab2-8aad-bae7519315dc
+		summarizeBy: none
+		sourceColumn: deal_size
+
+		annotation SummarizationSetBy = Automatic
+
+	column gross_margin
+		dataType: double
+		lineageTag: ef2f8e1e-53d5-4335-b9da-20e83b5baf87
+		summarizeBy: sum
+		sourceColumn: gross_margin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column hq_country
+		dataType: string
+		lineageTag: 5f66961e-e13e-4cd7-abfa-758576bbd86f
+		summarizeBy: none
+		sourceColumn: hq_country
+
+		annotation SummarizationSetBy = Automatic
+
+	column industries
+		dataType: string
+		lineageTag: e3d2c05d-8274-485f-81b1-1d80a24677e5
+		summarizeBy: none
+		sourceColumn: industries
+
+		annotation SummarizationSetBy = Automatic
+
+	column industry_contacts
+		dataType: string
+		lineageTag: 0fbfe405-5ae6-4108-9e43-a557c449afb7
+		summarizeBy: none
+		sourceColumn: industry_contacts
+
+		annotation SummarizationSetBy = Automatic
+
+	column interviews
+		dataType: string
+		lineageTag: 62b4fb68-7ba8-4b2f-be27-827ea58d1bb2
+		summarizeBy: none
+		sourceColumn: interviews
+
+		annotation SummarizationSetBy = Automatic
+
+	column invoiced
+		dataType: double
+		lineageTag: 0f624f27-1e2f-4ffc-bcb8-b729ac4fabdf
+		summarizeBy: sum
+		sourceColumn: invoiced
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column last_modified
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 987355ff-b785-4010-a6d1-ba2f7a43d372
+		summarizeBy: none
+		sourceColumn: last_modified
+
+		variation Variation
+			isDefault
+			relationship: 8c10b889-3ba2-4f0f-829d-30a2d44caf32
+			defaultHierarchy: LocalDateTable_5a95a4a2-5b97-4b20-a9af-ccd91cc4a1e8.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_modified_by
+		dataType: string
+		lineageTag: b192dbaf-fa3f-4642-bfb9-41b57cc4d3f3
+		summarizeBy: none
+		sourceColumn: last_modified_by
+
+		annotation SummarizationSetBy = Automatic
+
+	column max_fee
+		dataType: double
+		lineageTag: b548dd6a-b716-4e21-a4b5-4ec9a8309ae6
+		summarizeBy: sum
+		sourceColumn: max_fee
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column min_fee
+		dataType: double
+		lineageTag: 5396f391-2dc1-444c-9c2b-8349aae29156
+		summarizeBy: sum
+		sourceColumn: min_fee
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column objectives
+		dataType: string
+		lineageTag: 6cdc72e0-1bd6-4b3f-ad96-757ec43a7948
+		summarizeBy: none
+		sourceColumn: objectives
+
+		annotation SummarizationSetBy = Automatic
+
+	column opportunity
+		dataType: string
+		lineageTag: 42ffc702-ac6b-4324-bc91-c2fd621bc098
+		summarizeBy: none
+		sourceColumn: opportunity
+
+		annotation SummarizationSetBy = Automatic
+
+	column pid
+		dataType: double
+		lineageTag: 13385e4f-f920-4f2f-8c28-c8dca991f8c4
+		summarizeBy: sum
+		sourceColumn: pid
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column project_aborted
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5312bd41-23ea-4857-a3fd-5435fd640d7c
+		summarizeBy: none
+		sourceColumn: project_aborted
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_code
+		dataType: double
+		lineageTag: 38de660e-e404-4d7b-ae7d-7dd7d23d8a94
+		summarizeBy: none
+		sourceColumn: project_code
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column project_description
+		dataType: string
+		lineageTag: b2e3801f-eb2b-4e11-a73b-54b70260433f
+		summarizeBy: none
+		sourceColumn: project_description
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_leader
+		dataType: string
+		lineageTag: 1dfa0513-6984-44d3-b286-7f8282fcf0f2
+		summarizeBy: none
+		sourceColumn: project_leader
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_manager
+		dataType: string
+		lineageTag: 77d818a0-ebbb-479d-88ea-b873d879c839
+		summarizeBy: none
+		sourceColumn: project_manager
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_name
+		dataType: string
+		lineageTag: 874a1f22-24c6-40f3-9e25-b12baf3888f9
+		summarizeBy: none
+		sourceColumn: project_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column recovery
+		dataType: double
+		lineageTag: f929ea42-97b0-45e6-9ea9-dcccd7886ebd
+		summarizeBy: sum
+		sourceColumn: recovery
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column region
+		dataType: string
+		lineageTag: 80f1d6da-5618-439f-aba2-2c37f720b1f3
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column secondary_research
+		dataType: string
+		lineageTag: 61b3758e-3ebe-4531-9fd2-d2dad9290bc1
+		summarizeBy: none
+		sourceColumn: secondary_research
+
+		annotation SummarizationSetBy = Automatic
+
+	column sectors
+		dataType: string
+		lineageTag: 47a2de55-cdb0-4018-9668-282fc4a86f09
+		summarizeBy: none
+		sourceColumn: sectors
+
+		annotation SummarizationSetBy = Automatic
+
+	column sellside_cf_house
+		dataType: string
+		lineageTag: 19b168a8-891b-4ea1-b2d2-76609f89e66d
+		summarizeBy: none
+		sourceColumn: sellside_cf_house
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2f8b0f22-b886-4f2b-9c58-3af3243fb26a
+		summarizeBy: none
+		sourceColumn: start_date
+
+		variation Variation
+			isDefault
+			relationship: f4b8010a-19fb-423a-a9a8-6814fcf42a51
+			defaultHierarchy: LocalDateTable_aaf8ffa0-c7b6-466f-9c8a-61a9db9c7d53.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column status
+		dataType: string
+		lineageTag: 1825f95d-29ad-41bf-a91b-8e7a3c11be60
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column subsector_or_co_description
+		dataType: string
+		lineageTag: 7c06fb56-9cca-4810-b135-3410ad172c7e
+		summarizeBy: none
+		sourceColumn: subsector_or_co_description
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_creation_subtype
+		dataType: string
+		lineageTag: 11170907-0583-4a95-95cc-753375b19e44
+		summarizeBy: none
+		sourceColumn: value_creation_subtype
+
+		annotation SummarizationSetBy = Automatic
+
+	column whos_involved
+		dataType: string
+		lineageTag: a02bbd34-7b15-4fd0-9752-942f4587db60
+		summarizeBy: none
+		sourceColumn: whos_involved
+
+		annotation SummarizationSetBy = Automatic
+
+	column fusioo_project_id
+		dataType: string
+		lineageTag: e052ed00-e2b4-4dac-8844-182c2ec4e900
+		summarizeBy: none
+		sourceColumn: fusioo_project_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column target
+		dataType: string
+		lineageTag: 13309493-1dee-45da-a226-e2f1f965295c
+		summarizeBy: none
+		sourceColumn: target
+
+		annotation SummarizationSetBy = Automatic
+
+	column final_report
+		dataType: string
+		lineageTag: 839936a1-ec7c-42ff-8b9c-bbb900a5ba60
+		summarizeBy: none
+		sourceColumn: final_report
+
+		annotation SummarizationSetBy = Automatic
+
+	column buyside_cf_house
+		dataType: string
+		lineageTag: b7c02fd2-3cb7-4946-a210-94ddb7a7a442
+		summarizeBy: none
+		sourceColumn: buyside_cf_house
+
+		annotation SummarizationSetBy = Automatic
+
+	column setting
+		dataType: string
+		lineageTag: a1ac64c7-7010-4b3d-a221-64feb4e5b5cf
+		summarizeBy: none
+		sourceColumn: setting
+
+		annotation SummarizationSetBy = Automatic
+
+	column freelancer_on_project
+		dataType: string
+		lineageTag: 5cfabe09-105d-4550-b787-4440e9f2c2c1
+		summarizeBy: none
+		sourceColumn: freelancer_on_project
+
+		annotation SummarizationSetBy = Automatic
+
+	column cil_team
+		dataType: string
+		lineageTag: 59638f80-802f-4bf5-9419-6f74aa90084f
+		summarizeBy: none
+		sourceColumn: cil_team
+
+		annotation SummarizationSetBy = Automatic
+
+	column expert
+		dataType: string
+		lineageTag: a559e105-b90e-4ba5-9edf-3210e4a6ccbb
+		summarizeBy: none
+		sourceColumn: expert
+
+		annotation SummarizationSetBy = Automatic
+
+	column lead_advisor
+		dataType: string
+		lineageTag: 5732f8e4-d896-48ea-8ce7-87681d1309e2
+		summarizeBy: none
+		sourceColumn: lead_advisor
+
+		annotation SummarizationSetBy = Automatic
+
+	column delivery_owner
+		dataType: string
+		lineageTag: 68316efd-3027-421b-b959-497a940222c4
+		summarizeBy: none
+		sourceColumn: delivery_owner
+
+		annotation SummarizationSetBy = Automatic
+
+	column origination
+		dataType: string
+		lineageTag: 025ce538-5894-46da-9ca7-d0690877a1c7
+		summarizeBy: none
+		sourceColumn: origination
+
+		annotation SummarizationSetBy = Automatic
+
+	column leadership
+		dataType: string
+		lineageTag: 372257b7-a752-4b88-bc5d-ccf62303d76c
+		summarizeBy: none
+		sourceColumn: leadership
+
+		annotation SummarizationSetBy = Automatic
+
+	column expert_project
+		dataType: string
+		lineageTag: 6bb7be2d-8831-4779-a6ca-342ef9da33e2
+		summarizeBy: none
+		sourceColumn: expert_project
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fusioo_project = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksImport,
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_stg_fusioo_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_stg_fusioo",Kind="Schema"]}[Data],
+				    stg_fusioo_projects_View = production_stg_fusioo_Schema{[Name="stg_fusioo_projects",Kind="View"]}[Data]
+				in
+				    stg_fusioo_projects_View
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

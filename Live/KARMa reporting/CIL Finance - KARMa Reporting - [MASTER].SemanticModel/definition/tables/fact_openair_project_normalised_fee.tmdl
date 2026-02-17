@@ -1,0 +1,35 @@
+table fact_openair_project_normalised_fee
+	lineageTag: a566b734-f49e-4911-be63-4de38e4ed406
+
+	column project_id
+		dataType: int64
+		formatString: 0
+		lineageTag: bd7c6831-3d84-439a-ada6-31a5e305b9d3
+		summarizeBy: none
+		sourceColumn: project_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column fee_final_gbp_normalised
+		dataType: double
+		lineageTag: 3daa7ec3-bbc6-4591-9cd2-8b8f60a87d61
+		summarizeBy: none
+		sourceColumn: fee_final_gbp_normalised
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_openair_project_normalised_fee = m
+		mode: import
+		source =
+				let
+				    Source = fact_openair_project,
+				    #"Grouped Rows" = Table.Group(Source, {"project_id"}, {{"fee_final_gbp_normalised", each List.Average([fee_final_gbp]), type nullable number}})
+				in
+				    #"Grouped Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,95 @@
+table fact_narrative
+	lineageTag: 15abfa55-7a31-4318-b62c-a72085b438ba
+
+	column narrative_id
+		dataType: string
+		lineageTag: 168d500b-1547-4ba1-8c1f-0f2a26c7468d
+		summarizeBy: none
+		sourceColumn: narrative_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column title
+		dataType: string
+		lineageTag: 1fdb8d80-cd89-46be-9af2-c1949287aabb
+		summarizeBy: none
+		sourceColumn: title
+
+		annotation SummarizationSetBy = Automatic
+
+	column activity_type
+		dataType: string
+		lineageTag: 4d78a746-8ee1-414e-9502-b4c0b2f14ac1
+		summarizeBy: none
+		sourceColumn: activity_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column created
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ed36980e-1dd4-48c1-b021-4cd403ad70c5
+		summarizeBy: none
+		sourceColumn: created
+
+		variation Variation
+			isDefault
+			relationship: c5b5dcc3-c958-4c68-a1af-848325209a92
+			defaultHierarchy: LocalDateTable_3211d44e-2201-4eb1-80e9-31ef0506c17f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_modified
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 15df9542-4e2e-4f2d-a64c-7671d1a5a1fe
+		summarizeBy: none
+		sourceColumn: last_modified
+
+		variation Variation
+			isDefault
+			relationship: c288e035-e1bd-4b76-b0f6-ba161908edeb
+			defaultHierarchy: LocalDateTable_23897f5b-f3a5-4d3c-93aa-3ed84b8c7a76.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column comment
+		dataType: string
+		lineageTag: 51b8f1a7-23c2-4698-8896-f888f2523782
+		summarizeBy: none
+		sourceColumn: comment
+
+		annotation SummarizationSetBy = Automatic
+
+	column activity_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: f3a2d887-ba91-4453-a526-d34fac76517b
+		summarizeBy: none
+		sourceColumn: activity_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column further_detail
+		dataType: string
+		lineageTag: e0e974ad-52e2-479a-a5f5-1eab54826a2d
+		summarizeBy: none
+		sourceColumn: further_detail
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_narrative = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksImport,
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_visualisation_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_visualisation",Kind="Schema"]}[Data],
+				    fusioo_narrative_View = production_visualisation_Schema{[Name="fusioo_narrative",Kind="View"]}[Data]
+				in
+				    fusioo_narrative_View
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

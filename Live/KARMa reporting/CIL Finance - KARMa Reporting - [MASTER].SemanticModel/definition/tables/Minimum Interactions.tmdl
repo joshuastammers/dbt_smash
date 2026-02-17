@@ -1,0 +1,26 @@
+table 'Minimum Interactions'
+	lineageTag: 7f695cc1-4ef0-4e3c-85aa-402a7ffc1cca
+
+	measure 'Minimum Interactions Value' = SELECTEDVALUE('Minimum Interactions'[Minimum Interactions], 5)
+		formatString: 0
+		lineageTag: e02c31ee-1f8c-479b-87e5-b95388215099
+
+	column 'Minimum Interactions'
+		formatString: 0
+		lineageTag: 50193261-ea78-42f6-9a99-4556236fa847
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition 'Minimum Interactions' = calculated
+		mode: import
+		source = GENERATESERIES(1, 500, 1)
+
+	annotation PBI_Id = dca8873c4dc1409cb3ce1502410e2fe7
+

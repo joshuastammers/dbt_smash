@@ -1,0 +1,52 @@
+table bridge_opportunities_client
+	lineageTag: 9eb52d7b-b5da-49fc-947e-1e04867b9d2f
+
+	column opportunity_id
+		dataType: string
+		lineageTag: 8121a55e-ca33-46a9-8fcf-dbed90682cc6
+		summarizeBy: none
+		sourceColumn: opportunity_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column client
+		dataType: string
+		lineageTag: 71c9a45c-87b5-412b-8ab7-41271973e3da
+		summarizeBy: none
+		sourceColumn: client
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClientType
+		dataType: string
+		lineageTag: c6a6078c-c104-4199-b557-0e1928c1cfb5
+		summarizeBy: none
+		sourceColumn: ClientType
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition bridge_opportunities_client = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksImport,
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_visualisation_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_visualisation",Kind="Schema"]}[Data],
+				    opportunities_client_View = production_visualisation_Schema{[Name="opportunities_client",Kind="View"]}[Data],
+				    #"Added Custom" = Table.AddColumn(opportunities_client_View, "ClientType", each "All"),
+				    #"Appended Query" = Table.Combine({#"Added Custom", bridge_opportunities_cfhouse})
+				in
+				    #"Appended Query"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

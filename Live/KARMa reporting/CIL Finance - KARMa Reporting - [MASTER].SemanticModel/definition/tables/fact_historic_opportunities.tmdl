@@ -1,0 +1,153 @@
+table fact_historic_opportunities
+	lineageTag: 492412cd-31a6-4991-b32b-40579d99295d
+
+	column opportunity_id
+		dataType: string
+		lineageTag: 6296e664-df94-4e90-bc5e-221c12738de6
+		summarizeBy: none
+		sourceColumn: opportunity_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column new_project_or_extension
+		dataType: string
+		lineageTag: 0395196a-8ee4-4a6d-8b14-0b691d5e131f
+		summarizeBy: none
+		sourceColumn: new_project_or_extension
+
+		annotation SummarizationSetBy = Automatic
+
+	column stage
+		dataType: string
+		lineageTag: a5d1839f-8852-4ea9-bcae-5b1ef04acec2
+		summarizeBy: none
+		sourceColumn: stage
+
+		annotation SummarizationSetBy = Automatic
+
+	column created
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 03448878-eaed-425b-a70d-e841e2b61e09
+		summarizeBy: none
+		sourceColumn: created
+
+		variation Variation
+			isDefault
+			relationship: f8f9d3e7-fc93-4339-b62c-59a7d501eec8
+			defaultHierarchy: LocalDateTable_0ac280a3-7894-47c3-bebc-0b693855baa9.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_modified
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d48e3bdf-0842-41f6-99be-cf8f42442bf5
+		summarizeBy: none
+		sourceColumn: last_modified
+
+		variation Variation
+			isDefault
+			relationship: 70c897c3-15c2-4186-a074-e3f9bc899a54
+			defaultHierarchy: LocalDateTable_0efc8d08-d72f-4080-b4b7-b6cad2d708ac.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column entity
+		dataType: string
+		lineageTag: 60108633-1c4a-424d-963c-9ae415264c25
+		summarizeBy: none
+		sourceColumn: entity
+
+		annotation SummarizationSetBy = Automatic
+
+	column subsector
+		dataType: string
+		lineageTag: ecc17db3-a63f-4e5e-a1ab-52933df76d0c
+		summarizeBy: none
+		sourceColumn: subsector
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_creation_subtype
+		dataType: string
+		lineageTag: cc05aa85-05aa-4f2a-9170-fb28867485b1
+		summarizeBy: none
+		sourceColumn: value_creation_subtype
+
+		annotation SummarizationSetBy = Automatic
+
+	column reason
+		dataType: string
+		lineageTag: 418d976b-aa5b-40c0-b74d-72efce7f6228
+		summarizeBy: none
+		sourceColumn: reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column further_detail
+		dataType: string
+		lineageTag: 6af7ea8d-8969-4b27-985a-1a48533dadf0
+		summarizeBy: none
+		sourceColumn: further_detail
+
+		annotation SummarizationSetBy = Automatic
+
+	column opcode
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ef8c00b-8b11-496a-a38f-24ada404be4a
+		summarizeBy: sum
+		sourceColumn: opcode
+
+		annotation SummarizationSetBy = Automatic
+
+	column setting
+		dataType: string
+		lineageTag: 802560ca-6ee9-43cc-b41f-5ec229bb34fc
+		summarizeBy: none
+		sourceColumn: setting
+
+		annotation SummarizationSetBy = Automatic
+
+	column target
+		dataType: string
+		lineageTag: ef172d0b-ffbb-4ab8-9ec9-99539f0b0ce0
+		summarizeBy: none
+		sourceColumn: target
+
+		annotation SummarizationSetBy = Automatic
+
+	column estimated_ebitda
+		dataType: string
+		lineageTag: 8d12d818-f986-4ffc-b50b-ee6759e8747e
+		summarizeBy: none
+		sourceColumn: estimated_ebitda
+
+		annotation SummarizationSetBy = Automatic
+
+	column targets_ebitda
+		dataType: double
+		lineageTag: acd7b702-2468-4ee0-a8a1-29f492ad62fc
+		summarizeBy: sum
+		sourceColumn: targets_ebitda
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_historic_opportunities = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksImport,
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_visualisation_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_visualisation",Kind="Schema"]}[Data],
+				    fusioo_opportunities_View = production_visualisation_Schema{[Name="fusioo_opportunities",Kind="View"]}[Data]
+				in
+				    fusioo_opportunities_View
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

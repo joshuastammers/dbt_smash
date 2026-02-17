@@ -1,0 +1,62 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "26607dac737362237a65",
+  "displayName": "Network mgmt tool",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filter12ec32c9980f4ff32e20",
+        "ordinal": 0,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fact_companies"
+              }
+            },
+            "Property": "Buy+SellsideCompanies"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "Filter32235add019e3a417d82",
+        "ordinal": 1,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fact_opportunities"
+              }
+            },
+            "Property": "stage"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      }
+    ],
+    "filterSortOrder": "Custom"
+  },
+  "visualInteractions": [
+    {
+      "source": "60eb757832ae4d1a09e2",
+      "target": "75f72bae08c97c210642",
+      "type": "NoFilter"
+    },
+    {
+      "source": "60eb757832ae4d1a09e2",
+      "target": "14b23a1e1eb47844a41c",
+      "type": "NoFilter"
+    },
+    {
+      "source": "60eb757832ae4d1a09e2",
+      "target": "c199824a6d87a3aa00b3",
+      "type": "NoFilter"
+    }
+  ]
+}

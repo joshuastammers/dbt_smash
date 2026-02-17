@@ -1,0 +1,291 @@
+table fact_opportunities
+	lineageTag: cad75af6-693c-42a4-bed3-06fc1a996ef5
+
+	column opportunity_id
+		dataType: string
+		lineageTag: 3cef5eb6-71c4-4a1f-85a0-6d6dcb3e17d6
+		summarizeBy: distinctCount
+		sourceColumn: opportunity_id
+
+		annotation SummarizationSetBy = User
+
+	column new_project_or_extension
+		dataType: string
+		lineageTag: 30c276ba-48b3-47f8-9e52-12f956152ef7
+		summarizeBy: none
+		sourceColumn: new_project_or_extension
+
+		annotation SummarizationSetBy = Automatic
+
+	column stage
+		dataType: string
+		lineageTag: 8eca8098-60d9-4b68-b28e-8eac0c970bfd
+		summarizeBy: none
+		sourceColumn: stage
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_modified
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: bf13378c-168e-4773-a3bc-da6a7491db6e
+		summarizeBy: none
+		sourceColumn: last_modified
+
+		variation Variation
+			isDefault
+			relationship: 445e2059-55d5-42c3-8f87-04012892c08b
+			defaultHierarchy: LocalDateTable_c9c45034-9265-44e9-aad3-a028f2d328a3.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column entity
+		dataType: string
+		lineageTag: d6625960-f9b7-420b-8915-b7d43d1918eb
+		summarizeBy: none
+		sourceColumn: entity
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_creation_subtype
+		dataType: string
+		lineageTag: 9c3c0d87-e237-4ac2-88fc-b07a8ec44107
+		summarizeBy: none
+		sourceColumn: value_creation_subtype
+
+		annotation SummarizationSetBy = Automatic
+
+	column reason
+		dataType: string
+		lineageTag: abb0911c-05c8-4d34-a404-e579344e0e49
+		summarizeBy: none
+		sourceColumn: reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column further_detail
+		dataType: string
+		lineageTag: 6fe7b015-4684-4fe5-a67b-06d9a6d000d1
+		summarizeBy: none
+		sourceColumn: further_detail
+
+		annotation SummarizationSetBy = Automatic
+
+	column PE_Tracking = SWITCH(fact_opportunities[estimated_ebitda],"Negative or unknown",0,"£0-5m",1,"£6-10m",2,"£11-20m",3,"£21-50m",4,"£51-100m",5,"£101-200m",6,"Greater than £200m",7)
+		formatString: 0
+		lineageTag: 53188598-1d70-45cb-a305-e1627fcf9f96
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column setting
+		dataType: string
+		lineageTag: 49744731-9d79-4b74-8d8e-45a80d9d4dfa
+		summarizeBy: none
+		sourceColumn: setting
+
+		annotation SummarizationSetBy = Automatic
+
+	column target
+		dataType: string
+		lineageTag: 9692d724-bfd8-4c10-96ab-767af76ffa28
+		summarizeBy: none
+		sourceColumn: target
+
+		annotation SummarizationSetBy = Automatic
+
+	column estimated_ebitda
+		dataType: string
+		lineageTag: 740e40d4-187c-46ec-866e-37d6ece1cb13
+		summarizeBy: none
+		sourceColumn: estimated_ebitda
+
+		annotation SummarizationSetBy = Automatic
+
+	column targets_ebitda
+		dataType: double
+		lineageTag: 7361eb53-43a7-40eb-a913-534068b29b58
+		summarizeBy: sum
+		sourceColumn: targets_ebitda
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column geography
+		dataType: string
+		lineageTag: 85602821-92d0-4159-96ac-17c5735ef1f1
+		summarizeBy: none
+		sourceColumn: geography
+
+		annotation SummarizationSetBy = Automatic
+
+	column fee_000s
+		dataType: double
+		lineageTag: 50171ffe-ed58-4130-a744-67394c8c1796
+		summarizeBy: sum
+		sourceColumn: fee_000s
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fee_gbp
+		dataType: double
+		lineageTag: bf8704de-48a3-4ebc-87b1-9318b67a98e5
+		summarizeBy: sum
+		sourceColumn: fee_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column weighted_fee_gbp
+		dataType: double
+		lineageTag: 43218c60-059c-41cd-9f7a-8a19f77f07e7
+		summarizeBy: sum
+		sourceColumn: weighted_fee_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column opportunity_description
+		dataType: string
+		lineageTag: 37e82254-b22e-4096-9d6a-1addd1d0466d
+		summarizeBy: none
+		sourceColumn: opportunity_description
+
+		annotation SummarizationSetBy = Automatic
+
+	column owner_of_target
+		dataType: string
+		lineageTag: 587c4757-38fc-4d25-ae9a-0838b9a7c23c
+		summarizeBy: none
+		sourceColumn: owner_of_target
+
+		annotation SummarizationSetBy = Automatic
+
+	column cil_probability
+		dataType: double
+		lineageTag: fb195a8d-0dc2-4ac4-83e8-5181346f9213
+		summarizeBy: sum
+		sourceColumn: cil_probability
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column client_probability
+		dataType: double
+		lineageTag: f42dbb08-61c5-4724-b217-b90355141124
+		summarizeBy: sum
+		sourceColumn: client_probability
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column duration_weeks
+		dataType: double
+		lineageTag: 54b55ab7-bccb-4b03-850d-8606f30825f7
+		summarizeBy: sum
+		sourceColumn: duration_weeks
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column no_of_project_managers
+		dataType: int64
+		formatString: 0
+		lineageTag: cc8f3b04-1d2a-4f1b-912b-9bc13af45e76
+		summarizeBy: sum
+		sourceColumn: no_of_project_managers
+
+		annotation SummarizationSetBy = Automatic
+
+	column targets_revenue
+		dataType: double
+		lineageTag: 49c9007c-ecd9-4cd8-b5c8-6b3d4687c49a
+		summarizeBy: sum
+		sourceColumn: targets_revenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column conf
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 400e06ec-aa82-4315-9fc4-925c15e0909a
+		summarizeBy: none
+		sourceColumn: conf
+
+		annotation SummarizationSetBy = Automatic
+
+	column synced_to_openair
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 25558ef9-bbec-46a9-82ca-30e91eed1087
+		summarizeBy: none
+		sourceColumn: synced_to_openair
+
+		annotation SummarizationSetBy = Automatic
+
+	column capability
+		dataType: string
+		lineageTag: f9f991e0-3e19-4641-a6c2-0933fca34f66
+		summarizeBy: none
+		sourceColumn: capability
+
+		annotation SummarizationSetBy = Automatic
+
+	column responsible
+		dataType: string
+		lineageTag: 0cac36ed-9c79-48b7-9640-d8373bb1ee56
+		summarizeBy: none
+		sourceColumn: responsible
+
+		annotation SummarizationSetBy = Automatic
+
+	column sector
+		dataType: string
+		lineageTag: 4b6c7d4a-9524-4ca6-a961-89070cada8a8
+		summarizeBy: none
+		sourceColumn: sector
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 59c4e5fe-1ad1-4fff-adf3-5aaf3040d943
+		summarizeBy: none
+		sourceColumn: created_date
+
+		variation Variation
+			isDefault
+			relationship: fd1d3d48-c706-452f-892f-b05d921bc2c5
+			defaultHierarchy: LocalDateTable_6241fb78-bbd5-49b1-a05a-d7afe91ac03c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition fact_opportunities = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksImport,
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    fact_opportunities_View = production_modelled_Schema{[Name="fact_opportunities",Kind="View"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(fact_opportunities_View,{{"created_date", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

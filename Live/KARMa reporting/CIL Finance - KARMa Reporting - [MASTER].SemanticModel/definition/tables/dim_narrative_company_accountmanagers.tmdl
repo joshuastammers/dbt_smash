@@ -1,0 +1,43 @@
+table dim_narrative_company_accountmanagers
+	isHidden
+	lineageTag: 593d9067-601f-44a3-a1b4-ebf6665d6ea3
+
+	column company_id
+		dataType: string
+		isHidden
+		lineageTag: e125071c-b574-45bf-9399-9c1ced6aeb9f
+		summarizeBy: none
+		sourceColumn: company_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column account_manager
+		dataType: string
+		isHidden
+		lineageTag: cdbbf20a-db07-4a66-9cbc-487fa52d0b1a
+		summarizeBy: none
+		sourceColumn: account_manager
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_narrative_company_accountmanagers = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksImport,
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_visualisation_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_visualisation",Kind="Schema"]}[Data],
+				    company_account_manager_View = production_visualisation_Schema{[Name="company_account_manager",Kind="View"]}[Data]
+				in
+				    company_account_manager_View
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

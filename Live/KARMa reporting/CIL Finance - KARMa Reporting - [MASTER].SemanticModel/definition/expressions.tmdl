@@ -1,0 +1,89 @@
+expression 'Openair KARMa Projects' =
+		let
+		    Source = DatabricksImport,
+		    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+		    production_visualisation_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_visualisation",Kind="Schema"]}[Data],
+		    openair_project_task_View = production_visualisation_Schema{[Name="openair_project_task",Kind="View"]}[Data],
+		    #"Filtered Rows" = Table.SelectRows(openair_project_task_View, each ([project_task] = "1. General" or [project_task] = "2. Acacium Group" or [project_task] = "3. Bridgepoint" or [project_task] = "4. Five Arrows" or [project_task] = "5. Grafton Group" or [project_task] = "6. Halma" or [project_task] = "7. RLDatix")),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Filtered Rows",{{"project_task_id", Int64.Type}})
+		in
+		    #"Changed Type"
+	lineageTag: 97df5b7d-e178-4c71-aca6-18d39e24aa13
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression DatabricksImport =
+		let
+		    Source = Databricks.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "/sql/1.0/warehouses/27755f6f39df3c3f", null)
+		in
+		    Source
+	lineageTag: d3abc729-1425-46a0-960e-34a13dc4d624
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression bridge_opportunities_cfhouse =
+		let
+		    Source = DatabricksImport,
+		    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+		    production_visualisation_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_visualisation",Kind="Schema"]}[Data],
+		    opportunities_cf_house_source_View = production_visualisation_Schema{[Name="opportunities_cf_house_source",Kind="View"]}[Data],
+		    #"Added Custom" = Table.AddColumn(opportunities_cf_house_source_View, "ClientType", each "CF House"),
+		    #"Renamed Columns" = Table.RenameColumns(#"Added Custom",{{"cf_house_source", "client"}})
+		in
+		    #"Renamed Columns"
+	lineageTag: 9a2bb9b0-e409-47c3-98be-5ce6133a8272
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Errors in fact_opportunities' =
+		let
+		Source = fact_opportunities,
+		  #"Detected Type Mismatches" = let
+		    tableWithOnlyPrimitiveTypes = Table.SelectColumns(Source, Table.ColumnsOfType(Source, {type nullable number, type nullable text, type nullable logical, type nullable date, type nullable datetime, type nullable datetimezone, type nullable time, type nullable duration})),
+		    recordTypeFields = Type.RecordFields(Type.TableRow(Value.Type(tableWithOnlyPrimitiveTypes))),
+		    fieldNames = Record.FieldNames(recordTypeFields),
+		    fieldTypes = List.Transform(Record.ToList(recordTypeFields), each [Type]),
+		    pairs = List.Transform(List.Positions(fieldNames), (i) => {fieldNames{i}, (v) => if v = null or Value.Is(v, fieldTypes{i}) then v else error [Message = "The type of the value does not match the type of the column.", Detail = v], fieldTypes{i}})
+		in
+		    Table.TransformColumns(Source, pairs),
+		  #"Added Index" = Table.AddIndexColumn(#"Detected Type Mismatches", "Row Number" ,1),
+		  #"Kept Errors" = Table.SelectRowsWithErrors(#"Added Index", {"opportunity_id", "opportunity_code", "new_project_or_extension", "stage", "created", "last_modified", "type", "entity", "fee_000s", "subsector", "title", "value_creation_subtype", "reason", "further_detail", "larger_pe_tracking", "ebitda_m"}),
+		  #"Reordered Columns" = Table.ReorderColumns(#"Kept Errors", {"Row Number", "opportunity_id", "opportunity_code", "new_project_or_extension", "stage", "created", "last_modified", "type", "entity", "fee_000s", "subsector", "title", "value_creation_subtype", "reason", "further_detail", "larger_pe_tracking", "ebitda_m"})
+		in
+		  #"Reordered Columns"
+	lineageTag: c766663e-0f7b-4533-9811-8f8093f769ef
+	queryGroup: 'Query Errors - 29/10/2024 14:27:17'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Errors in fact_opportunities (2)' =
+		let
+		Source = fact_opportunities,
+		  #"Detected Type Mismatches" = let
+		    tableWithOnlyPrimitiveTypes = Table.SelectColumns(Source, Table.ColumnsOfType(Source, {type nullable number, type nullable text, type nullable logical, type nullable date, type nullable datetime, type nullable datetimezone, type nullable time, type nullable duration})),
+		    recordTypeFields = Type.RecordFields(Type.TableRow(Value.Type(tableWithOnlyPrimitiveTypes))),
+		    fieldNames = Record.FieldNames(recordTypeFields),
+		    fieldTypes = List.Transform(Record.ToList(recordTypeFields), each [Type]),
+		    pairs = List.Transform(List.Positions(fieldNames), (i) => {fieldNames{i}, (v) => if v = null or Value.Is(v, fieldTypes{i}) then v else error [Message = "The type of the value does not match the type of the column.", Detail = v], fieldTypes{i}})
+		in
+		    Table.TransformColumns(Source, pairs),
+		  #"Added Index" = Table.AddIndexColumn(#"Detected Type Mismatches", "Row Number" ,1),
+		  #"Kept Errors" = Table.SelectRowsWithErrors(#"Added Index", {"opportunity_id", "opportunity_code", "new_project_or_extension", "stage", "created", "last_modified", "type", "entity", "fee_000s", "subsector", "title", "value_creation_subtype", "reason", "further_detail", "larger_pe_tracking", "ebitda_m"}),
+		  #"Reordered Columns" = Table.ReorderColumns(#"Kept Errors", {"Row Number", "opportunity_id", "opportunity_code", "new_project_or_extension", "stage", "created", "last_modified", "type", "entity", "fee_000s", "subsector", "title", "value_creation_subtype", "reason", "further_detail", "larger_pe_tracking", "ebitda_m"})
+		in
+		  #"Reordered Columns"
+	lineageTag: 1a084b19-ed3e-4761-aa94-fed94d197047
+	queryGroup: 'Query Errors - 06/11/2024 16:10:09'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

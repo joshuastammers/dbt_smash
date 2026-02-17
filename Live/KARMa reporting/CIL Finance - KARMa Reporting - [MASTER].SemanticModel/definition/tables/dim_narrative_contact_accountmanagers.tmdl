@@ -1,0 +1,34 @@
+table dim_narrative_contact_accountmanagers
+	lineageTag: d31cdc4a-6c27-4c66-a4c8-d8556a99b51b
+
+	column contact_id
+		dataType: string
+		lineageTag: 522d34f5-03fb-498f-bde4-68c39188838f
+		summarizeBy: none
+		sourceColumn: contact_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column account_manager
+		dataType: string
+		lineageTag: 43d7485e-6bbe-4ae0-8479-40bb2ac4b4df
+		summarizeBy: none
+		sourceColumn: account_manager
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_narrative_contact_accountmanagers = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksImport,
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_visualisation_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_visualisation",Kind="Schema"]}[Data],
+				    contact_account_manager_View = production_visualisation_Schema{[Name="contact_account_manager",Kind="View"]}[Data]
+				in
+				    contact_account_manager_View
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

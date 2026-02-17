@@ -1,0 +1,186 @@
+table dim_date
+	lineageTag: 2d2139da-b580-4672-b786-eb9b868fffdf
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3cd88b05-36eb-4be3-b6c6-4b6f68f5091a
+		summarizeBy: none
+		sourceColumn: date
+
+		variation Variation
+			isDefault
+			relationship: 26d996fa-6ad7-46b3-bc36-1064d59f8f47
+			defaultHierarchy: LocalDateTable_351e0890-d0d3-4876-ba6e-eb774589121f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column year
+		dataType: string
+		lineageTag: 91a99fe5-8fd6-4e37-9b10-5717558e64f2
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_no
+		dataType: int64
+		formatString: 0
+		lineageTag: daac49fe-46a9-4b8d-80ba-95ca75c3e998
+		summarizeBy: sum
+		sourceColumn: month_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: string
+		lineageTag: d63d8b48-00b5-4efb-ab59-c6750a1e15fa
+		summarizeBy: none
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter
+		dataType: string
+		lineageTag: 6fc88f5c-c1d5-4109-9cce-a877187ddfa5
+		summarizeBy: none
+		sourceColumn: quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_month
+		dataType: string
+		lineageTag: ac34c86b-bf07-4ec8-b516-00d2b28a7d59
+		summarizeBy: none
+		sourceColumn: year_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekday_no
+		dataType: int64
+		formatString: 0
+		lineageTag: 0256a477-217f-4c62-8bbd-dc0f66c833ce
+		summarizeBy: sum
+		sourceColumn: weekday_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekday
+		dataType: string
+		lineageTag: 81e08ef6-e56e-4973-a190-bd946d573c44
+		summarizeBy: none
+		sourceColumn: weekday
+
+		annotation SummarizationSetBy = Automatic
+
+	column week_day_end
+		dataType: int64
+		formatString: 0
+		lineageTag: 5ca994c1-f76c-447d-830f-2ec3be8da343
+		summarizeBy: sum
+		sourceColumn: week_day_end
+
+		annotation SummarizationSetBy = Automatic
+
+	column week_end_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 754f9e46-c0a5-4254-906c-80eb5acc6293
+		summarizeBy: none
+		sourceColumn: week_end_date
+
+		variation Variation
+			isDefault
+			relationship: 6be71bc2-6af4-4c37-85ce-24e88eb495e2
+			defaultHierarchy: LocalDateTable_3de139c0-8f1c-487d-958c-4ef433365f1f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column week_no
+		dataType: int64
+		formatString: 0
+		lineageTag: 2d43b57f-a583-4728-842c-2febcdf54b0d
+		summarizeBy: sum
+		sourceColumn: week_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_week_commencing
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0f49d6da-b53b-4768-af28-6254b2f9025b
+		summarizeBy: none
+		sourceColumn: date_week_commencing
+
+		variation Variation
+			isDefault
+			relationship: 5fb1bd7c-fcc9-4964-a764-ee77586fc756
+			defaultHierarchy: LocalDateTable_8162fd55-84a4-451f-8620-a20065253cdf.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column cat_week_commencing
+		dataType: string
+		lineageTag: c29851e8-1b1c-4c96-9adb-6793584c8fa0
+		summarizeBy: none
+		sourceColumn: cat_week_commencing
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_month
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 72f701c0-3e24-48d0-8720-1f865fbf943f
+		summarizeBy: none
+		sourceColumn: date_month
+
+		variation Variation
+			isDefault
+			relationship: d6e67d94-b248-483e-9421-c6bd742e02f0
+			defaultHierarchy: LocalDateTable_e4093873-ba30-424f-9c3d-82cacda17c2c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column cat_month_and_year
+		dataType: string
+		lineageTag: 6be4637e-e023-4155-9591-f329c6f6e019
+		summarizeBy: none
+		sourceColumn: cat_month_and_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column FY
+		dataType: string
+		lineageTag: 731e1abe-e21b-4c55-88db-5b5ac401e5f7
+		summarizeBy: none
+		sourceColumn: FY
+		sortByColumn: fy_rank
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy_rank
+		dataType: int64
+		formatString: 0
+		lineageTag: 7b161ba8-3d4a-46c3-afbd-b23439425221
+		summarizeBy: sum
+		sourceColumn: fy_rank
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_date = m
+		mode: import
+		source =
+				let
+				    Source = Databricks.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "/sql/1.0/warehouses/27755f6f39df3c3f", null),
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    dim_date_View = production_modelled_Schema{[Name="dim_date",Kind="View"]}[Data]
+				in
+				    dim_date_View
+

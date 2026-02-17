@@ -1,0 +1,85 @@
+model Model
+	culture: en-GB
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-GB
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+/// Errors in queries that were loaded on 29/10/2024 14:27:17.
+queryGroup 'Query Errors - 29/10/2024 14:27:17'
+
+	annotation PBI_QueryGroupOrder = 0
+
+/// Errors in queries that were loaded on 06/11/2024 16:10:09.
+queryGroup 'Query Errors - 06/11/2024 16:10:09'
+
+	annotation PBI_QueryGroupOrder = 1
+
+annotation PBI_QueryOrder = ["DatabricksImport","fact_narrative","fact_companies","fact_contact","fact_openair_project","fact_opportunities","fact_historic_opportunities","bridge_opportunities_cfhouse","bridge_opportunities_client","bridge_narrative_contacts","bridge_contact_companies","Company__c","dim_narrative_internal","dim_opportunities_responsible","fact_team","dim_internal_sectors","dim_narrative_company_accountmanagers","dim_narrative_contact_accountmanagers","Measures Table","Openair KARMa Projects","Openair Tasks + Bookings KARMa","dim_internal_sector_sort","Last Refresh Date","fact_openair_project_normalised_fee","fusioo_project","Errors in fact_opportunities","Errors in fact_opportunities (2)","dim_date","dim_users"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table fact_opportunities
+ref table DateTableTemplate_9833305a-112e-485a-ace0-fe475fbbf2e6
+ref table LocalDateTable_c9c45034-9265-44e9-aad3-a028f2d328a3
+ref table fact_team
+ref table bridge_opportunities_client
+ref table dim_opportunities_responsible
+ref table fact_narrative
+ref table LocalDateTable_3211d44e-2201-4eb1-80e9-31ef0506c17f
+ref table LocalDateTable_23897f5b-f3a5-4d3c-93aa-3ed84b8c7a76
+ref table bridge_narrative_contacts
+ref table dim_narrative_internal
+ref table fact_contact
+ref table LocalDateTable_3cf45d33-d4ff-46bd-8b3c-27006fafba3d
+ref table fact_companies
+ref table LocalDateTable_ce9d4eb6-d4d7-431a-8b1d-25e75aa60cb8
+ref table LocalDateTable_dcecfb9f-3708-4f9c-aefc-1db7034bb190
+ref table fact_openair_project
+ref table LocalDateTable_4ca67189-51cc-433e-b870-83301fbe2b4f
+ref table 'Measures Table'
+ref table 'Openair Tasks + Bookings KARMa'
+ref table fact_historic_opportunities
+ref table LocalDateTable_0efc8d08-d72f-4080-b4b7-b6cad2d708ac
+ref table dim_internal_sectors
+ref table dim_internal_sector_sort
+ref table dim_narrative_company_accountmanagers
+ref table dim_narrative_contact_accountmanagers
+ref table Date__c
+ref table 'Last Refresh Date'
+ref table LocalDateTable_f9d19f82-3aad-4f59-8361-c9853759dd3e
+ref table 'Minimum Interactions'
+ref table bridge_contact_companies
+ref table Company__c
+ref table 'Contacts in last N months'
+ref table fact_openair_project_normalised_fee
+ref table fusioo_project
+ref table LocalDateTable_3077da46-953f-419b-9b06-44a64d3049f8
+ref table LocalDateTable_19f838f2-b1f0-4758-a587-270f50cff1b0
+ref table LocalDateTable_f269eb11-b190-4352-8ed8-0caeecff5752
+ref table LocalDateTable_e0856ef8-5788-4524-b71f-f68483118f2a
+ref table LocalDateTable_9146faab-5e8c-41f1-91f6-2c1ae246544c
+ref table LocalDateTable_0ac280a3-7894-47c3-bebc-0b693855baa9
+ref table LocalDateTable_81d453ab-2e08-4a29-bd0c-669f1d59493e
+ref table LocalDateTable_101f24f4-f015-4e03-afc8-1d0ec2735eab
+ref table LocalDateTable_5a95a4a2-5b97-4b20-a9af-ccd91cc4a1e8
+ref table LocalDateTable_aaf8ffa0-c7b6-466f-9c8a-61a9db9c7d53
+ref table LocalDateTable_67a833fb-9115-4ee0-8c9b-fafca6da6016
+ref table LocalDateTable_e889e7eb-7a05-41e6-bc79-8ecd048da379
+ref table dim_date
+ref table LocalDateTable_351e0890-d0d3-4876-ba6e-eb774589121f
+ref table LocalDateTable_3de139c0-8f1c-487d-958c-4ef433365f1f
+ref table LocalDateTable_8162fd55-84a4-451f-8620-a20065253cdf
+ref table LocalDateTable_e4093873-ba30-424f-9c3d-82cacda17c2c
+ref table dim_users
+ref table LocalDateTable_3a794f24-8f2c-4c12-be94-6e4315dbada1
+ref table LocalDateTable_d03a8811-7b64-4b7d-a58c-de2c52cb1c88
+ref table LocalDateTable_d7dbb839-8db5-4ee5-b46f-0d46dd372ece
+ref table LocalDateTable_24df8bf3-efb4-4310-9cc7-49094140c25b
+ref table LocalDateTable_6241fb78-bbd5-49b1-a05a-d7afe91ac03c
+
+ref cultureInfo en-GB
+

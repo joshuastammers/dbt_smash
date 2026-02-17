@@ -1,0 +1,347 @@
+table 'Measures Table'
+	lineageTag: 3be6a0fa-2472-4aa5-a5ff-4409f9a56ca9
+
+	measure 'Fees (£k) per Interaction (Over Threshold)' = [Fees (£k)]/[Interactions (Over Threshold)]
+		formatString: #,0.0
+		displayFolder: Fees
+		lineageTag: e3f7da20-cf17-4d0b-96ce-e23e099c44e0
+
+	measure 'Fees (£k)' = (SUM(fact_openair_project[fee_final_gbp])/1000)
+		formatString: #,0.0
+		displayFolder: Fees
+		lineageTag: 63c0aca2-487b-4fd2-ba60-e325bed14e7b
+
+	measure 'Hot+ Opportunities per Interaction (Over Threshold)' = [Hot+ Opportunities]/([Interactions (Over Threshold)]+0)
+		displayFolder: Opportunities\Hot+
+		lineageTag: 1fadca69-5a0c-4649-bb84-ffe91a70857b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Fees vs. prior LTM' = SUM(fact_openair_project[fee_final_gbp])-CALCULATE(SUM(fact_openair_project[fee_final_gbp]),SAMEPERIODLASTYEAR(Date__c[Date]))
+		formatString: " +£#,##0.00;-#£,##0.00"
+		displayFolder: Fees
+		lineageTag: 34dd665c-6e48-4801-bf07-08276a887c82
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	measure 'Median Project Recovery to Budget' =
+			
+			MEDIANX(
+				KEEPFILTERS(VALUES('fact_openair_project'[project_code])),
+				CALCULATE([Recovery to Final Fee])
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Recovery
+		lineageTag: c27b04f3-f23b-4753-a443-d2006ee13f46
+
+	measure 'Won Opportunities' = CALCULATE(DISTINCTCOUNT(fact_opportunities[opportunity_id]),fact_opportunities[stage]="1 Won")+0
+		formatString: 0
+		displayFolder: Opportunities
+		lineageTag: b7df63df-177c-4a90-805c-d9bc4cf16926
+
+	measure 'Lost Opportunities' = CALCULATE(DISTINCTCOUNT(fact_opportunities[opportunity_id]),fact_opportunities[stage]="Lost")+0
+		formatString: 0
+		displayFolder: Opportunities
+		lineageTag: d3aa28ff-3b66-4b1b-b5c9-0d563de7a39f
+
+	measure 'Interactions BE' = CALCULATE(DISTINCTCOUNT(fact_narrative[narrative_id]),dim_internal_sectors[CIL team formatted]="BE")
+		formatString: 0
+		displayFolder: Interactions
+		lineageTag: 5482a101-6806-4ae7-a684-bd190742b767
+
+	measure 'Interactions BS/FS' = CALCULATE(DISTINCTCOUNT(fact_narrative[narrative_id]),dim_internal_sectors[CIL team formatted]="BS / FS")
+		formatString: 0
+		displayFolder: Interactions
+		lineageTag: 9916c30b-48c8-4778-9366-35263c045481
+
+	measure 'Interactions Cons.' = CALCULATE(DISTINCTCOUNT(fact_narrative[narrative_id]),dim_internal_sectors[CIL team formatted]="Cons.")
+		formatString: 0
+		displayFolder: Interactions
+		lineageTag: f0c0aa6c-6ac9-4bff-8545-313a9ad92707
+
+	measure 'Interactions E&T' = CALCULATE(DISTINCTCOUNT(fact_narrative[narrative_id]),dim_internal_sectors[CIL team formatted]="E&T")
+		formatString: 0
+		displayFolder: Interactions
+		lineageTag: 00bf7943-c07c-40ea-927c-7d4dd70aebbd
+
+	measure 'Interactions HC' = CALCULATE(DISTINCTCOUNT(fact_narrative[narrative_id]),dim_internal_sectors[CIL team formatted]="HC")
+		formatString: 0
+		displayFolder: Interactions
+		lineageTag: 1d227552-7c3f-4907-9522-282744bc9dfa
+
+	measure 'Interactions IPS' = CALCULATE(DISTINCTCOUNT(fact_narrative[narrative_id]),dim_internal_sectors[CIL team formatted]="IPS")
+		formatString: 0
+		displayFolder: Interactions
+		lineageTag: 63c82ce8-8d1d-4c92-b4b8-177a27d16cc8
+
+	measure 'Interactions Media' = CALCULATE(DISTINCTCOUNT(fact_narrative[narrative_id]),dim_internal_sectors[CIL team formatted]="Media")
+		formatString: 0
+		displayFolder: Interactions
+		lineageTag: 630a636a-6a71-4117-afee-4d1695aacfbb
+
+	measure 'Interactions Tech.' = CALCULATE(DISTINCTCOUNT(fact_narrative[narrative_id]),dim_internal_sectors[CIL team formatted]="Tech.")
+		formatString: 0
+		displayFolder: Interactions
+		lineageTag: 34817ba5-17e1-4994-a9ff-fc8b4c2cbb27
+
+	measure 'Closest CIL''er' = ```
+			
+			VAR MaxDistinct = 
+			    MAXX(
+			        SUMMARIZE(
+			            dim_narrative_internal,
+			            dim_narrative_internal[cil_employee],
+			            "DistinctCount", 
+			            CALCULATE(DISTINCTCOUNT(dim_narrative_internal[narrative_id]))
+			        ),
+			        [DistinctCount]
+			    )
+			RETURN
+			    MAXX(
+			        FILTER(
+			            SUMMARIZE(
+			                dim_narrative_internal,
+			                dim_narrative_internal[cil_employee],
+			                "DistinctCount", 
+			                CALCULATE(DISTINCTCOUNT(dim_narrative_internal[narrative_id]))
+			            ),
+			            [DistinctCount] = MaxDistinct
+			        ),
+			        dim_narrative_internal[cil_employee]
+			    )
+			```
+		lineageTag: cc6cc837-4db0-4cbe-a538-32d3138af0ee
+
+	measure 'Interactions UK' = CALCULATE(DISTINCTCOUNT(fact_narrative[narrative_id]),dim_internal_sectors[Country]="UK")
+		formatString: 0
+		displayFolder: Interactions
+		lineageTag: d83d3c82-d73c-4908-9dea-f4858c2a6a51
+
+	measure 'Interactions USA' = CALCULATE(DISTINCTCOUNT(fact_narrative[narrative_id]),dim_internal_sectors[Country]="US")
+		formatString: 0
+		displayFolder: Interactions
+		lineageTag: c10d99a7-6c5f-4211-ab2d-c7488ae143ff
+
+	measure 'Interactions Ger.' = CALCULATE(DISTINCTCOUNT(fact_narrative[narrative_id]),dim_internal_sectors[Country]="Germany")
+		formatString: 0
+		displayFolder: Interactions
+		lineageTag: e85545e1-d5f3-4443-94c4-52579763b64a
+
+	measure 'Interactions Fra.' = CALCULATE(DISTINCTCOUNT(fact_narrative[narrative_id]),dim_internal_sectors[Country]="France")
+		formatString: 0
+		displayFolder: Interactions
+		lineageTag: 3019226d-3906-415e-922c-ddc4fb400abb
+
+	measure 'Interactions AA' = CALCULATE(DISTINCTCOUNT(fact_narrative[narrative_id]),dim_internal_sectors[CIL team formatted]="AA")
+		formatString: 0
+		displayFolder: Interactions
+		lineageTag: f4067aa1-df6e-477e-a1fc-d53ac0e6c0f9
+
+	measure 'Interactions Pri.' = CALCULATE(DISTINCTCOUNT(fact_narrative[narrative_id]),dim_internal_sectors[CIL team formatted]="Pri.")
+		formatString: 0
+		displayFolder: Interactions
+		lineageTag: a50d64e7-3400-4e53-bbee-be964726a4eb
+
+	measure '% Contacts Active in LTM' = CALCULATE(DISTINCTCOUNT(fact_contact[contact_id]),Date__c[Date]>EDATE(TODAY(),-12)&&Date__c[Date]<=TODAY()) / DISTINCTCOUNT(fact_contact[contact_id])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 951f35cf-aae1-472a-a1cf-02ddd2b4c3d2
+
+	measure Interactions = CALCULATE(DISTINCTCOUNT(fact_narrative[narrative_id]), USERELATIONSHIP(Date__c[Date], fact_narrative[activity_date]))
+		displayFolder: Interactions
+		lineageTag: e68c7c74-2423-40f1-8ee8-b587b469b4d2
+
+	measure Opportunities = DISTINCTCOUNT(fact_opportunities[opportunity_id])+0
+		formatString: #,0
+		displayFolder: Opportunities
+		lineageTag: cd02db4e-aa34-40f8-b21e-70f896b665c2
+
+	measure Projects = DISTINCTCOUNT(fact_openair_project[project_id])+0
+		formatString: 0
+		lineageTag: 697becf9-3fe9-4fb0-adc0-b3b95bc2031c
+
+	measure Proposals = CALCULATE(DISTINCTCOUNT(fact_narrative[narrative_id]),fact_narrative[activity_type]="3 - Pitch or proposal")+0
+		formatString: #,0
+		lineageTag: 029949e6-1000-4c7e-9e39-e65f55ef938d
+
+	measure 'Hot+ Opportunities' = CALCULATE(DISTINCTCOUNT(fact_historic_opportunities[opportunity_id]), fact_historic_opportunities[stage]="0 Imminent"||fact_historic_opportunities[stage]="-1 Hot"||fact_historic_opportunities[stage]="1 Won"||fact_historic_opportunities[stage]="Lost")+0
+		formatString: 0
+		displayFolder: Opportunities\Hot+
+		lineageTag: 88d5676e-1fc2-4405-8882-076327000fe2
+
+	measure 'Resolved Hot+ Opps' = CALCULATE([Hot+ Opportunities],fact_opportunities[stage]="1 Won"||fact_opportunities[stage]="Lost")
+		formatString: 0
+		displayFolder: Opportunities\Hot+\Resolved
+		lineageTag: 2c96da19-6b54-4325-9473-f5d20e35e673
+
+	measure 'Resolved Hot+ Opps Won' = CALCULATE([Hot+ Opportunities],fact_opportunities[stage]="1 Won")+0
+		formatString: 0
+		displayFolder: Opportunities\Hot+\Resolved
+		lineageTag: 4f2aaf93-6eab-4372-bf04-ba8a41e56369
+
+	measure 'Resolved Hot+ Opps Lost' = CALCULATE([Hot+ Opportunities],fact_opportunities[stage]="Lost")+0
+		formatString: 0
+		displayFolder: Opportunities\Hot+\Resolved
+		lineageTag: a95a8a94-c4bb-45cd-8303-3c405c13d2bf
+
+	measure 'Resolved Hot+ Win Rate' = [Resolved Hot+ Opps Won]/[Resolved Hot+ Opps]
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Opportunities\Hot+\Resolved
+		lineageTag: c0ed1f2b-9ae8-4b1d-a4e7-1fbcf1f9657e
+
+	measure 'Earliest Date' = MIN(MIN(MIN(fact_companies[created]),MIN(fact_openair_project[live_date])),MIN(fact_narrative[activity_date]))
+		formatString: General Date
+		lineageTag: 2882d8aa-2f3f-4758-bda9-e37a6e553331
+
+	measure 'Median Project Recovery to Final Fee' =
+			
+			MEDIANX(
+				KEEPFILTERS(VALUES('fact_openair_project'[project_code])),
+				CALCULATE([Recovery to Final Fee])
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Recovery
+		lineageTag: 9b37254e-88e4-4b4b-87e9-ea5c3ac58475
+
+	measure 'Interactions YoY' =
+			
+			VAR CY = CALCULATE(DISTINCTCOUNT(fact_narrative[narrative_id]),DATESINPERIOD(Date__c[Date],TODAY()-365,365,DAY))
+			VAR PY = CALCULATE(DISTINCTCOUNT(fact_narrative[narrative_id]),DATESINPERIOD(Date__c[Date],TODAY()-730,365,DAY))
+			
+			RETURN
+			(CY-PY)/PY
+		formatString: +0.00%;-0.00%;0.00%
+		displayFolder: Interactions
+		lineageTag: 451933d2-b48d-450a-a26c-178d658620d7
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	measure 'Interactions (Over Threshold)' = IF([Interactions]>='Minimum Interactions'[Minimum Interactions Value],[Interactions],BLANK())
+		formatString: 0
+		displayFolder: Interactions
+		lineageTag: 2aeb5e3f-c07b-4dcc-a4e9-8ab4a1ba2d7e
+
+	measure 'Companies over Interation Threshold' = CALCULATE(DISTINCTCOUNT(Company__c[Company]),FILTER(Company__c,[Interactions (Over Threshold)]>0))
+		formatString: 0
+		lineageTag: a20aeb1a-139d-4b56-b1c2-2f4e4731e986
+
+	measure 'CIL Last Contact' = CALCULATE(MAX(fact_narrative[activity_date]),REMOVEFILTERS(dim_narrative_internal[cil_employee]))
+		formatString: Short Date
+		lineageTag: bde5d93f-4f68-4541-b89f-34d386efc40d
+
+	measure 'Internal Last Contact' =
+			
+			CALCULATE(MAX(fact_narrative[activity_date]),ALLSELECTED(fact_contact[contact_id]),REMOVEFILTERS(dim_narrative_internal[cil_employee]))
+		formatString: Short Date
+		lineageTag: 5ffdc8cd-1692-4139-8910-9360691ba6b7
+
+	measure 'Months Since Last Contact' = DATEDIFF(TODAY(),MAX(fact_narrative[activity_date]),MONTH)
+		formatString: 0
+		lineageTag: 83bc4c1e-e62f-439c-9a5f-278e55bc6328
+
+	measure 'Months Since Last Contact (Bins)' =
+			SWITCH(TRUE(),
+			AND(isblank([Months Since Last Contact]),TRUE()),BLANK(),
+			AND([Months Since Last Contact]<=0, [Months Since Last Contact]>=-3),"0-3 months","other")
+		lineageTag: fca36bc5-e838-490d-bc6c-bece038fb802
+
+	measure 'Companies over Threshold with Fees' = CALCULATE(DISTINCTCOUNT(Company__c[Company]),FILTER(Company__c,[Interactions (Over Threshold)]>0&&[Fees (£k)]>0))
+		formatString: 0
+		lineageTag: 0b6ae342-8398-403a-a407-54cf089d9dd6
+
+	measure 'Acc. Manager Last Contact Date' = CALCULATE(MAX(fact_narrative[activity_date]),FILTER(dim_narrative_internal,dim_narrative_internal[cil_employee]=MAX(dim_narrative_contact_accountmanagers[account_manager])))
+		formatString: Short Date
+		lineageTag: ff7d2881-063e-417b-886f-61f583dc214a
+
+	measure max_acc_manager = MAX(dim_narrative_contact_accountmanagers[account_manager])
+		lineageTag: 2f6f0957-0f51-42da-9c69-79b83c486f5e
+
+	measure 'Months since last acc. manager contact' = DATEDIFF([Acc. Manager Last Contact Date],TODAY(),MONTH)
+		formatString: 0
+		lineageTag: 11b1141f-1d0c-4727-81ca-9ab22531aa16
+
+	measure 'Acc. Manager Last Contact Category' =
+			
+			VAR MonthsSince = DATEDIFF([Acc. Manager Last Contact Date],TODAY(),MONTH)
+			
+			RETURN
+			    IF(ISBLANK(MonthsSince),"No Contact",IF(MonthsSince<4,"0-3 months",IF(MonthsSince<7,"4-6 months",IF(MonthsSince<10,"7-9 months",IF(MonthsSince<13,"10-12 months",IF(MonthsSince<19,"13-18 months",IF(MonthsSince<25,"19-24 months",">24 months")))))))
+		lineageTag: a37e986b-d4ea-457f-849d-e708e739543a
+
+	measure 'Times contacted Last N Months' = CALCULATE(DISTINCTCOUNT(fact_narrative[narrative_id]),fact_narrative[activity_date]>EDATE(TODAY(),-SELECTEDVALUE('Contacts in last N months'[Contacts in last N months]))&&fact_narrative[activity_date]<=TODAY())
+		formatString: 0
+		lineageTag: c4d416d2-5029-40d4-8da3-9681bcbfad2a
+
+	measure '0fee_final_gbp average per project_code' =
+			
+			AVERAGEX(
+				KEEPFILTERS(VALUES('fact_openair_project'[project_code])),
+				CALCULATE(SUM('fact_openair_project'[fee_final_gbp]))
+			)
+		lineageTag: fb473c72-def9-4220-a21b-b3f81a1013a9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Earliest Date (2)' = DATE(2017,01,01)
+		formatString: General Date
+		lineageTag: 33571040-0319-4c2b-9f09-2b0148f0ac27
+
+	measure 'Recovery to Budget' = DIVIDE([Budgeted fee], [Projected outcome], BLANK())
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Recovery
+		lineageTag: e0bf1834-ee01-4465-b26b-e721ed46910e
+
+	measure 'Recovery to Final Fee' = DIVIDE([Final fee], [Projected outcome], BLANK())
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Recovery
+		lineageTag: c63ce472-2b08-475c-8b0e-8342f2a08f0f
+
+	measure 'Final Fee' = SUM(fact_openair_project[fee_final_gbp])
+		displayFolder: Fees
+		lineageTag: cd7f1b09-c7e5-4f7d-9f48-5f90485e636d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Spend to date' = CALCULATE(SUM('Openair Tasks + Bookings KARMa'[outcome_gbp]), 'Openair Tasks + Bookings KARMa'[booking_type] = "Timesheet")
+		displayFolder: Timesheet
+		lineageTag: 27dbee6e-a815-45b6-aae3-191bdc98896d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Spend to go' = CALCULATE(DIVIDE(SUM('Openair Tasks + Bookings KARMa'[outcome_gbp]), 7.5, BLANK()), 'Openair Tasks + Bookings KARMa'[booking_type] <> "Timesheet") * 10
+		displayFolder: Timesheet
+		lineageTag: e7f18941-5ffa-40d7-beb7-8c69093d9468
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Projected outcome' = [Spend to date] + [Spend to go]
+		displayFolder: Timesheet
+		lineageTag: c49f57bf-fbed-4ae5-a106-e35de6072e0e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Budgeted fee' = CALCULATE(SUM(fact_openair_project[fee_budgeted_gbp]))
+		displayFolder: Fees
+		lineageTag: 2ab1a310-3d5c-47b4-8835-3dc73aab483b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Hours Total' = CALCULATE(SUM('Openair Tasks + Bookings KARMa'[hours_billable]) + SUM('Openair Tasks + Bookings KARMa'[hours_non_billable]), USERELATIONSHIP('Openair Tasks + Bookings KARMa'[date_stamp], dim_date[date]))
+		displayFolder: Timesheet
+		lineageTag: bd69c125-5104-4cd1-91ba-0fe86d02e62d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Measures Table' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

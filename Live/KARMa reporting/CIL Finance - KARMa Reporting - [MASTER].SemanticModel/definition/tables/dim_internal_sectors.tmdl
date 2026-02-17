@@ -1,0 +1,72 @@
+table dim_internal_sectors
+	lineageTag: 48c38d65-8bfa-4a12-92fd-a1406a14167e
+
+	column Name
+		dataType: string
+		lineageTag: c0a97103-6cb9-4fbc-85c3-052421f3ddce
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Grade
+		dataType: string
+		lineageTag: 8fba24bc-772d-4c0a-84c0-564aacb710f1
+		summarizeBy: none
+		sourceColumn: Grade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 20365e34-d753-4709-9fd8-fb9729739ba2
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CIL team'
+		dataType: string
+		lineageTag: 20e720de-afe9-43d2-830a-9939856da07a
+		summarizeBy: none
+		sourceColumn: CIL team
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CIL team formatted'
+		dataType: string
+		lineageTag: 1779e013-b34b-4b5b-bcb5-195da48e0333
+		summarizeBy: none
+		sourceColumn: CIL team formatted
+
+		annotation SummarizationSetBy = Automatic
+
+	column CILTeamSort
+		dataType: string
+		lineageTag: 3302303d-5061-4952-8a9b-2fa93dd4c12e
+		summarizeBy: none
+		sourceColumn: CILTeamSort
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_internal_sectors = m
+		mode: import
+		source =
+				let
+				    Source = SharePoint.Files("https://ciluk.sharepoint.com/sites/CILDataWarehouse", [ApiVersion = 15]),
+				    #"CIL'er - Business Unit tagging - 140824 xlsx_https://ciluk sharepoint com/sites/CILDataWarehouse/Shared Documents/" = Source{[Name="CIL'er - Business Unit tagging - 140824.xlsx",#"Folder Path"="https://ciluk.sharepoint.com/sites/CILDataWarehouse/Shared Documents/"]}[Content],
+				    #"Imported Excel Workbook" = Excel.Workbook(#"CIL'er - Business Unit tagging - 140824 xlsx_https://ciluk sharepoint com/sites/CILDataWarehouse/Shared Documents/"),
+				    #"CIL'er BU tagging_Sheet" = #"Imported Excel Workbook"{[Item="CIL'er BU tagging",Kind="Sheet"]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(#"CIL'er BU tagging_Sheet", each ([Column1] <> null and [Column1] <> "CIL'er - Business Unit tagging")),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Filtered Rows", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Name", type text}, {"Grade", type text}, {"Country", type text}, {"Sector", type text}}),
+				    #"Added Conditional Column" = Table.AddColumn(#"Changed Type", "SectorFormatted", each if [Sector] = "Built Environment" then "BE" else if [Sector] = "Business & Financial Services" then "BS / FS" else if [Sector] = "Consumer" then "Cons." else if [Sector] = "Education" then "E&T" else if [Sector] = "Healthcare" then "HC" else if [Sector] = "Industrials" then "IPS" else if [Sector] = "INdustrials" then "IPS" else if [Sector] = "Media" then "Media" else if [Sector] = "Technology" then "Tech." else if [Sector] = "Advanced Analytics" then "AA" else if [Sector] = "Pricing" then "Pri." else if [Sector] = "US" then "US" else if [Sector] = "Germany" then "Ger." else if [Sector] = "France" then "Fra." else null),
+				    #"Added Conditional Column1" = Table.AddColumn(#"Added Conditional Column", "SectorSort", each if [SectorFormatted] = "BE" then 0 else if [SectorFormatted] = "BS / FS" then 1 else if [SectorFormatted] = "Cons." then 2 else if [SectorFormatted] = "E&T" then 3 else if [SectorFormatted] = "HC" then 4 else if [SectorFormatted] = "IPS" then 5 else if [SectorFormatted] = "Media" then 6 else if [SectorFormatted] = "Tech." then 7 else if [SectorFormatted] = "AA" then 8 else if [SectorFormatted] = "Pri." then 9 else null),
+				    #"Renamed Columns" = Table.RenameColumns(#"Added Conditional Column1",{{"Sector", "CIL team"}, {"SectorFormatted", "CIL team formatted"}, {"SectorSort", "CILTeamSort"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
