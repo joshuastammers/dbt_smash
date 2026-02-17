@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "054090376ae84c4dc83f",
+  "position": {
+    "x": 19.391100702576111,
+    "y": 678.688524590164,
+    "z": 5000,
+    "height": 26.978922716627636,
+    "width": 586.79156908665107,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Note:",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Arial",
+                      "fontSize": "8pt"
+                    }
+                  },
+                  {
+                    "value": " core contributions include \"Delivery owner\", \"Lead advisor\", \"Origination\" and \"Leadership\".",
+                    "textStyle": {
+                      "fontFamily": "Arial",
+                      "fontSize": "8pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

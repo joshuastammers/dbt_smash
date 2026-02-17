@@ -1,0 +1,64 @@
+table dim_contributions_lookup
+	lineageTag: c4609923-d71f-4eb7-8baf-52953fa13896
+
+	column contribution_allocated
+		dataType: string
+		lineageTag: 1c9f8be4-fd8b-4539-9421-f3c0cd0a2315
+		summarizeBy: none
+		sourceColumn: contribution_allocated
+
+		annotation SummarizationSetBy = Automatic
+
+	column contribution_stage
+		dataType: string
+		lineageTag: 90d6df54-04da-4854-b27f-b84659de49d7
+		summarizeBy: none
+		sourceColumn: contribution_stage
+
+		annotation SummarizationSetBy = Automatic
+
+	column contribution_allocated_label
+		dataType: string
+		lineageTag: 6664499f-ef09-49c2-a8c9-acb930ee539c
+		summarizeBy: none
+		sourceColumn: contribution_allocated_label
+		sortByColumn: sort_order
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column sort_order =
+			
+			SWITCH (
+			    dim_contributions_lookup[contribution_allocated],
+			    "origination", 1,
+			    "leadership", 2,
+			    "expert", 3,
+			    "lead_advisor", 4,
+			    "delivery_owner", 5,
+			    "expert_project", 6,
+			    "Not allocated", 7,
+			    999   -- fallback for anything unexpected
+			)
+		formatString: 0
+		lineageTag: a44b9b51-df65-4271-a922-db034af8d80c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_contributions_lookup = m
+		mode: import
+		source =
+				let
+				    Source = Databricks.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "/sql/1.0/warehouses/27755f6f39df3c3f", [Catalog=null, Database=null, EnableAutomaticProxyDiscovery=null]),
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    dim_contributions_lookup_View = production_modelled_Schema{[Name="dim_contributions_lookup",Kind="View"]}[Data]
+				in
+				    dim_contributions_lookup_View
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

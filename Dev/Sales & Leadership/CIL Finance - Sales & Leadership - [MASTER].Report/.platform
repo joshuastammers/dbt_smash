@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "CIL Finance - Sales & Leadership - [MASTER]"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "776bce53-d86b-4218-8222-1b6eb1d7ea31"
+  }
+}

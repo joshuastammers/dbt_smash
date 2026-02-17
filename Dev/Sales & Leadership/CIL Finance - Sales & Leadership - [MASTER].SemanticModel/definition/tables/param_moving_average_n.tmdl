@@ -1,0 +1,31 @@
+table param_moving_average_n
+	lineageTag: b50c8305-97d5-4da3-b326-0e3e7f6b5e29
+
+	measure 'Selected Moving Average N (Monthly)' = SELECTEDVALUE('param_moving_average_n'[param_moving_averages_series], "")
+		lineageTag: 330ecbe8-dca5-4699-82a6-96e92b090d0b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Selected Moving Average N (Weekly)' = SELECTEDVALUE('param_moving_average_n'[param_moving_averages_series], "")
+		formatString: 0
+		lineageTag: 8a62db4d-97fa-4fd1-8ed5-f2e64adc7fa8
+
+	column param_moving_averages_series
+		formatString: 0
+		lineageTag: 31ea10b0-547e-491c-a6f2-87ab9efd74cf
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition param_moving_average_n = calculated
+		mode: import
+		source = GENERATESERIES(1, 52, 1)
+
+	annotation PBI_Id = f8537869cc924bccb85299950d088cd6
+

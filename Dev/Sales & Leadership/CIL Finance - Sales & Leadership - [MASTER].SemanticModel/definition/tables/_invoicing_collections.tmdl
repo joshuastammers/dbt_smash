@@ -1,0 +1,56 @@
+table _invoicing_collections
+	lineageTag: 046ac436-0bcc-406b-833a-d2eb3cbd0e0f
+
+	measure 'Incl. sales tax' =
+			SWITCH(SELECTEDVALUE('_invoicing_collections'[Label]),
+			                "Cash collected", [Cash collected (incl. tax)],
+			                "Invoiced", [Invoiced (incl. tax)],
+			                BLANK())
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		lineageTag: 93d376ca-65e0-4430-89ec-a7b4cfe4036a
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure 'Excl. sales tax' =
+			SWITCH(SELECTEDVALUE('_invoicing_collections'[Label]),
+			                "Cash collected", [Cash collected (Excl. tax)],
+			                "Invoiced", [Invoiced (Excl. tax)],
+			                BLANK())
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		lineageTag: 13d0e3ae-b4fa-47d5-858b-986dd11ab02a
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	column Label
+		dataType: string
+		lineageTag: 850b432a-9b3f-49c9-8630-fc68562e971c
+		summarizeBy: none
+		sourceColumn: Label
+		sortByColumn: Rank
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rank
+		dataType: string
+		lineageTag: b23d8d74-b19b-48a2-9364-7e82697316cb
+		summarizeBy: none
+		sourceColumn: Rank
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _invoicing_collections = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45Wck4szlBIzs/JSU0uSU1RitWJVvLMK8vPTAZxYgE=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Label = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Label", type text}}),
+				    #"Added Conditional Column" = Table.AddColumn(#"Changed Type", "Rank", each if [Label] = "Invoiced" then 1 else if [Label] = "Cash collected" then 2 else null)
+				in
+				    #"Added Conditional Column"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,47 @@
+table bridge_fusioo_id
+	lineageTag: ff49a523-5fb8-4bfb-b0f0-cb161bb42957
+
+	column user_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 4e6bb956-1b86-4b0e-9828-9264d288c2f0
+		summarizeBy: none
+		sourceColumn: user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column fusioo_user_id
+		dataType: string
+		lineageTag: 19ead4e8-7238-42bc-be4c-1c05369cd583
+		summarizeBy: none
+		sourceColumn: fusioo_user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column email
+		dataType: string
+		lineageTag: 3bd3733c-8abb-4d6f-b954-7d722076c530
+		summarizeBy: none
+		sourceColumn: email
+
+		annotation SummarizationSetBy = Automatic
+
+	partition bridge_fusioo_id = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "sql/protocolv1/o/3058398146968468/0131-095141-lazpgcnw", null),
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    dim_users_View = production_modelled_Schema{[Name="dim_users",Kind="View"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(dim_users_View,{"name", "user_location", "currency", "cost_center", "job_code_id", "job_code_current", "career_manager", "employee_start_date", "freelancer_level", "active", "created_date", "updated_date"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Removed Columns", each true),
+				    #"Sorted Rows" = Table.Sort(#"Filtered Rows",{{"user_id", Order.Ascending}}),
+				    #"Filtered Rows1" = Table.SelectRows(#"Sorted Rows", each ([fusioo_user_id] <> null) and ([user_id] <> 1135))
+				in
+				    #"Filtered Rows1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

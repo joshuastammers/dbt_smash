@@ -1,0 +1,45 @@
+table helper_financial_year_ordering
+	lineageTag: 5d830661-5536-49d9-a1a2-35d6894a650f
+
+	column FY
+		lineageTag: 46d44375-b495-496e-addf-501846db416e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [FY]
+		sortByColumn: FYOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	column FYOrder
+		formatString: 0
+		lineageTag: 69fa859e-7ac0-4e71-9e9d-f5e8234536d1
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [FYOrder]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition helper_financial_year_ordering = calculated
+		mode: import
+		source =
+				DATATABLE(
+				    "FY", STRING,
+				    "FYOrder", INTEGER,
+				    {
+				        {"FY19", 1},
+				        {"FY20", 2},
+				        {"FY21", 3},
+				        {"FY22", 4},
+				        {"FY23", 5},
+				        {"FY24", 6},
+				        {"FY25", 7},
+				        {"FY26", 8},
+				        {"FY27", 9},
+				        {"FY28", 10},
+				        {"FY29", 11},
+				        {"FY30", 12}
+				    }
+				)
+
+	annotation PBI_Id = a2927aafa2794885ad34004c815844ca
+

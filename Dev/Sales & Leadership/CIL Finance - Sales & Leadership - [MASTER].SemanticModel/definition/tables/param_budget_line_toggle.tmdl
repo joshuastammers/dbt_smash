@@ -1,0 +1,17 @@
+table param_budget_line_toggle
+	lineageTag: cc3cee56-89ef-443f-988e-82fd2428dfc7
+
+	column ShowBudget
+		lineageTag: a4330470-39e3-4f94-9da8-418392d02bca
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [ShowBudget]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition param_budget_line_toggle = calculated
+		mode: import
+		source = DATATABLE("ShowBudget", STRING, {{"On"}, {"Off"}})
+
+	annotation PBI_Id = ba71823ba42048a29ef609f8104857d3
+
