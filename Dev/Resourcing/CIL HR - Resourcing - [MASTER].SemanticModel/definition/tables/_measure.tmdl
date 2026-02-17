@@ -1,0 +1,251 @@
+table _measure
+	lineageTag: 0476adec-7bee-4b78-924f-1efac213b752
+
+	measure 'People with TOIL requirements' =
+			CALCULATE(
+			    COUNT('openair_toil'[user_id]),
+			    KEEPFILTERS(openair_toil[toil_required] = "Yes")
+			)
+		lineageTag: 318f765b-f28e-4879-a365-6a3148fee0d8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '%People with TOIL requirements' =
+			
+			DIVIDE(
+			    CALCULATE(
+			        COUNT('openair_toil'[user_id]),
+			        KEEPFILTERS('openair_toil'[toil_required] = "Yes")
+			    ),
+			    COUNT('openair_toil'[user_id])
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 0fbdc0ba-4a5a-4468-976b-b17b5dcf579c
+
+	measure 'People with TOIL approved' =
+			CALCULATE(
+			    COUNT('TOIL - Management List MASTER - 15 10 - JS'[TOILApproved]),
+			    KEEPFILTERS('TOIL - Management List MASTER - 15 10 - JS'[TOILApproved] = "Yes")
+			)
+		lineageTag: 6d58384e-8ffc-428b-842d-98e4ffe5fa05
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '%People with TOIL approved' =
+			
+			DIVIDE(
+			    CALCULATE(
+			        COUNT('openair_toil'[user_id]),
+			        KEEPFILTERS('TOIL - Management List MASTER - 15 10 - JS'[TOILApproved] = "Yes")
+			    ),
+			    COUNT('openair_toil'[user_id])
+			)
+		lineageTag: 662df517-3a76-449a-9291-26cfe7594484
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'People working >60hrs' = ```
+			CALCULATE(
+			    COUNT(openair_toil[user_id]), 
+			    KEEPFILTERS(openair_toil[working_hours_wk0] >= 60)
+			)
+			```
+		lineageTag: dfca61aa-9898-4165-8e57-e44208ac1c14
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '%People working >60hrs' =
+			
+			DIVIDE(
+			    CALCULATE(
+			        COUNT('openair_toil'[user_id]),
+			        KEEPFILTERS('openair_toil'[working_hours_wk0] >= 60)
+			    ),
+			    COUNT('openair_toil'[user_id])
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: dddfe2ea-a167-421e-ab56-24ed00b70a72
+
+	measure 'People working >50hrs' = ```
+			CALCULATE(
+			    DISTINCTCOUNT(openair_toil[user_id]), 
+			    KEEPFILTERS(openair_toil[working_hours_wk0] >= 50)
+			)
+			```
+		lineageTag: 9fa5f8ff-4e81-409a-9ab5-a60b2c1cb3c9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '%People working >50hrs' =
+			
+			DIVIDE(
+			    CALCULATE(
+			        COUNT('openair_toil'[user_id]),
+			        KEEPFILTERS('openair_toil'[working_hours_wk0] >= 50)
+			    ),
+			    COUNT('openair_toil'[user_id])
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 647244d3-1bc5-4003-8898-073510675fe2
+
+	measure 'DIST People working >50hrs' = ```
+			CALCULATE(
+			    DISTINCTCOUNT(openair_toil[user_id]), 
+			    KEEPFILTERS(openair_toil[working_hours_wk0] >= 50)
+			)
+			```
+		lineageTag: 8dc73550-3761-453a-b2f2-3e31184e8058
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '%DISTPeople working >50hrs' =
+			
+			DIVIDE(
+			    CALCULATE(
+			        DISTINCTCOUNT('openair_toil'[user_id]),
+			        KEEPFILTERS('openair_toil'[working_hours_wk0] >= 50)
+			    ),
+			    DISTINCTCOUNT('openair_toil'[user_id])
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: eb793a6e-4923-4b39-84a7-be88a33c4132
+
+	measure hours_wc =
+			
+			SUM(openair_toil[working_hours_wk0])
+		formatString: 0.0
+		lineageTag: 6fc54523-83e9-45ba-972d-9a2029c9c35d
+
+	measure hours_4wa =
+			
+			SUM(openair_toil[working_hours_4wa])
+		formatString: 0.0
+		lineageTag: e588c92c-daba-4fd6-947a-61c80e7882ad
+
+	measure hours_wc-1 =
+			
+			SUM(openair_toil[working_hours_wk1])
+		formatString: 0.0
+		lineageTag: bf051762-e448-4d63-9761-8e6285282d13
+
+	measure hours_wc-2 =
+			
+			SUM(openair_toil[working_hours_wk2])
+		formatString: 0.0
+		lineageTag: 92f46aaa-760b-45ad-bf00-d77a049746c3
+
+	measure hours_wc-3 =
+			
+			SUM(openair_toil[working_hours_wk3])
+		formatString: 0.0
+		lineageTag: 12ccfef7-1932-4e4e-82d2-4ec27a9f0345
+
+	measure hours_weekend =
+			
+			SUM(openair_toil[weekend_hours])
+		formatString: 0.0
+		lineageTag: 5d3f3e50-9c63-4bf1-b6bf-371a8146015f
+
+	measure date_notified =
+			
+			FORMAT(
+			    DATEVALUE(
+			        LEFT(
+			            SELECTEDVALUE('TOIL - Management List MASTER - 15 10 - JS'[Date notified]),
+			            10
+			        )
+			    ),
+			    "dd-MM-yyyy"
+			)
+		lineageTag: 357c7a6a-a63e-4c0d-9063-2ed94afb9ea6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure task_hours =
+			
+			DIVIDE(
+			SUM(openair_timesheets_weekly[total_hours]), SELECTEDVALUE(param_days_hours[Hours_days]))
+		formatString: 0.00
+		lineageTag: bb0600af-7d01-44f0-83b2-f570bb081e71
+
+	measure lists_hours_wc =
+			
+			SUM('TOIL - Management List MASTER - 15 10 - JS'[TotalHours])
+		formatString: 0.0
+		lineageTag: 5f7904eb-ed22-4e39-ae64-b012e1711dd7
+
+	measure lists_hours_wc-1 =
+			
+			SUM('TOIL - Management List MASTER - 15 10 - JS'[W/c-1])
+		formatString: 0.0
+		lineageTag: 718612b0-bcc1-4199-b161-918f726e12c2
+
+	measure lists_hours_wc-2 =
+			
+			SUM('TOIL - Management List MASTER - 15 10 - JS'[W/c-2])
+		formatString: 0.0
+		lineageTag: 2363d353-7faa-4cde-baf5-c6afc645fe2a
+
+	measure lists_hours_wc-3 =
+			
+			SUM('TOIL - Management List MASTER - 15 10 - JS'[W/c-3])
+		formatString: 0.0
+		lineageTag: 6ac6b486-bf8e-45f5-853c-1f59d43eb1ff
+
+	measure lists_hours_weekend =
+			
+			SUM('TOIL - Management List MASTER - 15 10 - JS'[WeekendHours0])
+		formatString: 0.0
+		lineageTag: 8d70343c-46e4-4763-bbf2-5f7021480925
+
+	measure lists_hours_4wa =
+			
+			SUM('TOIL - Management List MASTER - 15 10 - JS'[OData_4-weekAverage])
+		formatString: 0.0
+		lineageTag: ec76aac1-bfbf-4278-a360-5a69af498c1e
+
+	measure hours_12wa =
+			
+			SUM(openair_toil[working_hours_12wa])
+		lineageTag: 99691926-db56-4844-af81-435629fe8bbc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure hours_wc-4 =
+			
+			SUM(openair_toil[working_hours_wk4])
+		lineageTag: 19c20c17-8668-4d94-82b0-74e0f7328fae
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Flag filter valid projects' =
+			
+			
+			VAR _countRows = COUNTROWS(dim_projects)
+			RETURN
+			IF ( ISBLANK(_countRows), 0, 1)
+		lineageTag: 98539da9-2c10-4023-af94-0da3d21efe38
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Column1
+		dataType: string
+		lineageTag: 7e3c19fd-d970-4904-a0ac-26e7d24308a7
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _measure = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

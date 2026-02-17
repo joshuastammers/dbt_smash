@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "CIL HR - Resourcing - [MASTER]"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "9e676d69-7224-4505-8fa5-322686f85f53"
+  }
+}

@@ -1,0 +1,125 @@
+table 'Time Intelligence'
+	lineageTag: e3413149-880d-416f-82a8-acaaeb2825e2
+
+	calculationGroup
+		precedence: 1
+
+		calculationItem 'Last Wk' =
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    dim_date[Flag W-1] = 1
+				)
+
+			formatStringDefinition = "#,0"
+
+		calculationItem WoW = ```
+				DIVIDE(
+				    CALCULATE(
+				        SELECTEDMEASURE(),
+				        dim_date[Flag W-1] = 1
+				    )
+				    ,CALCULATE(
+				        SELECTEDMEASURE(),
+				        dim_date[Flag W-2] = 1
+				    )
+				    
+				    ) - 1
+				
+				    --You can't reference other time intelligence calcs so this needs to recalculate each bit to calculate the percent change
+				```
+
+			formatStringDefinition = "0.0%"
+
+		calculationItem 'Wk YoY' = ```
+				DIVIDE(
+				    CALCULATE(
+				        SELECTEDMEASURE(),
+				        dim_date[Flag W-2] = 1
+				    )
+				    ,CALCULATE(
+				        SELECTEDMEASURE(),
+				        dim_date[Flag W-1 PY] = 1
+				    )
+				    
+				    ) - 1
+				```
+
+			formatStringDefinition = "0.0%"
+
+		calculationItem MTD = TOTALMTD(SELECTEDMEASURE(), dim_date[Date])
+
+			formatStringDefinition = "#,0"
+
+		calculationItem 'Mnth YoY' = ```
+				DIVIDE(
+				    TOTALMTD(SELECTEDMEASURE(), dim_date[Date])
+				
+				    ,CALCULATE(
+				    TOTALMTD(SELECTEDMEASURE(), dim_date[Date]),
+				    SAMEPERIODLASTYEAR(dim_date[Date])
+				    )
+				    
+				    ) - 1
+				
+				    --You can't reference other time intelligence calcs so this needs to recalculate each bit of the MTD and MTD PY to calculate the percent change
+				```
+
+			formatStringDefinition = "0.0%"
+
+		calculationItem QTD = TOTALQTD(SELECTEDMEASURE(), dim_date[Date])
+
+			formatStringDefinition = "#,0"
+
+		calculationItem 'Qtr YoY' = ```
+				DIVIDE(
+				    TOTALQTD(SELECTEDMEASURE(), dim_date[Date])
+				
+				    ,CALCULATE(
+				    TOTALQTD(SELECTEDMEASURE(), dim_date[Date]),
+				    SAMEPERIODLASTYEAR(dim_date[Date])
+				    )
+				    
+				    ) - 1
+				
+				    --You can't reference other time intelligence calcs so this needs to recalculate each bit of the QTD and QTD PY to calculate the percent change
+				```
+
+			formatStringDefinition = "0.0%"
+
+		calculationItem YTD = TOTALYTD(SELECTEDMEASURE(), dim_date[Date])
+
+			formatStringDefinition = "#,0"
+
+		calculationItem 'Yr YoY' = ```
+				DIVIDE(
+				    TOTALYTD(SELECTEDMEASURE(), dim_date[Date])
+				
+				    ,CALCULATE(
+				    TOTALYTD(SELECTEDMEASURE(), dim_date[Date]),
+				    SAMEPERIODLASTYEAR(dim_date[Date])
+				    )
+				    
+				    ) - 1
+				
+				    --You can't reference other time intelligence calcs so this needs to recalculate each bit of the YTD and YTD PY to calculate the percent change
+				```
+
+			formatStringDefinition = "0.0%"
+
+	column Ordinal
+		dataType: int64
+		formatString: 0
+		lineageTag: ae298aed-6bce-4e53-b28f-159f876f348c
+		isDefaultLabel
+		summarizeBy: none
+		sourceColumn: Ordinal
+
+	column 'Time calcs'
+		dataType: string
+		lineageTag: 7a5b3801-de33-4aad-ae3a-209f05e7dd49
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+

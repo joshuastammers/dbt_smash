@@ -1,0 +1,28 @@
+table param_days_hours
+	lineageTag: b4dfd4d6-dd8c-4dcd-a916-21b9c258c0f6
+
+	column Hours_days
+		lineageTag: 385a4dfd-23c1-48b3-97d0-0e8790d90b82
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Hours_days]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Days_hours =
+			
+			
+			IF(param_days_hours[Hours_days] = 7.5, "Days", "Hours")
+		lineageTag: f3fc363c-8924-4034-8fad-d112fae03b3e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition param_days_hours = calculated
+		mode: import
+		source = DISTINCT(SELECTCOLUMNS({(7.5), (1)}, "Hours_days", [Value]))
+
+	annotation PBI_Id = 781c6e3c70da470a89f55b61154c5bf5
+

@@ -1,0 +1,35 @@
+table 'CY vs PY'
+	lineageTag: a985f702-d4d3-43e0-a1b3-dea53d664acf
+
+	calculationGroup
+		precedence: 2
+
+		calculationItem 'Current Year' = SELECTEDMEASURE()
+
+		calculationItem 'Prior Year' =
+				CALCULATE(
+					SELECTEDMEASURE(),
+					SAMEPERIODLASTYEAR(dim_date[Date])
+					)
+
+	measure Measure
+		lineageTag: 70416f92-1c1c-4f36-9af3-c5d6b6afb3dc
+
+	measure 'Measure 2'
+		lineageTag: 0ce476ae-6fac-4ffa-b207-22aeab72405b
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	column 'CY vs PY'
+		dataType: string
+		lineageTag: e3e0bade-b65d-4358-83b0-bd5bdd48b67e
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+	column Ordinal
+		dataType: int64
+		formatString: 0
+		lineageTag: dd20b691-080b-413d-8f6a-c06d4609bb1e
+		summarizeBy: none
+		sourceColumn: Ordinal
+

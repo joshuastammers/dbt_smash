@@ -1,0 +1,139 @@
+table openair_timesheets_weekly
+	lineageTag: bcebf2b2-d05c-4f39-be5f-fc659cb4d8f9
+
+	measure task_hours_2
+		lineageTag: 337215fe-ad6f-4d23-bebd-be6d5b702775
+
+	column user_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 7dbce085-a17c-4e38-a1ad-b83a14618889
+		summarizeBy: none
+		sourceColumn: user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_name
+		dataType: string
+		lineageTag: ac50bd83-5eaf-4cb8-bd5a-615af99b15c9
+		summarizeBy: none
+		sourceColumn: user_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 64a9d759-79df-45be-bce4-1e7494e20852
+		summarizeBy: sum
+		sourceColumn: project_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_name
+		dataType: string
+		lineageTag: 93771715-85e1-4638-bc34-b946e8c88d58
+		summarizeBy: none
+		sourceColumn: project_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_task
+		dataType: string
+		lineageTag: 1a499d09-6b92-4aef-b1b3-980d341466cf
+		summarizeBy: none
+		sourceColumn: project_task
+
+		annotation SummarizationSetBy = Automatic
+
+	column week_commencing
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: dbdb5fe5-111c-4be3-9857-d3c329dc22ad
+		summarizeBy: none
+		sourceColumn: week_commencing
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column weekend_flag
+		dataType: int64
+		formatString: 0
+		lineageTag: 2d3ea5a7-7299-4f9d-aa92-981d45918e43
+		summarizeBy: sum
+		sourceColumn: weekend_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekend_hours
+		dataType: double
+		lineageTag: 8ac92ff8-cc32-4dfc-8efb-3f3bd8e63dcf
+		summarizeBy: sum
+		sourceColumn: weekend_hours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_hours
+		dataType: double
+		lineageTag: 851bd4a3-caf1-4926-8dcc-6c338baf8e6c
+		summarizeBy: sum
+		sourceColumn: total_hours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column job_code_id
+		dataType: int64
+		formatString: 0
+		lineageTag: aac5cf83-adc8-43ae-a9f6-ad8b6085f0b9
+		summarizeBy: sum
+		sourceColumn: job_code_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column job_code_current
+		dataType: string
+		lineageTag: 32caf712-5b40-406f-8c1e-f4f8c78a463c
+		summarizeBy: none
+		sourceColumn: job_code_current
+
+		annotation SummarizationSetBy = Automatic
+
+	column booking_type
+		dataType: string
+		lineageTag: 51dd83cd-2aa4-4fd3-bb4d-c8ffee335fae
+		summarizeBy: none
+		sourceColumn: booking_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project name' =
+			
+			
+			IF(openair_timesheets_weekly[project_name] = "", "Schedule Exceptions", openair_timesheets_weekly[project_name])
+		lineageTag: 523b4272-c081-4c0e-8d32-5516705c78e5
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition openair_timesheets_weekly = m
+		mode: import
+		source =
+				let
+				    Source = Databricks.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "/sql/1.0/warehouses/27755f6f39df3c3f", [Catalog=null, Database=null, EnableAutomaticProxyDiscovery=null, Implementation=null]),
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_visualisation_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_visualisation",Kind="Schema"]}[Data],
+				    openair_timesheets_weekly_View = production_visualisation_Schema{[Name="openair_timesheets_weekly",Kind="View"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(openair_timesheets_weekly_View,{{"week_commencing", type date}}),
+				    #"Rounded Off" = Table.TransformColumns(#"Changed Type",{{"total_hours", each Number.Round(_, 1), type number}})
+				in
+				    #"Rounded Off"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

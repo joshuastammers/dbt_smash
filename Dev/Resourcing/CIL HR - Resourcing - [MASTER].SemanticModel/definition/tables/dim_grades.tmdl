@@ -1,0 +1,47 @@
+table dim_grades
+	lineageTag: f05f8cfa-9677-45c9-a5b7-4fb98f552f70
+
+	column sorting_id
+		dataType: int64
+		formatString: 0
+		lineageTag: d421e0bf-0715-4b8c-a734-db1818f8983d
+		summarizeBy: none
+		sourceColumn: sorting_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column job_code_current
+		dataType: string
+		lineageTag: caa16953-7937-48ee-87df-cdebe972ee8f
+		summarizeBy: none
+		sourceColumn: job_code_current
+		sortByColumn: sorting_id
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column job_code_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 7cf7a287-c236-4b01-8125-8f096b1eb7d0
+		summarizeBy: none
+		sourceColumn: job_code_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_grades = m
+		mode: import
+		source =
+				let
+				    Source = Databricks.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "/sql/1.0/warehouses/27755f6f39df3c3f", [Catalog=null, Database=null, EnableAutomaticProxyDiscovery=null, Implementation=null]),
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    dim_grades_View = production_modelled_Schema{[Name="dim_grades",Kind="View"]}[Data]
+				in
+				    dim_grades_View
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
