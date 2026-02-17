@@ -1,0 +1,26 @@
+table RollingWeeks
+	lineageTag: e9eaf106-a33a-45e7-8598-acfc92e474ef
+
+	measure 'RollingWeeks Value' = SELECTEDVALUE('RollingWeeks'[RollingWeeks], 4)
+		formatString: 0
+		lineageTag: 7189c125-2b01-4675-a1a1-7254c49f1646
+
+	column RollingWeeks
+		formatString: 0
+		lineageTag: 830fc103-6815-4a5e-874c-693e0e820e49
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition RollingWeeks = calculated
+		mode: import
+		source = GENERATESERIES(1, 12, 1)
+
+	annotation PBI_Id = e07365f4e1d943bd929cde941375c4d2
+

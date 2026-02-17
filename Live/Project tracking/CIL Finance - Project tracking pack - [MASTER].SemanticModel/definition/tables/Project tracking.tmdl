@@ -1,0 +1,66 @@
+table 'Project tracking'
+	lineageTag: 96a0cd8b-8461-4181-aab0-15fa87eaf0a6
+
+	measure 'Weekly Orders YTD' = DIVIDE([Min fee], [WeeksSinceMinDate], 0)
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		lineageTag: 48dbcde6-2b34-49df-be93-f18162c76ce7
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure 'Projects per week' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(dim_projects[project_id]),
+			    ALLEXCEPT('dim_date', 'dim_date'[Week])
+			)
+		formatString: 0
+		lineageTag: 3d59051d-87c7-4580-a810-163e205fae1b
+
+	measure WeeksSinceMinDate =
+			
+			VAR MinDateInContext = MIN(dim_date[Date])
+			VAR TodayDate = TODAY()
+			VAR DaysBetween = DATEDIFF(MinDateInContext, TodayDate, DAY)
+			VAR WeeksBetween = INT(DaysBetween / 7) + IF(MOD(DaysBetween, 7) > 0, 1, 0)
+			RETURN
+			WeeksBetween
+		formatString: 0
+		lineageTag: 0d792ccc-abff-4599-97e8-b79ec2d3561d
+
+	measure 'N Week Rolling Average' =
+			
+			VAR _maxdate = MAX(dim_date[Date])
+			VAR _weeks = RollingWeeks[RollingWeeks Value]
+			VAR _days = _weeks * 7
+			VAR _rollingmetric = CALCULATE(
+			                        [Min fee],
+			                            DATESINPERIOD(dim_date[Date], _maxdate, -_days, DAY)
+			                            )
+			VAR _result = DIVIDE(_rollingmetric, _weeks)
+			
+			RETURN
+			_result
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		lineageTag: 3e118d95-e349-4c06-b982-91835aac3cf9
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	column Column1
+		dataType: string
+		lineageTag: a37908a8-aed0-4847-9759-b050cfa4cb5d
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Project tracking' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

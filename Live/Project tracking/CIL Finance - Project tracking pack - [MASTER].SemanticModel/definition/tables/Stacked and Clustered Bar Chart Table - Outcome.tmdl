@@ -1,0 +1,54 @@
+table 'Stacked and Clustered Bar Chart Table - Outcome'
+	lineageTag: ca1ee42a-2b17-4686-8e1c-f960b4aea68c
+
+	measure 'Chart Outcome' = ```
+			SUMX('Stacked and Clustered Bar Chart Table',
+			    VAR CurrentType = 'Stacked and Clustered Bar Chart Table'[Type]
+			    Return
+			    
+			    IF(
+			        CurrentType="  ",
+			        COALESCE([Projected outcome], 0)
+			    )
+			)
+			```
+		lineageTag: 617f4b16-1963-41c9-8385-2944cedd1945
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Chart Revenue' = ```
+			SUMX('Stacked and Clustered Bar Chart Table',
+			    VAR CurrentType = 'Stacked and Clustered Bar Chart Table'[Type]
+			    Return
+			    
+			    IF(
+			        CurrentType=" ",
+			        COALESCE([Revenue], 0)
+			    )
+			)
+			```
+		lineageTag: f000741e-d21b-4406-8b91-5b7cfd6387d7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Type
+		lineageTag: cb0c85f9-0be7-4f67-9452-1e40dea695b1
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Type]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Stacked and Clustered Bar Chart Table - Outcome' = calculated
+		mode: import
+		source =
+				DATATABLE(
+				    "Type", STRING,
+				    {
+				        {" "},
+				        {"  "}
+				    }
+				)
+
+	annotation PBI_Id = 992e2a02ade640e584c53748f8078ffe
+

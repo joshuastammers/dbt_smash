@@ -1,0 +1,53 @@
+table 'Fees Parameter'
+	lineageTag: db833ec7-75b4-4fab-a280-076d13cb14a2
+
+	column 'Fees Parameter'
+		lineageTag: 4ec1d251-a14c-41b9-8847-90f2b5c70efb
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Fees Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Fees Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fees Parameter Fields'
+		isHidden
+		lineageTag: 09d94b78-7389-4174-9f28-937d7ac2d1b0
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Fees Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fees Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: 59ca7870-ede1-4e72-948c-c8c6c616d1bb
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fees Parameter' = calculated
+		mode: import
+		source =
+				{
+				    ("Final fee", NAMEOF('Measures folder'[Final fee]), 0),
+				    ("Min fee", NAMEOF('Measures folder'[Min fee]), 1),
+				    ("Phases", NAMEOF('Measures folder'[Phases]), 2),
+				    ("Success", NAMEOF('Measures folder'[Success]), 3),
+				    ("Bidder meetings fee", NAMEOF('Measures folder'[Bidder meetings fee]), 4),
+				    ("Uplift fee", NAMEOF('Measures folder'[Uplift fee]), 5),
+				    ("Reduction", NAMEOF('Measures folder'[Reduction]), 6)
+				}
+
+	annotation PBI_Id = e31bd4c444d741cc8dd5c62ccdf3d29a
+

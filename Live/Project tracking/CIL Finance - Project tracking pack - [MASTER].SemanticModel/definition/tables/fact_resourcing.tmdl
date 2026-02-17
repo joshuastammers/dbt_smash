@@ -1,0 +1,92 @@
+table fact_resourcing
+	lineageTag: 12c164f3-9682-49a5-ae50-71e975e5844b
+
+	column Metric
+		dataType: string
+		lineageTag: e3d1bee0-ef1b-422e-ae36-fbaf48b5c748
+		summarizeBy: none
+		sourceColumn: Metric
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 9e5280d7-d605-4646-a41a-e557174203d8
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 62d7194e-7fb9-4eff-b514-3003d6f5063f
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 728d9cf8-0317-4619-afca-934d6f86966a
+			defaultHierarchy: LocalDateTable_7e5be5e7-081c-4436-a8ac-6b0be51c775f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Week referring to'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ef51a961-72f2-4c78-952f-bb50b7ad8bfb
+		summarizeBy: none
+		sourceColumn: Week referring to
+
+		variation Variation
+			isDefault
+			relationship: 7891f1dd-ded2-418e-a900-7480ae14d2d2
+			defaultHierarchy: LocalDateTable_1fb59a58-8a05-4128-8dc3-62a565cf033b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column '# grey teams'
+		dataType: string
+		lineageTag: 8ae18d23-2f88-49b6-a10e-ebcc78fa435e
+		summarizeBy: none
+		sourceColumn: # grey teams
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: 8f0b43a5-34a1-47f4-a3f3-d3032ac75e1b
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column '# barometer'
+		dataType: string
+		lineageTag: 5622d422-17d2-4540-8048-193d9805af89
+		summarizeBy: none
+		sourceColumn: # barometer
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_resourcing = m
+		mode: import
+		source =
+				let
+				    Source = SharePoint.Files("https://ciluk.sharepoint.com/sites/CILDataWarehouse", [ApiVersion = 15]),
+				    #"HR inputs to update call xlsx_https://ciluk sharepoint com/sites/CILDataWarehouse/Shared Documents/" = Source{[Name="HR inputs to update call.xlsx",#"Folder Path"="https://ciluk.sharepoint.com/sites/CILDataWarehouse/Shared Documents/"]}[Content],
+				    #"Imported Excel Workbook" = Excel.Workbook(#"HR inputs to update call xlsx_https://ciluk sharepoint com/sites/CILDataWarehouse/Shared Documents/"),
+				    Table6_Table = #"Imported Excel Workbook"{[Item="Table6",Kind="Table"]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(Table6_Table, each ([Metric] = "Country status")),
+				    #"Appended Query" = Table.Combine({#"Filtered Rows", fact_resourcing_us})
+				in
+				    #"Appended Query"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "af264ffd5b4b9aa042ce",
+  "position": {
+    "x": 727.16417910447763,
+    "y": 122.6865671641791,
+    "z": 15000,
+    "height": 27.761194029850746,
+    "width": 533.73134328358208,
+    "tabOrder": 15000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "[Internal use only] Please contact Finance before sharing any expenses details with clients.",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "color": "#cd1719"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

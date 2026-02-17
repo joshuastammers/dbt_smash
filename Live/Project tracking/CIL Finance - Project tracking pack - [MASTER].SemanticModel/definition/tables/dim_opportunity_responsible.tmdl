@@ -1,0 +1,34 @@
+table dim_opportunity_responsible
+	lineageTag: 7758f18a-52f7-4964-8f79-9960e35d1861
+
+	column opportunity_id
+		dataType: string
+		lineageTag: d6eef337-a424-42d2-b0ad-d68b2d09a712
+		summarizeBy: none
+		sourceColumn: opportunity_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column responsible
+		dataType: string
+		lineageTag: 1bcde9b9-d427-4f91-a477-51e7dfd0c69c
+		summarizeBy: none
+		sourceColumn: responsible
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_opportunity_responsible = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "sql/protocolv1/o/3058398146968468/0131-095141-lazpgcnw", null),
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    dim_opportunity_responsible_View = production_modelled_Schema{[Name="dim_opportunity_responsible",Kind="View"]}[Data]
+				in
+				    dim_opportunity_responsible_View
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

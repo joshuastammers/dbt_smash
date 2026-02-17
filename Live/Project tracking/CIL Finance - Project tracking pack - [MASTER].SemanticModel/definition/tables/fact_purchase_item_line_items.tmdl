@@ -1,0 +1,392 @@
+table fact_purchase_item_line_items
+	lineageTag: 05b56da8-ba6b-492b-bbee-ea8fa1968e89
+
+	column purchase_item_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 42f283d9-3da2-4545-b392-11b789d28318
+		summarizeBy: sum
+		sourceColumn: purchase_item_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: f210ffa9-954a-46a4-af93-6bc36022d919
+		summarizeBy: sum
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 161fcb04-e82e-4f15-a2cb-b213cd060ce6
+		summarizeBy: none
+		sourceColumn: user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_id
+		dataType: int64
+		formatString: 0
+		lineageTag: c52c0bd7-e0a8-4cfb-b397-05c402be34e7
+		summarizeBy: none
+		sourceColumn: project_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_task_id
+		dataType: int64
+		formatString: 0
+		lineageTag: aeeb2798-45d1-4599-bc3c-be4b7ec55cb5
+		summarizeBy: sum
+		sourceColumn: project_task_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: 2fa28904-df5c-4163-bf59-f02799d690b4
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 984c6f31-4e33-42c1-a9b9-8361c1ddf8df
+		summarizeBy: sum
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_stamp
+		dataType: dateTime
+		formatString: dd mmm yy
+		lineageTag: aaaf07a1-4fa1-4b67-8cc5-71fbd09dd5b0
+		summarizeBy: none
+		sourceColumn: date_stamp
+
+		variation Variation
+			isDefault
+			relationship: 27a2c47a-c24c-4fb3-94aa-6cb1aece2b70
+			defaultHierarchy: LocalDateTable_00df8df4-5d40-419c-9ff6-206e973cf955.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	column updated_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a4ba8480-9fce-453d-aa17-405bfd8772a2
+		summarizeBy: none
+		sourceColumn: updated_date
+
+		variation Variation
+			isDefault
+			relationship: 759ff386-8ab5-4529-96ac-bfa7d80b7973
+			defaultHierarchy: LocalDateTable_4832c10b-5a33-4a69-b37f-abf61e87c395.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6bd72409-61bf-4dd4-885f-e4e71695b5aa
+		summarizeBy: none
+		sourceColumn: created_date
+
+		variation Variation
+			isDefault
+			relationship: 017e76ec-d031-47e0-818e-ed75d3d6ec1c
+			defaultHierarchy: LocalDateTable_eba7af1e-38e6-4c44-a993-cb305153e876.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column purchase_invoice_date
+		dataType: string
+		lineageTag: 0466b8c8-50b3-4386-8171-0d34935bbcaf
+		summarizeBy: none
+		sourceColumn: purchase_invoice_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column currency
+		dataType: string
+		lineageTag: 69db6def-be96-4a07-8da2-30acc4c05590
+		summarizeBy: none
+		sourceColumn: currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost_actual
+		dataType: double
+		lineageTag: 43a3a997-59ee-4f09-adab-5562db715e56
+		summarizeBy: sum
+		sourceColumn: cost_actual
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cost_gbp
+		dataType: double
+		lineageTag: 9e06ac2c-d45d-4b5a-9aaa-de54bc9ac521
+		summarizeBy: sum
+		sourceColumn: cost_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column approved_cost_gbp
+		dataType: double
+		lineageTag: 896b7337-043f-4b0b-a217-0aba198baf64
+		summarizeBy: sum
+		sourceColumn: approved_cost_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column quantity
+		dataType: double
+		lineageTag: 8f855475-7bef-46de-898b-a6f56ee236a6
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column quantity_fulfilled
+		dataType: double
+		lineageTag: 474ae0cb-c082-47fb-aa07-14ceb07a3045
+		summarizeBy: sum
+		sourceColumn: quantity_fulfilled
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column quantity_payable
+		dataType: double
+		lineageTag: 914e8846-9303-4065-820a-cc69267e5460
+		summarizeBy: sum
+		sourceColumn: quantity_payable
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column amount_invoiced_actual
+		dataType: double
+		lineageTag: a55fbf4d-a70c-4f03-9e7c-2d1571107e92
+		summarizeBy: sum
+		sourceColumn: amount_invoiced_actual
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column amount_invoiced_gbp
+		dataType: double
+		lineageTag: 350c67b5-f1cc-41cc-a3df-a12bf74a9668
+		summarizeBy: sum
+		sourceColumn: amount_invoiced_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_gbp
+		dataType: double
+		lineageTag: 454b09c7-3926-4d47-88f4-6aa892212dcd
+		summarizeBy: sum
+		sourceColumn: total_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_with_tax_gbp
+		dataType: double
+		lineageTag: daea54c3-9018-406d-9e60-f192d7a1b2c0
+		summarizeBy: sum
+		sourceColumn: total_with_tax_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column manufacturer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: c61bacec-44ae-40b9-b294-dcc5e7675003
+		summarizeBy: sum
+		sourceColumn: manufacturer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column non_po
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7deb0061-5915-4aef-910d-927ecf6465f1
+		summarizeBy: none
+		sourceColumn: non_po
+
+		annotation SummarizationSetBy = Automatic
+
+	column notes
+		dataType: string
+		lineageTag: 0bc3f12d-0860-4a12-a325-69980a2a2c32
+		summarizeBy: none
+		sourceColumn: notes
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_reference_number
+		dataType: string
+		lineageTag: 87722ff5-8138-433c-9f32-0fb10f5a981c
+		summarizeBy: none
+		sourceColumn: order_reference_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column um
+		dataType: string
+		lineageTag: 233dd85a-51be-448c-8364-962c56fca521
+		summarizeBy: none
+		sourceColumn: um
+
+		annotation SummarizationSetBy = Automatic
+
+	column vendor_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 0d9e13d6-b5b6-46d6-946f-f5d0af4c8510
+		summarizeBy: sum
+		sourceColumn: vendor_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PO closed' =
+			
+			
+			IF(fact_purchase_item_line_items[po_closed_flag]=TRUE,"Invoice Received","Invoice not received")
+		lineageTag: f4be520a-331d-42b3-b826-05146296b02d
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tax =
+			
+			
+			fact_purchase_item_line_items[total_with_tax_gbp] - fact_purchase_item_line_items[total_gbp]
+		lineageTag: d29384c3-b748-4cb8-bf8a-2bdf6162882d
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column approved_cost_actual
+		dataType: double
+		lineageTag: 842652d3-08de-4792-a164-8a17ebced760
+		summarizeBy: sum
+		sourceColumn: approved_cost_actual
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_actual
+		dataType: double
+		lineageTag: 73dbba20-e25b-4986-ac8c-0e327939ba69
+		summarizeBy: sum
+		sourceColumn: total_actual
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_with_tax_actual
+		dataType: double
+		lineageTag: 9474b764-a7d9-4456-adda-f3dfc9ecb9e6
+		summarizeBy: sum
+		sourceColumn: total_with_tax_actual
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column po_number
+		dataType: string
+		lineageTag: aca4ad36-0401-4809-a497-9ea718bbfd79
+		summarizeBy: none
+		sourceColumn: po_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column po_closed_flag
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 33e3eaa2-5221-48ef-b91c-54dcf207dfc3
+		summarizeBy: none
+		sourceColumn: po_closed_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_notes
+		dataType: string
+		lineageTag: a62d21e7-9850-49e9-a0e4-c9d3bd35b6bd
+		summarizeBy: none
+		sourceColumn: payment_notes
+
+		annotation SummarizationSetBy = Automatic
+
+	column purchases_approver_pick_list
+		dataType: string
+		lineageTag: 018b2b83-55e0-4c46-a0a3-21248155d311
+		summarizeBy: none
+		sourceColumn: purchases_approver_pick_list
+
+		annotation SummarizationSetBy = Automatic
+
+	column supplier_name
+		dataType: string
+		lineageTag: aa4c2811-9a9f-42c7-9bff-9535eb652349
+		summarizeBy: none
+		sourceColumn: supplier_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column purchase_url
+		dataType: string
+		lineageTag: 3de5f029-8a37-421a-89d7-912202469c08
+		summarizeBy: none
+		sourceColumn: purchase_url
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_purchase_item_line_items = m
+		mode: import
+		source =
+				let
+				    Source = Databricks.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "/sql/1.0/warehouses/27755f6f39df3c3f", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation=null]),
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    fact_purchase_item_line_items_View = production_modelled_Schema{[Name="fact_purchase_item_line_items",Kind="View"]}[Data]
+				in
+				    fact_purchase_item_line_items_View
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

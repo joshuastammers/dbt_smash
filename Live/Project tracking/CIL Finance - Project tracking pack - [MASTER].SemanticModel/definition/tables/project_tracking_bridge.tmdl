@@ -1,0 +1,47 @@
+table project_tracking_bridge
+	lineageTag: b063a0a5-5759-4463-94c8-cdc6566042be
+
+	measure 'PT Bridge Measures' =
+			
+			VAR FinalFee = [Final fee]
+			VAR BudgetedFee = [Budget]
+			VAR Outcome = [Projected outcome]
+			
+			RETURN SWITCH(SELECTEDVALUE(project_tracking_bridge[Label]),
+			"Final fee", FinalFee,
+			"Budget variance", BudgetedFee - FinalFee,
+			"Outcome variance", Outcome - BudgetedFee)
+		formatString: #,0
+		lineageTag: 317a6b70-51b3-4fe4-a933-18adbfdfd233
+
+	column Label
+		dataType: string
+		lineageTag: 6b6eeca0-711e-4b2b-b397-f5e9a5dfa013
+		summarizeBy: none
+		sourceColumn: Label
+		sortByColumn: Order
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Order
+		dataType: int64
+		formatString: 0
+		lineageTag: e0bd2e37-1afa-4c29-a5d8-33786e9bf3d4
+		summarizeBy: sum
+		sourceColumn: Order
+
+		annotation SummarizationSetBy = Automatic
+
+	partition project_tracking_bridge = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WcsvMS8xRSEtNVdJRMlSK1YlWcipNSU8tUShLLMpMzEsGiRuBxf1LS5Lzc1ORJYyVYmMB", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Label = _t, Order = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Label", type text}, {"Order", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

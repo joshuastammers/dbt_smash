@@ -1,0 +1,199 @@
+table fact_timesheets
+	lineageTag: 0a63bcd1-0921-4882-98e4-2465f62a4270
+
+	column time_id
+		dataType: string
+		lineageTag: 68001bc1-5a94-48bd-adac-0770692e78f3
+		summarizeBy: none
+		sourceColumn: time_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column approval_status
+		dataType: string
+		lineageTag: 53b13756-fd33-48c3-98d3-ccf401fa1fac
+		summarizeBy: none
+		sourceColumn: approval_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column booking_type
+		dataType: string
+		lineageTag: f7a4731d-f486-43c2-926c-6dd9d4c826b2
+		summarizeBy: none
+		sourceColumn: booking_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 051dee19-c383-424d-b12b-5917add0ffc8
+		summarizeBy: none
+		sourceColumn: user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 490c4761-7299-432e-aeaf-e6af17e4b541
+		summarizeBy: none
+		sourceColumn: project_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_task
+		dataType: string
+		lineageTag: 1a0a1ac6-d609-4baf-a26b-ec37fac93283
+		summarizeBy: none
+		sourceColumn: project_task
+
+		annotation SummarizationSetBy = Automatic
+
+	column billable_type
+		dataType: string
+		lineageTag: 96b7b413-3281-48dd-9fc4-71f37168296f
+		summarizeBy: none
+		sourceColumn: billable_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_hours
+		dataType: double
+		lineageTag: 835e6fff-c6ad-41a3-9f4f-ce83102604f9
+		summarizeBy: sum
+		sourceColumn: total_hours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cost_center
+		dataType: string
+		lineageTag: 3df5589c-7db0-45d8-a1d9-54212d9b2480
+		summarizeBy: none
+		sourceColumn: cost_center
+
+		annotation SummarizationSetBy = Automatic
+
+	column job_code_id
+		dataType: int64
+		formatString: 0
+		lineageTag: d2c0b67a-e639-461b-a505-08a35d9de930
+		summarizeBy: sum
+		sourceColumn: job_code_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column job_code_contemporaneous
+		dataType: string
+		lineageTag: 06f069f5-4d86-405a-b054-b47d540b319a
+		summarizeBy: none
+		sourceColumn: job_code_contemporaneous
+
+		annotation SummarizationSetBy = Automatic
+
+	column rate_card_id
+		dataType: int64
+		formatString: 0
+		lineageTag: d6a51233-8311-4cde-bce8-824f57a6adb6
+		summarizeBy: sum
+		sourceColumn: rate_card_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column rate_card
+		dataType: string
+		lineageTag: 5bb9b5fe-e394-45ca-aa99-5a2b5154d433
+		summarizeBy: none
+		sourceColumn: rate_card
+
+		annotation SummarizationSetBy = Automatic
+
+	column hourly_rate_native
+		dataType: double
+		lineageTag: 27fdcda2-6aa6-4cd8-b9be-081afe9d7645
+		summarizeBy: sum
+		sourceColumn: hourly_rate_native
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column hourly_rate_gbp
+		dataType: double
+		lineageTag: 96a51485-203f-4ee3-9923-271c0727c281
+		summarizeBy: sum
+		sourceColumn: hourly_rate_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column outcome_gbp
+		dataType: double
+		lineageTag: e69f4ddc-efe2-4466-a320-6d7007fdcd44
+		summarizeBy: sum
+		sourceColumn: outcome_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column date_stamp
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b487fa9f-6a55-4cd6-8c78-3640d5d58fb8
+		summarizeBy: none
+		sourceColumn: date_stamp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column hours_exception
+		dataType: double
+		lineageTag: d3ef393b-3bfe-4e22-b886-7f6f13a1247b
+		summarizeBy: sum
+		sourceColumn: hours_exception
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column hours_billable
+		dataType: double
+		lineageTag: b5885c94-4148-4fd9-b205-c6d777082fae
+		summarizeBy: sum
+		sourceColumn: hours_billable
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column hours_non_billable
+		dataType: double
+		lineageTag: 2c009206-ba47-45b6-8375-79d9ae4d42f9
+		summarizeBy: sum
+		sourceColumn: hours_non_billable
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_timesheets = m
+		mode: import
+		source =
+				let
+				    Source = Databricks.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "/sql/1.0/warehouses/27755f6f39df3c3f", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation=null]),
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    fact_timesheets_View = production_modelled_Schema{[Name="fact_timesheets",Kind="View"]}[Data]
+				in
+				    fact_timesheets_View
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

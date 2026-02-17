@@ -1,0 +1,194 @@
+table dim_users
+	lineageTag: 514ee81d-cd3a-466e-aa3a-f9dad6bc6f66
+
+	column user_id
+		dataType: int64
+		formatString: 0
+		lineageTag: a15b0e6f-72ec-4854-a01c-eb96211f6aa1
+		summarizeBy: none
+		sourceColumn: user_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: ec3bd020-a890-4353-9a2d-66a72d86602a
+		summarizeBy: none
+		sourceColumn: name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_location
+		dataType: string
+		lineageTag: 22065a71-bf48-4c13-a6a2-d4430eba7fe0
+		summarizeBy: none
+		sourceColumn: user_location
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column currency
+		dataType: string
+		lineageTag: 7bc8e4f2-8f46-413d-8ea8-1ce353c11716
+		summarizeBy: none
+		sourceColumn: currency
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost_center
+		dataType: string
+		lineageTag: b612bc6f-b12f-4267-aaff-6f26b5f04ff6
+		summarizeBy: none
+		sourceColumn: cost_center
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column job_code_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 6bf1dc24-55bc-47bd-8293-c81bde462655
+		summarizeBy: sum
+		sourceColumn: job_code_id
+
+		changedProperty = IsHidden
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column job_code_current
+		dataType: string
+		lineageTag: 83283b03-01d3-4af9-9e09-84c929177124
+		summarizeBy: none
+		sourceColumn: job_code_current
+		sortByColumn: job_code_id
+
+		changedProperty = IsHidden
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column career_manager
+		dataType: string
+		lineageTag: b92b32b1-4189-44f0-9e76-49a6dddeaa54
+		summarizeBy: none
+		sourceColumn: career_manager
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_start_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: dc8ca9f1-4d24-4e7c-accf-c57bfb3b3b35
+		summarizeBy: none
+		sourceColumn: employee_start_date
+
+		variation Variation
+			isDefault
+			relationship: 196f5a56-8d40-458f-a6ad-6937201de3cb
+			defaultHierarchy: LocalDateTable_ea4a3ea9-80f9-4333-b081-c669c8fd8cb2.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column freelancer_level
+		dataType: string
+		lineageTag: 62723b0b-b484-457b-9c3d-082f00e5a35b
+		summarizeBy: none
+		sourceColumn: freelancer_level
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column fusioo_user_id
+		dataType: string
+		lineageTag: 12b4cd40-25aa-49d7-b661-7dd8cd2e3a90
+		summarizeBy: none
+		sourceColumn: fusioo_user_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column active
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e5f976cb-9824-4e2d-87be-fc1d119b8679
+		summarizeBy: none
+		sourceColumn: active
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2e7f6153-3cc5-4ee0-b46f-a3d8813d0295
+		summarizeBy: none
+		sourceColumn: created_date
+
+		variation Variation
+			isDefault
+			relationship: cb9a06d8-6a22-4727-8229-ded5f96e98f8
+			defaultHierarchy: LocalDateTable_acb1d69d-1aa1-48e1-8e9e-88184c31bd67.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column updated_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c52be92e-0e4c-475c-a22b-00763d9983f9
+		summarizeBy: none
+		sourceColumn: updated_date
+
+		variation Variation
+			isDefault
+			relationship: b0c28ff4-4e70-4e3e-abae-8f3d28c8012a
+			defaultHierarchy: LocalDateTable_cdeb12c2-2e8c-4d0b-9f8c-18f784efaacb.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column email
+		dataType: string
+		lineageTag: f22edc1b-1919-41a5-a5f4-4fff1e271e21
+		summarizeBy: none
+		sourceColumn: email
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_users = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "sql/protocolv1/o/3058398146968468/0131-095141-lazpgcnw", null),
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    dim_users_View = production_modelled_Schema{[Name="dim_users",Kind="View"]}[Data]
+				in
+				    dim_users_View
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,88 @@
+table fact_teams_free
+	lineageTag: f571460d-8a5e-474c-a8d3-e24b3d02b4e2
+
+	column Metric
+		dataType: string
+		lineageTag: b0537a74-34a8-4b35-8ce5-9cedf6d5d2bf
+		summarizeBy: none
+		sourceColumn: Metric
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 3a8edaf2-0749-4d99-a4e2-b568d8770e71
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 33a94981-79ca-443e-ad08-866f9e931c84
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 2d4c7e2d-365b-44c3-b5cf-f24987666485
+			defaultHierarchy: LocalDateTable_277e5ea4-a9f0-4bbd-a368-86a72ec4dcbe.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Week referring to'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8ebe2dca-a33f-4edb-93bd-69d1055cffa8
+		summarizeBy: none
+		sourceColumn: Week referring to
+
+		variation Variation
+			isDefault
+			relationship: ca85526d-f498-4462-a33c-dcea4798acf2
+			defaultHierarchy: LocalDateTable_3f4486bf-c222-4a38-a181-b1afcf270a0e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column '# of teams'
+		dataType: double
+		lineageTag: 1ad5bac1-f5f9-470b-8b6b-91303082ee5a
+		summarizeBy: sum
+		sourceColumn: # of teams
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column '# of grey teams'
+		dataType: double
+		lineageTag: 586bc478-9559-4a10-a843-d7821101926c
+		summarizeBy: sum
+		sourceColumn: # of grey teams
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_teams_free = m
+		mode: import
+		source =
+				let
+				    Source = SharePoint.Files("https://ciluk.sharepoint.com/sites/CILDataWarehouse", [ApiVersion = 15]),
+				    #"HR inputs to update call xlsx_https://ciluk sharepoint com/sites/CILDataWarehouse/Shared Documents/" = Source{[Name="HR inputs to update call.xlsx",#"Folder Path"="https://ciluk.sharepoint.com/sites/CILDataWarehouse/Shared Documents/"]}[Content],
+				    #"Imported Excel Workbook" = Excel.Workbook(#"HR inputs to update call xlsx_https://ciluk sharepoint com/sites/CILDataWarehouse/Shared Documents/"),
+				    Teams_free_table_Table = #"Imported Excel Workbook"{[Item="Teams_free_table",Kind="Table"]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(Teams_free_table_Table, each ([Metric] = "Teams free table")),
+				    #"Renamed Columns" = Table.RenameColumns(#"Filtered Rows",{{"#of grey teams", "# of grey teams"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
