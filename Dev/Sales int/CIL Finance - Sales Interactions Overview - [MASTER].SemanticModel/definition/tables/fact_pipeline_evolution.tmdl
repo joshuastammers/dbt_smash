@@ -1,0 +1,165 @@
+table fact_pipeline_evolution
+	lineageTag: a2ae14f2-44c7-41bb-ba66-55b4b2687ddb
+
+	column opportunity_id
+		dataType: string
+		lineageTag: 60f8f190-2129-4209-9beb-963dda59a4e1
+		summarizeBy: none
+		sourceColumn: opportunity_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column this_week_stage
+		dataType: string
+		lineageTag: ae73235f-c760-4faf-ab9b-fc25cf9073c6
+		summarizeBy: none
+		sourceColumn: this_week_stage
+
+		annotation SummarizationSetBy = Automatic
+
+	column this_week_fee_gbp
+		dataType: double
+		lineageTag: 0c039950-5e03-4ec9-aee4-e7b8139503a1
+		summarizeBy: sum
+		sourceColumn: this_week_fee_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column scaffold_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8f573d8f-c899-4e8f-8921-1033d5396a1b
+		summarizeBy: none
+		sourceColumn: scaffold_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column this_week_weighted_fee_gbp
+		dataType: double
+		formatString: "£"#,0.00;-"£"#,0.00;"£"#,0.00
+		lineageTag: cdc1a280-9207-4e0e-8590-f630b12fe16a
+		summarizeBy: sum
+		sourceColumn: this_week_weighted_fee_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	column last_week_stage
+		dataType: string
+		lineageTag: 778c2d43-8ca7-4c02-a3ee-6d6773e58dcf
+		summarizeBy: none
+		sourceColumn: last_week_stage
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_week_fee_gbp
+		dataType: double
+		lineageTag: 39ee2f79-afa0-4fda-93da-23360c6c03d6
+		summarizeBy: sum
+		sourceColumn: last_week_fee_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column last_week_weighted_fee_gbp
+		dataType: double
+		lineageTag: 5d567b58-c385-473e-b500-5ec8339a0b25
+		summarizeBy: sum
+		sourceColumn: last_week_weighted_fee_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column status_compound
+		dataType: string
+		lineageTag: f4f721da-d63c-4924-83c3-6fe9e21f1b88
+		summarizeBy: none
+		sourceColumn: status_compound
+
+		annotation SummarizationSetBy = Automatic
+
+	column fee_gbp_change
+		dataType: double
+		lineageTag: 0b53e13d-f408-4bab-8930-7b8129bfa276
+		summarizeBy: sum
+		sourceColumn: fee_gbp_change
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column weighted_fee_change
+		dataType: double
+		lineageTag: d4f65d56-22b0-4d78-9782-c7c8370ab480
+		summarizeBy: sum
+		sourceColumn: weighted_fee_change
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column flag_this_week
+		dataType: int64
+		formatString: 0
+		lineageTag: 76510341-badd-4df1-9f54-7c15cbac70bf
+		summarizeBy: sum
+		sourceColumn: flag_this_week
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_last_week
+		dataType: int64
+		formatString: 0
+		lineageTag: c4aed422-a648-4b7b-bf20-62618732e04c
+		summarizeBy: sum
+		sourceColumn: flag_last_week
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_this_or_last_week
+		dataType: int64
+		formatString: 0
+		lineageTag: 240d181a-6bf0-4720-9c62-40caac989349
+		summarizeBy: sum
+		sourceColumn: flag_this_or_last_week
+
+		annotation SummarizationSetBy = Automatic
+
+	column status_major
+		dataType: string
+		lineageTag: b2d1e6de-1a57-4e2f-bd6e-63ee15f58917
+		summarizeBy: none
+		sourceColumn: status_major
+
+		annotation SummarizationSetBy = Automatic
+
+	column status_minor
+		dataType: string
+		lineageTag: 7544c8dc-4297-4332-a24f-1a7f23c2c324
+		summarizeBy: none
+		sourceColumn: status_minor
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_pipeline_evolution = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "sql/protocolv1/o/3058398146968468/0131-095141-lazpgcnw", null),
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    fact_pipeline_evolution_View = production_modelled_Schema{[Name="fact_pipeline_evolution",Kind="View"]}[Data]
+				in
+				    fact_pipeline_evolution_View
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

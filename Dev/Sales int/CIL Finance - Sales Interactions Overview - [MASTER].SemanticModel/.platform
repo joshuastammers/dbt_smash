@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "CIL Finance - Sales Interactions Overview - [MASTER]"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a2d23f17-5b89-4e17-a72e-0fa24bf72039"
+  }
+}

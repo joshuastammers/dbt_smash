@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "CIL Finance - Sales Interactions Overview - [MASTER]"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "868ff196-070b-4769-bdf9-2ea71933600e"
+  }
+}

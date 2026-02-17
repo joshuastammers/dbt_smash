@@ -1,0 +1,62 @@
+expression fact_revenue_budget_FY25 =
+		let
+		Source = Query1,
+		    #"budget_fy25 csv_https://ciluk sharepoint com/sites/CILDataWarehouse/Shared Documents/" = Source{[Name="budget_fy25.csv",#"Folder Path"="https://ciluk.sharepoint.com/sites/CILDataWarehouse/Shared Documents/"]}[Content],
+		    #"Imported CSV" = Csv.Document(#"budget_fy25 csv_https://ciluk sharepoint com/sites/CILDataWarehouse/Shared Documents/",[Delimiter=",", Columns=17, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(#"Imported CSV", [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"revenue_recognition_transaction_id", type text}, {"project_id", type text}, {"record_type", type text}, {"date_stamp", Int64.Type}, {"currency", type text}, {"revenue_native", type number}, {"revenue_native_1", type number}, {"geography_allocated", type text}, {"geography_allocation", Int64.Type}, {"sector_allocated", type text}, {"sector_allocation", Int64.Type}, {"setting_allocated", type text}, {"setting_allocation", Int64.Type}, {"capability_allocated", type text}, {"capability_allocation", Int64.Type}, {"allocation_pct", Int64.Type}, {"allocation_gbp", type number}}),
+		    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"revenue_native_1", "revenue_gbp"}}),
+		    #"Replaced Value" = Table.ReplaceValue(#"Renamed Columns","Busness","Business",Replacer.ReplaceText,{"sector_allocated"}),
+		    #"Filtered Rows" = Table.SelectRows(#"Replaced Value", each true)
+		in
+		    #"Filtered Rows"
+	lineageTag: 3c63bbe7-df40-46e6-a0f5-a7a4ef3bf06a
+	queryGroup: 'Query Errors - 29/11/2024 12:02:54'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression Query1 =
+		let
+		    Source = SharePoint.Files("https://ciluk.sharepoint.com/sites/CILDataWarehouse", [ApiVersion = 15])
+		in
+		    Source
+	lineageTag: 8b32793b-e64f-48e8-bb75-29014f704246
+
+	annotation PBI_ResultType = Table
+
+expression fact_resourcing_us =
+		let
+		    Source = SharePoint.Files("https://ciluk.sharepoint.com/sites/CILDataWarehouse", [ApiVersion = 15]),
+		    #"HR inputs to update call xlsx_https://ciluk sharepoint com/sites/CILDataWarehouse/Shared Documents/" = Source{[Name="HR inputs to update call.xlsx",#"Folder Path"="https://ciluk.sharepoint.com/sites/CILDataWarehouse/Shared Documents/"]}[Content],
+		    #"Imported Excel Workbook" = Excel.Workbook(#"HR inputs to update call xlsx_https://ciluk sharepoint com/sites/CILDataWarehouse/Shared Documents/"),
+		    Table7_Table = #"Imported Excel Workbook"{[Item="Table7",Kind="Table"]}[Data],
+		    #"Filtered Rows" = Table.SelectRows(Table7_Table, each ([Metric] = "Country status"))
+		in
+		    #"Filtered Rows"
+	lineageTag: bf892834-696f-4af5-95f6-bce1fde77887
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression fact_revenue_budget_FY26 =
+		let
+		Source = Query1,
+		    #"budget_fy25 csv_https://ciluk sharepoint com/sites/CILDataWarehouse/Shared Documents/" = Source{[Name="budget_fy26.csv",#"Folder Path"="https://ciluk.sharepoint.com/sites/CILDataWarehouse/Shared Documents/"]}[Content],
+		    #"Imported CSV" = Csv.Document(#"budget_fy25 csv_https://ciluk sharepoint com/sites/CILDataWarehouse/Shared Documents/",[Delimiter=",", Columns=17, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(#"Imported CSV", [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"revenue_recognition_transaction_id", type text}, {"project_id", type text}, {"record_type", type text}, {"date_stamp", Int64.Type}, {"currency", type text}, {"revenue_native", type number}, {"revenue_native_1", type number}, {"geography_allocated", type text}, {"geography_allocation", Int64.Type}, {"sector_allocated", type text}, {"sector_allocation", Int64.Type}, {"setting_allocated", type text}, {"setting_allocation", Int64.Type}, {"capability_allocated", type text}, {"capability_allocation", Int64.Type}, {"allocation_pct", Int64.Type}, {"allocation_gbp", type number}}),
+		    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"revenue_native_1", "revenue_gbp"}}),
+		    #"Replaced Value" = Table.ReplaceValue(#"Renamed Columns","Busness","Business",Replacer.ReplaceText,{"sector_allocated"}),
+		    #"Filtered Rows" = Table.SelectRows(#"Replaced Value", each true)
+		in
+		    #"Filtered Rows"
+	lineageTag: 2c3c0082-77c2-4e66-92a7-bf87e45dde5c
+	queryGroup: 'Query Errors - 29/11/2024 12:02:54'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

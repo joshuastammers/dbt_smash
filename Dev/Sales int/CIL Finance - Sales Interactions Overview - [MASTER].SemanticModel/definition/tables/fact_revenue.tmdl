@@ -1,0 +1,206 @@
+table fact_revenue
+	lineageTag: e1d8b24d-120b-4fcb-9554-998649b2bbf5
+
+	column revenue_recognition_transaction_id
+		dataType: string
+		lineageTag: d74b38d7-e1e7-4f4d-b060-bd737d4d83de
+		summarizeBy: none
+		sourceColumn: revenue_recognition_transaction_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_id
+		dataType: string
+		lineageTag: a08ba4e0-ef49-4b65-aee4-f61c5e2e84a7
+		summarizeBy: none
+		sourceColumn: project_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_stamp
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 84ec2388-a678-4ab2-a465-ee1f3653008b
+		summarizeBy: none
+		sourceColumn: date_stamp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column currency
+		dataType: string
+		lineageTag: 50513513-382e-427f-9353-b3bf3e86d834
+		summarizeBy: none
+		sourceColumn: currency
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue_native
+		dataType: double
+		lineageTag: af5a5133-8ca2-44cd-b8f2-d7307a9e9499
+		summarizeBy: sum
+		sourceColumn: revenue_native
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column revenue_gbp
+		dataType: double
+		lineageTag: 2294da9d-491f-4512-bf9b-9df8f1c08e98
+		summarizeBy: sum
+		sourceColumn: revenue_gbp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column geography_allocated
+		dataType: string
+		lineageTag: 2bd3e737-e353-4e6a-8a5b-f369534660f0
+		summarizeBy: none
+		sourceColumn: geography_allocated
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column geography_allocation
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 5c25df73-f555-4006-98ae-0ae1e2bc63fb
+		summarizeBy: sum
+		sourceColumn: geography_allocation
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column sector_allocated
+		dataType: string
+		lineageTag: 1fef4936-c46e-4764-92e6-52b46c3331ec
+		summarizeBy: none
+		sourceColumn: sector_allocated
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column sector_allocation
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f19308c0-8557-4ae8-b8df-805ab3975459
+		summarizeBy: sum
+		sourceColumn: sector_allocation
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column capability_allocated
+		dataType: string
+		lineageTag: b4a93afb-ff05-43aa-a452-029fa6a0a205
+		summarizeBy: none
+		sourceColumn: capability_allocated
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column capability_allocation
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e9dd67cd-f156-4657-bceb-6f8d30b8569a
+		summarizeBy: sum
+		sourceColumn: capability_allocation
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column allocation_pct
+		dataType: double
+		formatString: 0%;-0%;0%
+		lineageTag: fa236bc8-c94e-406e-860f-168bce7873d5
+		summarizeBy: sum
+		sourceColumn: allocation_pct
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column allocation_gbp
+		dataType: double
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		lineageTag: 9d27e325-88c6-4790-806c-9539492884c0
+		summarizeBy: sum
+		sourceColumn: allocation_gbp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	column region = IF(fact_revenue[geography_allocated] = "1. UK", "1. UK", IF(fact_revenue[geography_allocated] in {"2. US", "3. DE", "4. FR"}, "2. Int'l", "3. Not allocated"))
+		lineageTag: 6fd5b9b2-65a7-4d8e-9542-6b95cad2682b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column record_type
+		dataType: string
+		lineageTag: ee41513b-79c4-4a03-b6e9-ac2eed14d53b
+		summarizeBy: none
+		sourceColumn: record_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column setting_allocated
+		dataType: string
+		lineageTag: 2255e747-4bf6-45f0-abe8-d661c183fc4c
+		summarizeBy: none
+		sourceColumn: setting_allocated
+
+		annotation SummarizationSetBy = Automatic
+
+	column setting_allocation
+		dataType: double
+		lineageTag: 7f704517-0c52-4ab8-af2e-900283c56f19
+		summarizeBy: sum
+		sourceColumn: setting_allocation
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_revenue = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "sql/protocolv1/o/3058398146968468/0131-095141-lazpgcnw", null),
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    fact_revenue_View = production_modelled_Schema{[Name="fact_revenue",Kind="View"]}[Data],
+				    #"Append FY26" = Table.Combine({fact_revenue_View, fact_revenue_budget_FY25, fact_revenue_budget_FY26}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Append FY26",{{"date_stamp", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

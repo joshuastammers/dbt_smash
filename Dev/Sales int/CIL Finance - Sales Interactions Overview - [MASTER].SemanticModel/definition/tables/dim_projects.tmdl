@@ -1,0 +1,648 @@
+table dim_projects
+	lineageTag: 76b1f3e8-a6b9-4f06-bff7-75b9bf10b581
+
+	column project_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 46acec1f-2a9b-4baa-be67-3dcbda2c512a
+		summarizeBy: none
+		sourceColumn: project_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_code
+		dataType: int64
+		formatString: 0
+		lineageTag: abaf7e1c-a0f9-459c-8862-fca5be191346
+		summarizeBy: sum
+		sourceColumn: project_code
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_name
+		dataType: string
+		lineageTag: a511e3fe-2ab0-4f75-90bf-70b3acbe6563
+		summarizeBy: none
+		sourceColumn: project_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_stage
+		dataType: string
+		lineageTag: eb102d21-b3ec-4879-b718-83934ad2a6bc
+		summarizeBy: none
+		sourceColumn: project_stage
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column setting
+		dataType: string
+		lineageTag: 6bf17f0c-3756-41aa-b18a-79da1b6cd4ec
+		summarizeBy: none
+		sourceColumn: setting
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column live_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: b1163d36-a65e-4a20-b5e9-cc707809dfaa
+		summarizeBy: none
+		sourceColumn: live_date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column owning_entity
+		dataType: string
+		lineageTag: 1e860664-9b0a-44fd-814c-55d69ededdeb
+		summarizeBy: none
+		sourceColumn: owning_entity
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column client_name
+		dataType: string
+		lineageTag: 7bc0a371-d0c2-4bd5-8681-9307584dd4a0
+		summarizeBy: none
+		sourceColumn: client_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_name
+		dataType: string
+		lineageTag: 4c7b620d-41c0-44fa-a5a5-078121627e19
+		summarizeBy: none
+		sourceColumn: target_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column owning_partner
+		dataType: string
+		lineageTag: ec59bb98-381e-447d-87ae-103461f59f92
+		summarizeBy: none
+		sourceColumn: owning_partner
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_leader
+		dataType: string
+		lineageTag: 149d414a-6e33-4857-8df6-ede395c4ddd7
+		summarizeBy: none
+		sourceColumn: project_leader
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost_center
+		dataType: string
+		lineageTag: 26694e44-4abd-43ce-80ba-26f8f2f14fd2
+		summarizeBy: none
+		sourceColumn: cost_center
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column currency
+		dataType: string
+		lineageTag: 56fd1395-a193-4fa9-8af1-290f46ac2f6e
+		summarizeBy: none
+		sourceColumn: currency
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column rate_from_gbp
+		dataType: double
+		lineageTag: 6bd9ecbf-bf0d-45bf-b050-4ce76f74b679
+		summarizeBy: sum
+		sourceColumn: rate_from_gbp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fee_budgeted
+		dataType: double
+		lineageTag: 5f89e7f7-03bf-4df0-9eff-f8d0fe6f8f15
+		summarizeBy: sum
+		sourceColumn: fee_budgeted
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fee_minimum
+		dataType: double
+		lineageTag: 8f30d4ac-c377-487b-8027-2746146db088
+		summarizeBy: sum
+		sourceColumn: fee_minimum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fee_reduction
+		dataType: double
+		lineageTag: d114ca85-12a3-42ce-8c02-7ba56eeab3f2
+		summarizeBy: sum
+		sourceColumn: fee_reduction
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fee_bidder_meeetings
+		dataType: int64
+		formatString: 0
+		lineageTag: 415095ee-b6d1-40aa-a270-a372974e78db
+		summarizeBy: sum
+		sourceColumn: fee_bidder_meeetings
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column fee_phases
+		dataType: string
+		lineageTag: d8507059-21b9-4eb5-afea-134fc0e4beb1
+		summarizeBy: none
+		sourceColumn: fee_phases
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column fee_uplift
+		dataType: double
+		lineageTag: 75997e63-3c03-4eb7-b1fd-ce1f3bf212b0
+		summarizeBy: sum
+		sourceColumn: fee_uplift
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fee_success
+		dataType: double
+		lineageTag: 8f654e72-63a6-4a59-b246-4ad11aea0a55
+		summarizeBy: sum
+		sourceColumn: fee_success
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fee_final
+		dataType: double
+		lineageTag: 7fab1b15-bcc7-4fe7-9132-11c4b722fbc5
+		summarizeBy: sum
+		sourceColumn: fee_final
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fusioo_project_id
+		dataType: string
+		lineageTag: ae88eef7-1e0c-420b-8562-14a656b8e137
+		summarizeBy: none
+		sourceColumn: fusioo_project_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column audit_notes
+		dataType: string
+		lineageTag: 4cb6cbc0-3ae1-4b05-8bf1-1eac8f97ae8d
+		summarizeBy: none
+		sourceColumn: audit_notes
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column fee_notes
+		dataType: string
+		lineageTag: 7a6105b9-4786-4a01-a176-fb41a9c0187b
+		summarizeBy: none
+		sourceColumn: fee_notes
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_terms
+		dataType: string
+		lineageTag: 03390b50-95bb-4d4f-96e7-5a55f932e86b
+		summarizeBy: none
+		sourceColumn: payment_terms
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column invoice_preparartion
+		dataType: string
+		lineageTag: 6aae889a-27d3-4b12-b4f8-138c02b09486
+		summarizeBy: none
+		sourceColumn: invoice_preparartion
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column invoice_instructions
+		dataType: string
+		lineageTag: e229807a-403f-4706-9bb9-6b81f633429c
+		summarizeBy: none
+		sourceColumn: invoice_instructions
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column backstop_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 1ec59b39-50ca-4189-b454-89985c92e294
+		summarizeBy: none
+		sourceColumn: backstop_date
+
+		variation Variation
+			isDefault
+			relationship: 7397984f-0082-44e7-939a-c3cca95cd0b5
+			defaultHierarchy: LocalDateTable_cb6527ad-0b95-4eff-85ce-6e3bb4b6e9d4.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column loe_status
+		dataType: string
+		lineageTag: eff329e9-303f-4687-87c2-44bfda36684b
+		summarizeBy: none
+		sourceColumn: loe_status
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d18e76de-6104-4045-a98c-0f6de62dfbe8
+		summarizeBy: none
+		sourceColumn: created_date
+
+		variation Variation
+			isDefault
+			relationship: b440c797-3514-4c09-88b9-d2d1d57135ef
+			defaultHierarchy: LocalDateTable_aac8da27-0698-4128-bea8-1fa39cc1d7ae.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column updated_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6b3bca4e-e047-4498-9bc3-58fca10f571f
+		summarizeBy: none
+		sourceColumn: updated_date
+
+		variation Variation
+			isDefault
+			relationship: 3682b12e-c844-4267-a066-9f8c6ee05b13
+			defaultHierarchy: LocalDateTable_abd65276-df40-41c0-80f0-ea0a19c02b36.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column fee_budgeted_gbp
+		dataType: double
+		lineageTag: add97593-f88b-4456-818f-44f4b1224671
+		summarizeBy: sum
+		sourceColumn: fee_budgeted_gbp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fee_minimum_gbp
+		dataType: double
+		lineageTag: 2341850e-0ea1-481f-85c4-5f2b3549a7dd
+		summarizeBy: sum
+		sourceColumn: fee_minimum_gbp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fee_reduction_gbp
+		dataType: double
+		lineageTag: d3f2f8d0-e7a0-4ff9-942b-07b7df87ea20
+		summarizeBy: sum
+		sourceColumn: fee_reduction_gbp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fee_bidder_meeetings_gbp
+		dataType: double
+		lineageTag: 91261fe3-8283-436b-9b66-7e639886734f
+		summarizeBy: sum
+		sourceColumn: fee_bidder_meeetings_gbp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fee_phases_gbp
+		dataType: double
+		lineageTag: 9ee17963-5790-49cf-a029-7c6b09c89bb6
+		summarizeBy: sum
+		sourceColumn: fee_phases_gbp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fee_uplift_gbp
+		dataType: double
+		lineageTag: 3b32833d-2d13-4133-b3fe-c6d3c1a693d7
+		summarizeBy: sum
+		sourceColumn: fee_uplift_gbp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fee_success_gbp
+		dataType: double
+		lineageTag: 4455b070-535e-4099-ab04-7c8d44433cd5
+		summarizeBy: sum
+		sourceColumn: fee_success_gbp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fee_final_gbp
+		dataType: double
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		lineageTag: 1c7f63a2-3d22-4b88-9bd6-6d4b6ab46a13
+		summarizeBy: sum
+		sourceColumn: fee_final_gbp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	column sector
+		dataType: string
+		lineageTag: cf2f09ea-6964-42ac-99f4-6b0544ae59e5
+		summarizeBy: none
+		sourceColumn: sector
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column geography
+		dataType: string
+		lineageTag: 0a767515-c1b0-4375-80d3-ee7ee8624173
+		summarizeBy: none
+		sourceColumn: geography
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column business_unit
+		dataType: string
+		lineageTag: ad830fb4-ab53-4346-b02a-f255fec01da6
+		summarizeBy: none
+		sourceColumn: business_unit
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column region = IF(dim_projects[geography] = "1. UK", "1. UK", IF(dim_projects[geography] in {"2. US", "3. DE", "4. FR"}, "2. Int'l", "3. Not assigned"))
+		lineageTag: 2b8a58ec-d9dc-4bb7-93bb-bdae1fe11c23
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column client_target_size_category = IF(dim_projects[client_target_size] = "£0-5m" || dim_projects[client_target_size] = "£6-10m" || dim_projects[client_target_size] = "£11-20m","Small", IF(ISBLANK(dim_projects[client_target_size]) || dim_projects[client_target_size] = "None" || dim_projects[client_target_size] = "Negative or unknown", "Not specified","Large"))
+		lineageTag: c824096a-b6d9-4478-b165-5001f12e79f6
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column been_live = IF(LEN(dim_projects[project_code]) > 4, FALSE(), TRUE())
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 41cf6c71-e576-42b9-a668-c31c826fda70
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column previous_week = ```
+			
+			IF(
+			    dim_projects[live_date] >= TODAY() - WEEKDAY(TODAY(), 2) - 6 &&
+			    dim_projects[live_date] <= TODAY() - WEEKDAY(TODAY(), 2),
+			    TRUE(),
+			    FALSE()
+			)
+			
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0abbe21c-3380-4086-9f1a-b28e1610485f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column days_since_live
+		dataType: int64
+		formatString: 0
+		lineageTag: e32b943f-8579-439d-a157-7446cdd22df2
+		summarizeBy: sum
+		sourceColumn: days_since_live
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 0493157f-f371-44f3-a599-3647aadb9d8b
+		summarizeBy: sum
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column client_target_size
+		dataType: string
+		lineageTag: e90d83a3-2253-4ee3-b966-e9606c1cac0f
+		summarizeBy: none
+		sourceColumn: client_target_size
+
+		annotation SummarizationSetBy = Automatic
+
+	column fee_discount_gbp
+		dataType: double
+		lineageTag: 230a9a2f-a231-45d8-b1c4-6463643c74cd
+		summarizeBy: sum
+		sourceColumn: fee_discount_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column discount_percent
+		dataType: double
+		lineageTag: de02e464-21f7-4386-91f4-25d915b3eca4
+		summarizeBy: sum
+		sourceColumn: discount_percent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FY
+		dataType: string
+		lineageTag: b19de016-a26b-499d-8bef-5782f3a3a6c9
+		summarizeBy: none
+		sourceColumn: FY
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy_rank
+		dataType: int64
+		formatString: 0
+		lineageTag: c730295b-671e-4608-a574-4250015ed4f4
+		summarizeBy: sum
+		sourceColumn: fy_rank
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: dffbb71e-4deb-4c0f-8b7d-41925b74ee3a
+		summarizeBy: none
+		sourceColumn: start_date
+
+		variation Variation
+			isDefault
+			relationship: 20fcb1ae-0bfd-4130-a814-93f4b38b5353
+			defaultHierarchy: LocalDateTable_a4932e42-89d1-4345-9461-113767fdc16c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column days_since_start
+		dataType: int64
+		formatString: 0
+		lineageTag: 9a29f307-82f9-49a9-aec2-a4e35e3d2de3
+		summarizeBy: sum
+		sourceColumn: days_since_start
+
+		annotation SummarizationSetBy = Automatic
+
+	column expense_cap_gbp
+		dataType: double
+		lineageTag: c73d09dd-f665-4aa4-85e9-6395919a2544
+		summarizeBy: sum
+		sourceColumn: expense_cap_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column expense_cap
+		dataType: double
+		lineageTag: 76fd4252-4442-4566-aca9-916c8b135af8
+		summarizeBy: sum
+		sourceColumn: expense_cap
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition dim_projects = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "sql/protocolv1/o/3058398146968468/0131-095141-lazpgcnw", null),
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    dim_projects_View = production_modelled_Schema{[Name="dim_projects",Kind="View"]}[Data]
+				in
+				    dim_projects_View
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
