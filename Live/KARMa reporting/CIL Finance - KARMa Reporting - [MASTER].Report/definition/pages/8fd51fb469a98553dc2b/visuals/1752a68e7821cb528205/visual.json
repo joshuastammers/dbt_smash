@@ -1,0 +1,43 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "1752a68e7821cb528205",
+  "position": {
+    "x": 1165.5284552845528,
+    "y": 637.10930442637755,
+    "z": 20000,
+    "height": 67.064137308039747,
+    "width": 94.81481481481481,
+    "tabOrder": 20000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Note: ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "color": "#666666"
+                    }
+                  },
+                  {
+                    "value": "Opportunities that are created and moved to won in <1 day will not appear in the 'opportunities' and 'proposal' numbers. It's on the to-do list. ",
+                    "textStyle": {
+                      "color": "#666666"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

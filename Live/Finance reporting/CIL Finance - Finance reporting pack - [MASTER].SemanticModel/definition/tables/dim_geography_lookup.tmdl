@@ -1,0 +1,31 @@
+table dim_geography_lookup
+	lineageTag: ed3b461e-07a7-41b8-9b68-ab266d666ae4
+
+	column georgraphy_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 169ed843-1d74-4487-8465-eaedd99b88f4
+		summarizeBy: none
+		sourceColumn: georgraphy_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column geography
+		dataType: string
+		lineageTag: 8928c48a-08f2-4155-a415-c420ee32dd53
+		summarizeBy: none
+		sourceColumn: geography
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_geography_lookup = m
+		mode: import
+		source =
+				let
+				    Source = Databricks.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "/sql/1.0/warehouses/27755f6f39df3c3f", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation=null]),
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    dim_geography_lookup_View = production_modelled_Schema{[Name="dim_geography_lookup",Kind="View"]}[Data]
+				in
+				    dim_geography_lookup_View
+

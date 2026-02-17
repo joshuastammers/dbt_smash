@@ -1,0 +1,120 @@
+table fact_payments
+	lineageTag: 0c2fcdf7-ceb0-49bc-bc98-9b68b6354baf
+
+	column payment_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 9eafa43a-0b85-49fe-8b0f-368d23fb27a1
+		summarizeBy: sum
+		sourceColumn: payment_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column invoice_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 2ff313f4-33c1-4872-b3a2-aa3a39706611
+		summarizeBy: sum
+		sourceColumn: invoice_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 30d4d7fb-2200-43fa-a3ed-4e3454a223d6
+		summarizeBy: none
+		sourceColumn: project_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column currency
+		dataType: string
+		lineageTag: 32457441-fc6d-4078-bdc5-4d462e0f6f64
+		summarizeBy: none
+		sourceColumn: currency
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column tax_rate
+		dataType: double
+		lineageTag: b83f2966-7b42-4d01-b413-1ed2a5f4bddb
+		summarizeBy: sum
+		sourceColumn: tax_rate
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_incl_tax_gbp
+		dataType: double
+		lineageTag: 7c21e96b-4f85-4731-a5aa-8cccdb2b48c2
+		summarizeBy: sum
+		sourceColumn: total_incl_tax_gbp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_excl_tax_gbp
+		dataType: double
+		lineageTag: 5e543a06-c3c7-420c-a850-94870c7c1e7e
+		summarizeBy: sum
+		sourceColumn: total_excl_tax_gbp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column notes
+		dataType: string
+		lineageTag: a6bcaa29-1b13-4ffd-ad8d-b282e5b27d1f
+		summarizeBy: none
+		sourceColumn: notes
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_stamp
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: daa894ab-c753-4622-9616-b17b2b91b008
+		summarizeBy: none
+		sourceColumn: date_stamp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition fact_payments = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "sql/protocolv1/o/3058398146968468/0131-095141-lazpgcnw", null),
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    fact_payments_View = production_modelled_Schema{[Name="fact_payments",Kind="View"]}[Data]
+				in
+				    fact_payments_View
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

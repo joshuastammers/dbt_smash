@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "CIL Finance - Finance reporting pack - [MASTER]"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "b1884557-881f-45f1-93e9-8bac40ceb10c"
+  }
+}

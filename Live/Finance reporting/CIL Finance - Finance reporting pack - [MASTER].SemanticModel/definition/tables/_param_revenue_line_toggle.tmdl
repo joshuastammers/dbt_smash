@@ -1,0 +1,48 @@
+table _param_revenue_line_toggle
+	lineageTag: e9abb081-6247-4836-b744-627ba0e5a929
+
+	column _param_revenue_line_toggle
+		lineageTag: 3dda835e-86bc-4fa6-bb23-4f5e540bc15f
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: '_param_revenue_line_toggle Order'
+
+		relatedColumnDetails
+			groupByColumn: '_param_revenue_line_toggle Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column '_param_revenue_line_toggle Fields'
+		isHidden
+		lineageTag: ae8d855d-31fe-4f42-a154-a28e2cb196a1
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: '_param_revenue_line_toggle Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column '_param_revenue_line_toggle Order'
+		isHidden
+		formatString: 0
+		lineageTag: 431ea634-27ff-4626-b104-d37ed3a31f33
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _param_revenue_line_toggle = calculated
+		mode: import
+		source =
+				{
+				    ("Budget", NAMEOF('Measures folder'[Budget]), 0),
+				    ("Revenue PY", NAMEOF('Measures folder'[Revenue PY]), 1)
+				}
+
+	annotation PBI_Id = 3847a61822d344ba96d3ad50e1461b52
+

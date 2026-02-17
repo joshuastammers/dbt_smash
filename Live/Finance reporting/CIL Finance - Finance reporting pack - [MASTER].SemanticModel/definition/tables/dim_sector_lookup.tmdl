@@ -1,0 +1,31 @@
+table dim_sector_lookup
+	lineageTag: 45a65f43-0d6b-4924-8f11-188dbcae4547
+
+	column sector_id
+		dataType: int64
+		formatString: 0
+		lineageTag: bb65a44a-5273-4aa1-9a30-e32b3545cae4
+		summarizeBy: sum
+		sourceColumn: sector_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column sector
+		dataType: string
+		lineageTag: b184d461-69a8-47d8-8e5e-552f3a1c9487
+		summarizeBy: none
+		sourceColumn: sector
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_sector_lookup = m
+		mode: import
+		source =
+				let
+				    Source = Databricks.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "/sql/1.0/warehouses/27755f6f39df3c3f", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation=null]),
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    dim_sector_lookup_View = production_modelled_Schema{[Name="dim_sector_lookup",Kind="View"]}[Data]
+				in
+				    dim_sector_lookup_View
+

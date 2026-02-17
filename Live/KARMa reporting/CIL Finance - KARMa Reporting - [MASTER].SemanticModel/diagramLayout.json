@@ -1,0 +1,372 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 412.34037777247454,
+            "y": 498.68525953567291
+          },
+          "nodeIndex": "fact_opportunities",
+          "nodeLineageTag": "cad75af6-693c-42a4-bed3-06fc1a996ef5",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 19
+        },
+        {
+          "location": {
+            "x": 2339.6812812087337,
+            "y": 330.47403743990117
+          },
+          "nodeIndex": "fact_team",
+          "nodeLineageTag": "5ebecff7-eff6-4b80-ae43-169c5e6473ba",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 15
+        },
+        {
+          "location": {
+            "x": 698.2678109595015,
+            "y": 817.7910308394919
+          },
+          "nodeIndex": "dim_opportunities_responsible",
+          "nodeLineageTag": "45b55f93-eff0-4672-bcb5-0828d03e2a61",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 14
+        },
+        {
+          "location": {
+            "x": 2034.0844841754849,
+            "y": 5.5149066325012654
+          },
+          "nodeIndex": "fact_narrative",
+          "nodeLineageTag": "15abfa55-7a31-4318-b62c-a72085b438ba",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 16
+        },
+        {
+          "location": {
+            "x": 1033.3777549477177,
+            "y": 313.83284254507305
+          },
+          "nodeIndex": "bridge_narrative_contacts",
+          "nodeLineageTag": "baef1e2a-0d49-47f5-8294-9a3bf63e7f3e",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 565.48378853671693,
+            "y": 1288.4166533166385
+          },
+          "nodeIndex": "dim_narrative_internal",
+          "nodeLineageTag": "4a4ac9f5-6710-4d42-94b6-7cc59d596641",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 1322.637265156792,
+            "y": 27.420792654506897
+          },
+          "nodeIndex": "fact_companies",
+          "nodeLineageTag": "76b0a1d7-3616-42f0-bf13-664f88fbce80",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 91.753960342914525,
+            "y": 498.23726421105994
+          },
+          "nodeIndex": "fact_contact",
+          "nodeLineageTag": "2cec533a-f4e5-4809-adc0-bb0e76a4ce26",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 26
+        },
+        {
+          "location": {
+            "x": 1978.0722566617796,
+            "y": 882.92041567109914
+          },
+          "nodeIndex": "fact_openair_project",
+          "nodeLineageTag": "777dc74e-e24e-44c0-82c1-2e911580f29b",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 23
+        },
+        {
+          "location": {
+            "x": 2817.4766467156123,
+            "y": 823.8558146723035
+          },
+          "nodeIndex": "Measures Table",
+          "nodeLineageTag": "3be6a0fa-2472-4aa5-a5ff-4409f9a56ca9",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 2131.5521066319743,
+            "y": 1240.3573739457652
+          },
+          "nodeIndex": "Openair Tasks + Bookings KARMa",
+          "nodeLineageTag": "8443ee24-7599-472d-acc3-a68fc0d2eac6",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 22
+        },
+        {
+          "location": {
+            "x": 2049.6955065476659,
+            "y": 602.21228607393869
+          },
+          "nodeIndex": "dim_internal_sectors",
+          "nodeLineageTag": "48c38d65-8bfa-4a12-92fd-a1406a14167e",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 25
+        },
+        {
+          "location": {
+            "x": 627.92004473656277,
+            "y": -50
+          },
+          "nodeIndex": "fact_historic_opportunities",
+          "nodeLineageTag": "492412cd-31a6-4991-b32b-40579d99295d",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 21
+        },
+        {
+          "location": {
+            "x": 2431.0042822717428,
+            "y": 686.02843890674831
+          },
+          "nodeIndex": "dim_internal_sector_sort",
+          "nodeLineageTag": "8e87f427-3ad2-4d3b-bf32-becb43f37b4c",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 410.79389162520351,
+            "y": 1106.9534291452862
+          },
+          "nodeIndex": "dim_narrative_company_accountmanagers",
+          "nodeLineageTag": "593d9067-601f-44a3-a1b4-ebf6665d6ea3",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 878.63619174885673
+          },
+          "nodeIndex": "dim_narrative_contact_accountmanagers",
+          "nodeLineageTag": "d31cdc4a-6c27-4c66-a4c8-d8556a99b51b",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 3101.4766467156123,
+            "y": 921.8558146723035
+          },
+          "nodeIndex": "Last Refresh Date",
+          "nodeLineageTag": "c1eb9abd-547d-450a-be44-adc85b1e8ec7",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 3385.4766467156123,
+            "y": 861.8558146723035
+          },
+          "nodeIndex": "Minimum Interactions",
+          "nodeLineageTag": "7f695cc1-4ef0-4e3c-85aa-402a7ffc1cca",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 410.79026163294674,
+            "y": 927.8055041187904
+          },
+          "nodeIndex": "bridge_contact_companies",
+          "nodeLineageTag": "74a6b548-233a-43df-87b2-8686ad32d5cc",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "Company__c",
+          "nodeLineageTag": "8a0cde77-a5c6-4d1f-a3cc-04b076f7ba92",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 27
+        },
+        {
+          "location": {
+            "x": 1688.0822432557757,
+            "y": 784.87370235427068
+          },
+          "nodeIndex": "Date__c",
+          "nodeLineageTag": "38d77ede-c764-42ea-a5ae-b02456d22081",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 18
+        },
+        {
+          "location": {
+            "x": 122.51456660215445,
+            "y": 1058.0585090530724
+          },
+          "nodeIndex": "bridge_opportunities_client",
+          "nodeLineageTag": "9eb52d7b-b5da-49fc-947e-1e04867b9d2f",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 17
+        },
+        {
+          "location": {
+            "x": 3669.4766467156123,
+            "y": 861.8558146723035
+          },
+          "nodeIndex": "Contacts in last N months",
+          "nodeLineageTag": "b68211ac-08a2-4553-8a94-9a53bba86793",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 2583.4766467156123,
+            "y": 1056.3319991211663
+          },
+          "nodeIndex": "fact_openair_project_normalised_fee",
+          "nodeLineageTag": "a566b734-f49e-4911-be63-4de38e4ed406",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 1398.2129674872158,
+            "y": 931.70983606273785
+          },
+          "nodeIndex": "fusioo_project",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 20
+        },
+        {
+          "location": {
+            "x": 2419.5075493352988,
+            "y": 1239.8976149763196
+          },
+          "nodeIndex": "dim_date",
+          "nodeLineageTag": "2d2139da-b580-4672-b786-eb9b868fffdf",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 2290.0384599744712,
+            "y": 1597.711629344607
+          },
+          "nodeIndex": "dim_users",
+          "nodeLineageTag": "e0e0142f-6a22-41c0-bac9-10df85b4be57",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 24
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 70,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

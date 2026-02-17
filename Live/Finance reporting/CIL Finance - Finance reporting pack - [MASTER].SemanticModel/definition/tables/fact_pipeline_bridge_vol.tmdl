@@ -1,0 +1,175 @@
+table fact_pipeline_bridge_vol
+	lineageTag: a1b656ed-0c1d-493b-a2ec-c0de7e042062
+
+	measure 'Pipeline measures' =
+			
+			
+			VAR _TARGET_WEEK = [Target Week Start]
+			VAR _PRIOR_WEEK = [Prior Week Start]
+			
+			RETURN SWITCH(SELECTEDVALUE(fact_pipeline_bridge_vol[Label]),
+			        "Last week", CALCULATE([Hot and Imminent], fact_pipeline[week_start_date] = _PRIOR_WEEK),
+			        "Won", -[Won],
+			        "Lost", -[Lost],
+			        "Downgraded", -[Downgraded],
+			        "Upgraded", [Upgraded],
+			        "New", [New],
+			        BLANK()
+			        )
+		formatString: 0
+		lineageTag: 13728dc5-0c16-43b8-932c-3f594e918f4f
+
+	measure 'Hot and Imminent' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(fact_pipeline[opportunity_id]),
+			    fact_pipeline[stage] IN { "0 Imminent", "-1 Hot" }
+			)
+		formatString: 0
+		lineageTag: e611f636-2cd0-442c-b8ae-73f309dae1fe
+
+	measure Won =
+			
+			VAR _TARGET_WEEK = [Target Week Start]
+			RETURN
+			COALESCE(
+			    CALCULATE(
+			        DISTINCTCOUNT(fact_pipeline[opportunity_id]),
+			        fact_pipeline[stage] = "1 Won",
+			        fact_pipeline[week_start_date] = _TARGET_WEEK
+			    ),
+			    0
+			)
+		formatString: 0
+		lineageTag: 51106ab7-cfed-4a1c-ac0e-09f63aad6d00
+
+	measure Lost =
+			
+			VAR _TARGET_WEEK = [Target Week Start]
+			RETURN
+			COALESCE(
+			    CALCULATE(
+			        DISTINCTCOUNT(fact_pipeline[opportunity_id]),
+			        fact_pipeline[week_start_date] = _TARGET_WEEK,
+			        fact_pipeline[stage] = "Lost",
+			        fact_pipeline[last_week_stage] IN { "0 Imminent", "-1 Hot" }
+			    ),
+			    0
+			)
+		formatString: 0
+		lineageTag: d2f2b41a-0d13-4e84-93b2-a3a79fc32c7a
+
+	measure New =
+			
+			VAR _TARGET_WEEK = [Target Week Start]
+			RETURN
+			COALESCE(
+			    CALCULATE(
+			        DISTINCTCOUNT(fact_pipeline[opportunity_id]),
+			        FILTER(
+			            fact_pipeline,
+			            fact_pipeline[week_start_date] = _TARGET_WEEK
+			                && (
+			                    /* 1) Hot/Imminent on first appearance */
+			                    (fact_pipeline[stage] IN { "-1 Hot", "0 Imminent" }
+			                        && ISBLANK(fact_pipeline[last_week_stage]))
+			                    /* 2) Won on first appearance */
+			                    || (fact_pipeline[stage] = "1 Won"
+			                        && ISBLANK(fact_pipeline[last_week_stage]))
+			                    /* 3) Won directly from Warm/Lead/Prospect */
+			                    || (fact_pipeline[stage] = "1 Won"
+			                        && fact_pipeline[last_week_stage] IN { "-2 Warm", "-3 Lead", "-4 Prospect" })
+			                )
+			        )
+			    ),
+			    0
+			)
+		formatString: 0
+		lineageTag: 2d0d671c-96f1-4fea-8cfa-d43a54f9cbe5
+
+	measure Downgraded =
+			
+			VAR _TARGET_WEEK = [Target Week Start]
+			RETURN
+			COALESCE(
+			    CALCULATE(
+			        DISTINCTCOUNT(fact_pipeline[opportunity_id]),
+			        fact_pipeline[week_start_date] = _TARGET_WEEK,
+			        fact_pipeline[last_week_stage] IN { "-1 Hot", "0 Imminent"},
+			        fact_pipeline[stage] IN { "-2 Warm", "-3 Lead", "-4 Prospect", BLANK()}
+			    ),
+			    0
+			)
+		formatString: 0
+		lineageTag: d229a4fc-ef07-450c-b3c0-8b0b62f5c934
+
+	measure Upgraded =
+			
+			VAR _TARGET_WEEK = [Target Week Start]
+			RETURN
+			COALESCE(
+			    CALCULATE(
+			        DISTINCTCOUNT(fact_pipeline[opportunity_id]),
+			        fact_pipeline[week_start_date] = _TARGET_WEEK,
+			        fact_pipeline[last_week_stage] IN { "-2 Warm", "-3 Lead", "-4 Prospect" },
+			        fact_pipeline[stage] IN { "-1 Hot", "0 Imminent" }
+			    ),
+			    0
+			)
+		formatString: 0
+		lineageTag: 21ce9394-5963-41ed-8636-af1025400a28
+
+	measure 'Target Week Start' =
+			
+			VAR _SEL =
+			    SELECTEDVALUE ( 'Week Selector'[week_start_date] )
+			VAR _MAX_WEEK =
+			    CALCULATE ( MAX ( fact_pipeline[week_start_date] ), ALL ( fact_pipeline[week_start_date] ) )
+			VAR _THIS_MONDAY =
+			    TODAY () - WEEKDAY ( TODAY (), 2 ) + 1
+			VAR _AUTO =
+			    IF ( _MAX_WEEK >= _THIS_MONDAY, _MAX_WEEK - 7, _MAX_WEEK )
+			RETURN
+			COALESCE ( _SEL, _AUTO )
+		formatString: General Date
+		lineageTag: 45df5148-79be-48f9-92a3-227ee05c16e8
+
+	measure 'Prior Week Start' = [Target Week Start] - 7
+		formatString: General Date
+		lineageTag: 1cdb8fcc-a42a-4ca5-89ae-ce2dab3a26a7
+
+	measure 'New & upgraded' = [New & upgraded opportunities] + [Upgraded opps]
+		formatString: 0
+		lineageTag: 34885a3a-22ce-4a1f-932b-21ad0b5240c5
+
+	column Label
+		dataType: string
+		lineageTag: 8fc27792-e836-4a97-b1ff-2f93ce3375f9
+		summarizeBy: none
+		sourceColumn: Label
+		sortByColumn: Order
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Order
+		dataType: int64
+		formatString: 0
+		lineageTag: 3d5fa488-dd17-46bf-8ba9-e7fc97ae4fb3
+		summarizeBy: sum
+		sourceColumn: Order
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_pipeline_bridge_vol = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45W8kksLlEoT03NVtJRMlSK1YlW8kstB7KNwOzQgvSixJTUFKCAMVjAJb88Dy5kAhbyyS8uAXJMwZzw/Dwg2wzMDsnILIYZba4UGwsA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Label = _t, Order = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Label", type text}, {"Order", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "CIL Finance - KARMa Reporting - [MASTER]"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "371801f6-7843-46dd-b905-ccf8dcb82ffc"
+  }
+}

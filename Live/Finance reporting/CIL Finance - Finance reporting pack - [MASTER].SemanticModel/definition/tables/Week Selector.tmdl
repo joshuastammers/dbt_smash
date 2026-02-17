@@ -1,0 +1,38 @@
+table 'Week Selector'
+	lineageTag: 467f99dd-67cf-4bf6-a8c0-17c7dd1df809
+
+	column week_start_date
+		formatString: General Date
+		lineageTag: 417090b9-53df-4114-afba-1dde7873798d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [week_start_date]
+
+		variation Variation
+			isDefault
+			relationship: d1d72152-1e57-43be-b061-61eda8a83242
+			defaultHierarchy: LocalDateTable_7dc9e6d5-71cd-43f3-8cd2-41f22a30523b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week Label'
+		lineageTag: faf1c2f8-aacf-4c96-b143-6ce4677d912c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Week Label]
+		sortByColumn: week_start_date
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Week Selector' = calculated
+		mode: import
+		source =
+				
+				SELECTCOLUMNS (
+				    DISTINCT ( fact_pipeline[week_start_date] ),
+				    "week_start_date", fact_pipeline[week_start_date],
+				    "Week Label", FORMAT ( fact_pipeline[week_start_date], "ddd dd MMM yyyy" )
+				)
+
+	annotation PBI_Id = c18e7523a3584fd988fe5d9bc8358668
+

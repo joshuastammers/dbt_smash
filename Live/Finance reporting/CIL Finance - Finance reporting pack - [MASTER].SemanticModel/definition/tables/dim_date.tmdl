@@ -1,0 +1,183 @@
+table dim_date
+	lineageTag: ab42405c-6b6e-4b75-bdec-7bb04fa058c5
+
+	column Date
+		formatString: Short Date
+		lineageTag: f5fe6731-1b41-4be7-9a34-fbaed216ea12
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 3a7becc7-782d-4f02-8fa3-ba11cf64cb9d
+			defaultHierarchy: LocalDateTable_c4ba3d81-001c-4b19-b607-2a89ea1b2b6b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		lineageTag: e881cb4c-1711-4ff1-a2d1-402e5d7acffa
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNo
+		formatString: 0
+		lineageTag: 578486df-0bc2-429b-ae3e-8223d6ce5a64
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [MonthNo]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		lineageTag: 5e360e14-f8d3-4d15-b4bc-2ec920edc6e9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		lineageTag: 35a8b360-4a88-4b88-8aa2-83d55a47e8e8
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonth
+		lineageTag: 4a2592a2-2645-4666-9988-16c115dd731b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [YearMonth]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekdayNo
+		formatString: 0
+		lineageTag: 29ed7a13-8aa3-40d8-a3e1-0fffa3c6d975
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [WeekdayNo]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weekday
+		lineageTag: e3b34ee0-7092-4f99-8441-6ff2a9ac76ec
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Weekday]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Week-(day-end)3
+		formatString: 0
+		lineageTag: 672b36e4-9aaa-49f3-af8b-bf660f3f908c
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Week-(day-end)3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week End Date'
+		formatString: General Date
+		lineageTag: 0d966a8a-3f35-4ea2-9d23-dfda88b9c633
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Week End Date]
+
+		variation Variation
+			isDefault
+			relationship: 6eef7517-9e97-4a5b-b465-7cb4eab9854d
+			defaultHierarchy: LocalDateTable_c35edda0-006e-46e9-a57c-12b49599188e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekNo
+		formatString: 0
+		lineageTag: 277f377c-4d37-4559-829c-e54c055da962
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [WeekNo]
+
+		annotation SummarizationSetBy = Automatic
+
+	column FY =
+			IF(
+			    dim_date[MonthNo] >= 7, "FY"&RIGHT(CONVERT(dim_date[Year] + 1, STRING), 2),
+			    "FY"&RIGHT(CONVERT(dim_date[Year], STRING), 2)
+			)
+		lineageTag: b8d30c89-e27c-40ab-a6e7-ef8fc40a9f89
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Week = ```
+			dim_date[Date] - WEEKDAY(dim_date[Date], 2) + 1
+			
+			```
+		formatString: General Date
+		lineageTag: 5410779e-48dc-4281-a6a2-b369cb4d6d3f
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: c83c87b3-7e0d-445c-b633-d957f39a7281
+			defaultHierarchy: LocalDateTable_429efdf4-fa24-4460-8aa1-e45c0808db5d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_date = calculated
+		mode: import
+		source =
+				ADDCOLUMNS(CALENDAR(FIRSTDATE(fact_revenue[date_stamp]), LASTDATE(fact_revenue[date_stamp])),
+				
+				
+				"Year", FORMAT([Date], "yyyy"),
+				
+				
+				
+				
+				"MonthNo", MONTH([Date]),
+				
+				
+				
+				
+				"Month", FORMAT([Date],"MMM"),
+				
+				
+				
+				
+				"Quarter", FORMAT([Date],"\QQ"),
+				
+				
+				
+				
+				"YearMonth", FORMAT([Date],"YYYY-MM"),
+				
+				
+				
+				
+				"WeekdayNo", WEEKDAY([Date],2), //1-Sun..Sat, 2-Mon..Sat
+				
+				
+				
+				
+				"Weekday", FORMAT([Date],"ddd"),
+				
+				
+				
+				
+				"Week-(day-end)3", IF(FORMAT(WEEKDAY([Date],2),"ddd") IN {"sat", "sun"}, 1,0 ),
+				
+				
+				"Week End Date", [Date] + 7 - WEEKDAY([DATE],2),
+				
+				
+				"WeekNo", WEEKNUM([Date], 2))
+
+	annotation PBI_Id = 17842d42f5e8410983a9f1a4ca952640
+

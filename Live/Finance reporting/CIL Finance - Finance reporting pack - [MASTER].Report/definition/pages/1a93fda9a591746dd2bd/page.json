@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "1a93fda9a591746dd2bd",
+  "displayName": "Orders",
+  "displayOption": "FitToPage",
+  "height": 850,
+  "width": 1500,
+  "visualInteractions": [
+    {
+      "source": "235b71d5d610ecf413cf",
+      "target": "89667b432cac3edd39d6",
+      "type": "NoFilter"
+    },
+    {
+      "source": "235b71d5d610ecf413cf",
+      "target": "fa4d8960b38acb5e6ae4",
+      "type": "NoFilter"
+    },
+    {
+      "source": "235b71d5d610ecf413cf",
+      "target": "698b30d7944f615867cd",
+      "type": "NoFilter"
+    },
+    {
+      "source": "235b71d5d610ecf413cf",
+      "target": "8c5cfa819065babaa62c",
+      "type": "NoFilter"
+    },
+    {
+      "source": "235b71d5d610ecf413cf",
+      "target": "d6bb7a81b0960846f44a",
+      "type": "NoFilter"
+    }
+  ]
+}

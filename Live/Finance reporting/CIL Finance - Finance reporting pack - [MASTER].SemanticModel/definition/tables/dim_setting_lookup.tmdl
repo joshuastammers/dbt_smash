@@ -1,0 +1,35 @@
+table dim_setting_lookup
+	lineageTag: 0a7034f6-a5f2-446c-afd3-8807ffdce355
+
+	column setting_id
+		dataType: int64
+		formatString: 0
+		lineageTag: c983371a-3dcb-4c08-a358-f62173e4b140
+		summarizeBy: none
+		sourceColumn: setting_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column setting
+		dataType: string
+		lineageTag: 95cafc85-daf9-4948-bb4c-a899b3fcd2ac
+		summarizeBy: none
+		sourceColumn: setting
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_setting_lookup = m
+		mode: import
+		source =
+				let
+				    Source = Databricks.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "/sql/1.0/warehouses/27755f6f39df3c3f", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation=null]),
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    dim_setting_lookup_View = production_modelled_Schema{[Name="dim_setting_lookup",Kind="View"]}[Data]
+				in
+				    dim_setting_lookup_View
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

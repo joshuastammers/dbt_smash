@@ -1,0 +1,35 @@
+table dim_capability
+	lineageTag: dd3cf702-b1f5-43b0-8cc7-9109456d633d
+
+	column capability_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 1986f9ea-7476-417f-a699-cd764a7267a6
+		summarizeBy: sum
+		sourceColumn: capability_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column capability
+		dataType: string
+		lineageTag: e90f496b-8c42-47b5-88ec-8906b9e24a74
+		summarizeBy: none
+		sourceColumn: capability
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_capability = m
+		mode: import
+		source =
+				let
+				    Source = Databricks.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "/sql/1.0/warehouses/27755f6f39df3c3f", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation=null]),
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    dim_capability_View = production_modelled_Schema{[Name="dim_capability",Kind="View"]}[Data]
+				in
+				    dim_capability_View
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "c08122defc5177b1aac8",
+  "position": {
+    "x": 25,
+    "y": 441,
+    "z": 18000,
+    "height": 27,
+    "width": 574,
+    "tabOrder": 16000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Note: ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Arial",
+                      "fontSize": "8pt"
+                    }
+                  },
+                  {
+                    "value": "LM = revenue to the end of last month. Committed = LM + future month's committed revenue.",
+                    "textStyle": {
+                      "fontFamily": "Arial",
+                      "fontSize": "8pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

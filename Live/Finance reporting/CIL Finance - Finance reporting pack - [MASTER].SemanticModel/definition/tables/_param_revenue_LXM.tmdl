@@ -1,0 +1,48 @@
+table _param_revenue_LXM
+	lineageTag: 98163a9b-ba01-4672-bb3b-84fc8bd461fb
+
+	column _param_revenue_LXM
+		lineageTag: 1dcd048d-d08d-4c24-8783-c705adb39501
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: '_param_revenue_LXM Order'
+
+		relatedColumnDetails
+			groupByColumn: '_param_revenue_LXM Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column '_param_revenue_LXM Fields'
+		isHidden
+		lineageTag: f7bcdc5e-a319-4a94-b6a4-8d79a4c132a2
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: '_param_revenue_LXM Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column '_param_revenue_LXM Order'
+		isHidden
+		formatString: 0
+		lineageTag: 677b6f73-5ea0-41bb-baac-bc52659d4912
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _param_revenue_LXM = calculated
+		mode: import
+		source =
+				{
+				    ("Revenue L12M", NAMEOF('Measures folder'[Revenue L12M]), 0),
+				    ("Revenue L6M", NAMEOF('Measures folder'[Revenue L6M]), 1)
+				}
+
+	annotation PBI_Id = ef3679d557e04e1385e15d3ce60e512c
+
