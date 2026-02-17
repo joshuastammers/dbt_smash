@@ -1,0 +1,17 @@
+table Person_slicer
+	lineageTag: 39bf3efd-71cf-47d6-969f-00784e300926
+
+	column name
+		lineageTag: 68c6fa65-2325-4e2e-b2fa-c9a79aa4553b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dim_users[name]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Person_slicer = calculated
+		mode: import
+		source = VALUES( dim_users[name] )
+
+	annotation PBI_Id = 3bc284c3fe4e4217b658e8f9758586d1
+

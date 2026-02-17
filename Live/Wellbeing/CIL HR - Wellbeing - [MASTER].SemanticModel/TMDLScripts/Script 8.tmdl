@@ -1,0 +1,7 @@
+createOrReplace
+    ref table dim_date
+        column 'flag W-1 PY' = IF(WEEKNUM([Date], 21) = WEEKNUM(TODAY() - 7, 21) && YEAR([Date]) = (YEAR(TODAY() -  7) - 1) , 1, 0) -- last week in the previous year
+            formatString: 0
+            lineageTag: c64d0a8d-33b4-44dc-bd33-0e4a2a520169
+            summarizeBy: sum
+            annotation SummarizationSetBy = Automatic

@@ -1,0 +1,33 @@
+table _refresh
+	lineageTag: 8f634524-5e9e-4fcf-a07c-c634839d7346
+
+	column last_refresh
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: be6936d8-9166-4f82-945e-d49b228eada7
+		summarizeBy: none
+		sourceColumn: last_refresh
+
+		variation Variation
+			isDefault
+			relationship: aba309d8-b438-4c3c-b9ab-8852a39f20e2
+			defaultHierarchy: LocalDateTable_0d071096-59fd-4a86-be19-6abd61f31ffa.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _refresh = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = DateTime.LocalNow(),
+				    #"Converted to Table" = #table(1, {{#"Changed Type"}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Converted to Table",{{"Column1", "last_refresh"}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Renamed Columns",{{"last_refresh", type datetime}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "2ea5e0fea170593b7285",
+  "position": {
+    "x": 10.379960117124392,
+    "y": 9.6093749999999734,
+    "z": 8000,
+    "height": 31.654411764705884,
+    "width": 583.75656300484638,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "1: Individuals considered for TOIL. ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Arial",
+                      "fontSize": "12pt"
+                    }
+                  },
+                  {
+                    "value": "count (#) by date.",
+                    "textStyle": {
+                      "fontFamily": "Arial",
+                      "fontStyle": "italic",
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "f4a43bbc460085d62e31"
+}

@@ -1,0 +1,365 @@
+table 'TOIL - Management List MASTER - 15 10 - JS'
+	lineageTag: d128645e-5ee0-43cc-849b-0b6302bce180
+
+	column FileSystemObjectType
+		dataType: string
+		lineageTag: 8a1cda01-f64d-4c63-a9cc-e6bf3723b283
+		summarizeBy: none
+		sourceColumn: FileSystemObjectType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Id
+		dataType: string
+		lineageTag: d7d484f8-eee3-43de-ae07-33582a06d949
+		summarizeBy: none
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ServerRedirectedEmbedUri
+		dataType: string
+		lineageTag: b1f43440-6621-4d1f-81c4-d822bde3ce73
+		summarizeBy: none
+		sourceColumn: ServerRedirectedEmbedUri
+
+		annotation SummarizationSetBy = Automatic
+
+	column ServerRedirectedEmbedUrl
+		dataType: string
+		lineageTag: ffa37115-0409-4146-a399-71c2ba233297
+		summarizeBy: none
+		sourceColumn: ServerRedirectedEmbedUrl
+
+		annotation SummarizationSetBy = Automatic
+
+	column ContentTypeId
+		dataType: string
+		lineageTag: cc6dc4f3-114e-40cb-af02-bda96f356365
+		summarizeBy: none
+		sourceColumn: ContentTypeId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Title
+		dataType: string
+		lineageTag: e7c70178-5ba2-47a2-9886-07b59573082e
+		summarizeBy: none
+		sourceColumn: Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column OData__ColorTag
+		dataType: string
+		lineageTag: f61bff38-21c5-4cfe-9e0a-2feba52e45c2
+		summarizeBy: none
+		sourceColumn: OData__ColorTag
+
+		annotation SummarizationSetBy = Automatic
+
+	column ComplianceAssetId
+		dataType: string
+		lineageTag: 58045918-b3cf-4e7d-b23d-866f3139418b
+		summarizeBy: none
+		sourceColumn: ComplianceAssetId
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekCommencing
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1040e487-872b-4bf6-b7f7-9e4df78d13ea
+		summarizeBy: none
+		sourceColumn: WeekCommencing
+
+		variation Variation
+			isDefault
+			relationship: 87b5b955-f320-46a1-bdf8-7d4fc66111fb
+			defaultHierarchy: LocalDateTable_35ad9b98-429f-4ba7-9227-02cc113c75ef.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column MainProjectName
+		dataType: string
+		lineageTag: af1f071e-653b-4bcd-9739-c822a705974f
+		summarizeBy: none
+		sourceColumn: MainProjectName
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOILRequired?
+		dataType: string
+		lineageTag: 21916910-484c-478c-8e21-8402b4a0e842
+		summarizeBy: none
+		sourceColumn: TOILRequired?
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReasonforTOIL
+		dataType: string
+		lineageTag: c4e3dc6e-bbd7-4ff3-bc8e-654c2b23feed
+		summarizeBy: none
+		sourceColumn: ReasonforTOIL
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProjectLeaderName
+		dataType: string
+		lineageTag: dc5cc5b2-06f7-49ac-90d5-5d35ef26abb1
+		summarizeBy: none
+		sourceColumn: ProjectLeaderName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Comments
+		dataType: string
+		lineageTag: fa0db6ec-4474-4f43-956f-b061655b586a
+		summarizeBy: none
+		sourceColumn: Comments
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOILApproved
+		dataType: string
+		lineageTag: dc819247-a26b-4572-8c9c-80678fbf7955
+		summarizeBy: none
+		sourceColumn: TOILApproved
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOILBooked
+		dataType: string
+		lineageTag: 78eec170-9492-488a-b1bd-c9aee34d18a6
+		summarizeBy: none
+		sourceColumn: TOILBooked
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProjectWorkingHours
+		dataType: double
+		formatString: 0.0
+		lineageTag: 7265ec49-7697-4ddd-818c-295a9033b7a2
+		summarizeBy: sum
+		sourceColumn: ProjectWorkingHours
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalHours
+		dataType: double
+		formatString: 0.0
+		lineageTag: 01e55bdb-db87-4367-9ea9-22ce7be489a7
+		summarizeBy: sum
+		sourceColumn: TotalHours
+
+		annotation SummarizationSetBy = Automatic
+
+	column OData_4-weekAverage
+		dataType: double
+		formatString: 0.0
+		lineageTag: 2650170c-c786-4088-9740-2b1577369786
+		summarizeBy: sum
+		sourceColumn: OData_4-weekAverage
+
+		annotation SummarizationSetBy = Automatic
+
+	column W/c-1
+		dataType: double
+		formatString: 0.0
+		lineageTag: 70d0468e-8dc5-4d1c-93e0-360b8bb00bb9
+		summarizeBy: sum
+		sourceColumn: W/c-1
+
+		annotation SummarizationSetBy = Automatic
+
+	column W/c-2
+		dataType: double
+		formatString: 0.0
+		lineageTag: b0c01301-e1f4-4c7b-a0b1-fbf6ff46e9da
+		summarizeBy: sum
+		sourceColumn: W/c-2
+
+		annotation SummarizationSetBy = Automatic
+
+	column W/c-3
+		dataType: double
+		formatString: 0.0
+		lineageTag: 736e7adc-97c2-4355-87f2-0f6cfa57b82b
+		summarizeBy: sum
+		sourceColumn: W/c-3
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekendHours0
+		dataType: double
+		formatString: 0.0
+		lineageTag: df00e50b-2bc0-4690-8888-f1cb906f18ff
+		summarizeBy: sum
+		sourceColumn: WeekendHours0
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOIL4w
+		dataType: string
+		lineageTag: f20c0a48-032b-4ac6-bf8f-fc2fc6f3a5b4
+		summarizeBy: none
+		sourceColumn: TOIL4w
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOIL4w0
+		dataType: string
+		lineageTag: 90476762-0bfe-4d64-b3b7-67f56624dc9c
+		summarizeBy: none
+		sourceColumn: TOIL4w0
+
+		annotation SummarizationSetBy = Automatic
+
+	column T-O4w
+		dataType: string
+		lineageTag: 2077b1d7-3eea-4e37-82d2-1e1ca08d911c
+		summarizeBy: none
+		sourceColumn: T-O4w
+
+		annotation SummarizationSetBy = Automatic
+
+	column T-O4w0
+		dataType: string
+		lineageTag: 99f43799-a236-4e89-88c2-5885e7262d5d
+		summarizeBy: none
+		sourceColumn: T-O4w0
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ID.1'
+		dataType: string
+		lineageTag: 4dbf8e78-d810-4da2-be6f-52cb46d946eb
+		summarizeBy: none
+		sourceColumn: ID.1
+
+		annotation SummarizationSetBy = Automatic
+
+	column Modified
+		dataType: string
+		lineageTag: 7a8142de-c948-4e3e-8c85-7da5fe98289b
+		summarizeBy: none
+		sourceColumn: Modified
+
+		annotation SummarizationSetBy = Automatic
+
+	column Created
+		dataType: string
+		lineageTag: fd74881f-aaea-47db-97f4-e7c0c2fdb7eb
+		summarizeBy: none
+		sourceColumn: Created
+
+		annotation SummarizationSetBy = Automatic
+
+	column AuthorId
+		dataType: string
+		lineageTag: 35f60cae-eff1-4e77-a5bf-90bb64067940
+		summarizeBy: none
+		sourceColumn: AuthorId
+
+		annotation SummarizationSetBy = Automatic
+
+	column EditorId
+		dataType: string
+		lineageTag: 2493276a-5ff4-436c-bb66-3470f5d4e8f2
+		summarizeBy: none
+		sourceColumn: EditorId
+
+		annotation SummarizationSetBy = Automatic
+
+	column OData__UIVersionString
+		dataType: string
+		lineageTag: 83ff231a-5dbf-49db-9e99-9015375f5815
+		summarizeBy: none
+		sourceColumn: OData__UIVersionString
+
+		annotation SummarizationSetBy = Automatic
+
+	column Attachments
+		dataType: string
+		lineageTag: a180b795-2d56-4fed-be13-b1a219a29aef
+		summarizeBy: none
+		sourceColumn: Attachments
+
+		annotation SummarizationSetBy = Automatic
+
+	column GUID
+		dataType: string
+		lineageTag: 0ba84fe2-2ab6-4960-ab90-d29ed5f4fe7a
+		summarizeBy: none
+		sourceColumn: GUID
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserID
+		dataType: string
+		lineageTag: b571ffdf-0ab7-412f-aed4-c64d1093d11a
+		summarizeBy: none
+		sourceColumn: UserID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week Commencing' = FORMAT(DATEVALUE('TOIL - Management List MASTER - 15 10 - JS'[WeekCommencing]) + 1, "dd mmmm yyyy")
+		lineageTag: f3e9f4cc-89fd-4867-ae6d-555af451b82c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dateofresponse
+		dataType: string
+		lineageTag: 6d8637c6-b537-403d-a07e-7404ce706afa
+		summarizeBy: none
+		sourceColumn: Dateofresponse
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date notified'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7d01a6e7-2ac5-43c8-a999-24b055748187
+		summarizeBy: none
+		sourceColumn: Date notified
+
+		variation Variation
+			isDefault
+			relationship: 61ef865b-d708-4b1c-b367-34f8a689236d
+			defaultHierarchy: LocalDateTable_e04364b2-4b8e-4469-b333-084c9a77dda3.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ResponderName
+		dataType: string
+		lineageTag: c712a5c1-91a1-449c-950b-a8a3298d6858
+		summarizeBy: none
+		sourceColumn: ResponderName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'TOIL - Management List MASTER - 15 10 - JS' = m
+		mode: import
+		source =
+				let
+				    Source = SharePoint.Tables("https://ciluk.sharepoint.com/sites/TOILmanagement", [ApiVersion = 15]),
+				    #"cb89436d-bf74-4269-bb94-ad4690808032" = Source{[Id="cb89436d-bf74-4269-bb94-ad4690808032"]}[Items],
+				    #"Renamed Columns" = Table.RenameColumns(#"cb89436d-bf74-4269-bb94-ad4690808032",{{"ID", "ID.1"}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"WeekCommencing", type date}, {"ProjectWorkingHours", type number}}),
+				    #"Rounded Off" = Table.TransformColumns(#"Changed Type",{{"ProjectWorkingHours", each Number.Round(_, 1), type number}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Rounded Off",{{"TotalHours", type number}}),
+				    #"Rounded Off1" = Table.TransformColumns(#"Changed Type1",{{"TotalHours", each Number.Round(_, 1), type number}}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Rounded Off1",{{"OData_4-weekAverage", type number}}),
+				    #"Rounded Off2" = Table.TransformColumns(#"Changed Type2",{{"OData_4-weekAverage", each Number.Round(_, 1), type number}}),
+				    #"Changed Type3" = Table.TransformColumnTypes(#"Rounded Off2",{{"W/c-1", type number}, {"W/c-2", type number}, {"W/c-3", type number}, {"WeekendHours0", type number}}),
+				    #"Rounded Off3" = Table.TransformColumns(#"Changed Type3",{{"W/c-1", each Number.Round(_, 1), type number}, {"W/c-2", each Number.Round(_, 1), type number}, {"W/c-3", each Number.Round(_, 1), type number}, {"WeekendHours0", each Number.Round(_, 1), type number}}),
+				    #"Changed Type4" = Table.TransformColumnTypes(#"Rounded Off3",{{"Date notified", type datetime}})
+				in
+				    #"Changed Type4"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

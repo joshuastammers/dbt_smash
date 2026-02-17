@@ -1,0 +1,1336 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "7aebc90cb2adbbf2cc61",
+  "position": {
+    "x": 18.805970149253731,
+    "y": 116.41791044776119,
+    "z": 11000,
+    "height": 576.71641791044772,
+    "width": 1242.0895522388059,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "TOIL - Management List MASTER - 15 10 - JS"
+                    }
+                  },
+                  "Property": "Title"
+                }
+              },
+              "queryRef": "TOIL - Management List MASTER - 15 10 - JS.Title",
+              "nativeQueryRef": "Title"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "TOIL - Management List MASTER - 15 10 - JS"
+                    }
+                  },
+                  "Property": "WeekCommencing"
+                }
+              },
+              "queryRef": "TOIL - Management List MASTER - 15 10 - JS.WeekCommencing",
+              "nativeQueryRef": "Week commencing",
+              "displayName": "Week commencing"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "TOIL - Management List MASTER - 15 10 - JS"
+                    }
+                  },
+                  "Property": "ReasonforTOIL"
+                }
+              },
+              "queryRef": "TOIL - Management List MASTER - 15 10 - JS.ReasonforTOIL",
+              "nativeQueryRef": "Any reasons to consider TOIL?",
+              "displayName": "Any reasons to consider TOIL?"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "TOIL - Management List MASTER - 15 10 - JS"
+                    }
+                  },
+                  "Property": "ProjectLeaderName"
+                }
+              },
+              "queryRef": "TOIL - Management List MASTER - 15 10 - JS.ProjectLeaderName",
+              "nativeQueryRef": "TOIL organiser",
+              "displayName": "TOIL organiser"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "TOIL - Management List MASTER - 15 10 - JS"
+                    }
+                  },
+                  "Property": "TOILApproved"
+                }
+              },
+              "queryRef": "TOIL - Management List MASTER - 15 10 - JS.TOILApproved",
+              "nativeQueryRef": "TOIL approved",
+              "displayName": "TOIL approved"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "TOIL - Management List MASTER - 15 10 - JS"
+                    }
+                  },
+                  "Property": "Dateofresponse"
+                }
+              },
+              "queryRef": "TOIL - Management List MASTER - 15 10 - JS.Dateofresponse",
+              "nativeQueryRef": "Date of last response",
+              "displayName": "Date of last response"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "TOIL - Management List MASTER - 15 10 - JS"
+                    }
+                  },
+                  "Property": "ResponderName"
+                }
+              },
+              "queryRef": "TOIL - Management List MASTER - 15 10 - JS.ResponderName",
+              "nativeQueryRef": "Name of organiser",
+              "displayName": "Name of organiser"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "TOIL - Management List MASTER - 15 10 - JS"
+                    }
+                  },
+                  "Property": "TOILBooked"
+                }
+              },
+              "queryRef": "TOIL - Management List MASTER - 15 10 - JS.TOILBooked",
+              "nativeQueryRef": "TOIL accommodated in current project",
+              "displayName": "TOIL accommodated in current project"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "TOIL - Management List MASTER - 15 10 - JS"
+                    }
+                  },
+                  "Property": "Comments"
+                }
+              },
+              "queryRef": "TOIL - Management List MASTER - 15 10 - JS.Comments",
+              "nativeQueryRef": "Comments"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "TOIL - Management List MASTER - 15 10 - JS"
+                    }
+                  },
+                  "Property": "MainProjectName"
+                }
+              },
+              "queryRef": "TOIL - Management List MASTER - 15 10 - JS.MainProjectName",
+              "nativeQueryRef": "Main Project",
+              "displayName": "Main Project"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "TOIL - Management List MASTER - 15 10 - JS"
+                    }
+                  },
+                  "Property": "TOIL4w"
+                }
+              },
+              "queryRef": "TOIL - Management List MASTER - 15 10 - JS.TOIL4w",
+              "nativeQueryRef": "TOIL Last 4w",
+              "displayName": "TOIL Last 4w"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "TOIL - Management List MASTER - 15 10 - JS"
+                    }
+                  },
+                  "Property": "TOIL4w0"
+                }
+              },
+              "queryRef": "TOIL - Management List MASTER - 15 10 - JS.TOIL4w0",
+              "nativeQueryRef": "TOIL Next 4w",
+              "displayName": "TOIL Next 4w"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "TOIL - Management List MASTER - 15 10 - JS"
+                    }
+                  },
+                  "Property": "T-O4w"
+                }
+              },
+              "queryRef": "TOIL - Management List MASTER - 15 10 - JS.T-O4w",
+              "nativeQueryRef": "Time-off Last 4w",
+              "displayName": "Time-off Last 4w"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "TOIL - Management List MASTER - 15 10 - JS"
+                    }
+                  },
+                  "Property": "T-O4w0"
+                }
+              },
+              "queryRef": "TOIL - Management List MASTER - 15 10 - JS.T-O4w0",
+              "nativeQueryRef": "Time-off Next 4w",
+              "displayName": "Time-off Next 4w"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "TOIL - Management List MASTER - 15 10 - JS"
+                    }
+                  },
+                  "Property": "Date notified"
+                }
+              },
+              "queryRef": "TOIL - Management List MASTER - 15 10 - JS.Date notified",
+              "nativeQueryRef": "Date Notified",
+              "displayName": "Date Notified"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_users"
+                    }
+                  },
+                  "Property": "user_id"
+                }
+              },
+              "queryRef": "dim_users.user_id",
+              "nativeQueryRef": "User ID",
+              "displayName": "User ID"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "TOIL - Management List MASTER - 15 10 - JS"
+                  }
+                },
+                "Property": "Title"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "autoSizeColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Arial'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Arial'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "And": {
+                              "Left": {
+                                "Comparison": {
+                                  "ComparisonKind": 2,
+                                  "Left": {
+                                    "Measure": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Entity": "_measure"
+                                        }
+                                      },
+                                      "Property": "hours_wc"
+                                    }
+                                  },
+                                  "Right": {
+                                    "Literal": {
+                                      "Value": "50D"
+                                    }
+                                  }
+                                }
+                              },
+                              "Right": {
+                                "Comparison": {
+                                  "ComparisonKind": 3,
+                                  "Left": {
+                                    "Measure": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Entity": "_measure"
+                                        }
+                                      },
+                                      "Property": "hours_wc"
+                                    }
+                                  },
+                                  "Right": {
+                                    "Literal": {
+                                      "Value": "55D"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#EAEA6D'"
+                            }
+                          }
+                        },
+                        {
+                          "Condition": {
+                            "And": {
+                              "Left": {
+                                "Comparison": {
+                                  "ComparisonKind": 2,
+                                  "Left": {
+                                    "Measure": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Entity": "_measure"
+                                        }
+                                      },
+                                      "Property": "hours_wc"
+                                    }
+                                  },
+                                  "Right": {
+                                    "Literal": {
+                                      "Value": "55D"
+                                    }
+                                  }
+                                }
+                              },
+                              "Right": {
+                                "Comparison": {
+                                  "ComparisonKind": 3,
+                                  "Left": {
+                                    "Measure": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Entity": "_measure"
+                                        }
+                                      },
+                                      "Property": "hours_wc"
+                                    }
+                                  },
+                                  "Right": {
+                                    "Literal": {
+                                      "Value": "60D"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#E7C266'"
+                            }
+                          }
+                        },
+                        {
+                          "Condition": {
+                            "And": {
+                              "Left": {
+                                "Comparison": {
+                                  "ComparisonKind": 2,
+                                  "Left": {
+                                    "Measure": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Entity": "_measure"
+                                        }
+                                      },
+                                      "Property": "hours_wc"
+                                    }
+                                  },
+                                  "Right": {
+                                    "Literal": {
+                                      "Value": "60D"
+                                    }
+                                  }
+                                }
+                              },
+                              "Right": {
+                                "Comparison": {
+                                  "ComparisonKind": 3,
+                                  "Left": {
+                                    "Measure": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Entity": "_measure"
+                                        }
+                                      },
+                                      "Property": "hours_wc"
+                                    }
+                                  },
+                                  "Right": {
+                                    "Literal": {
+                                      "Value": "1000D"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#EB6A6A'"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "_measure.hours_worked"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "And": {
+                              "Left": {
+                                "Comparison": {
+                                  "ComparisonKind": 1,
+                                  "Left": {
+                                    "Measure": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Entity": "_measure"
+                                        }
+                                      },
+                                      "Property": "hours_weekend"
+                                    }
+                                  },
+                                  "Right": {
+                                    "Literal": {
+                                      "Value": "0D"
+                                    }
+                                  }
+                                }
+                              },
+                              "Right": {
+                                "Comparison": {
+                                  "ComparisonKind": 3,
+                                  "Left": {
+                                    "Measure": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Entity": "_measure"
+                                        }
+                                      },
+                                      "Property": "hours_weekend"
+                                    }
+                                  },
+                                  "Right": {
+                                    "Literal": {
+                                      "Value": "4D"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#E7C266'"
+                            }
+                          }
+                        },
+                        {
+                          "Condition": {
+                            "And": {
+                              "Left": {
+                                "Comparison": {
+                                  "ComparisonKind": 2,
+                                  "Left": {
+                                    "Measure": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Entity": "_measure"
+                                        }
+                                      },
+                                      "Property": "hours_weekend"
+                                    }
+                                  },
+                                  "Right": {
+                                    "Literal": {
+                                      "Value": "4D"
+                                    }
+                                  }
+                                }
+                              },
+                              "Right": {
+                                "Comparison": {
+                                  "ComparisonKind": 3,
+                                  "Left": {
+                                    "Measure": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Entity": "_measure"
+                                        }
+                                      },
+                                      "Property": "hours_weekend"
+                                    }
+                                  },
+                                  "Right": {
+                                    "Literal": {
+                                      "Value": "1000D"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#EB6A6A'"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "_measure.hours_weekend"
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "65.85708178166803D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "TOIL - Management List MASTER - 15 10 - JS.TOIL4w"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "67.85714285714286D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "TOIL - Management List MASTER - 15 10 - JS.TOIL4w0"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "75.99997594672199D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "TOIL - Management List MASTER - 15 10 - JS.T-O4w"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "75.57150266944493D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "TOIL - Management List MASTER - 15 10 - JS.T-O4w0"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "150.85708749652844D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "TOIL - Management List MASTER - 15 10 - JS.ProjectLeaderName"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "80.28569736413499D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "TOIL - Management List MASTER - 15 10 - JS.TOILApproved"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "187.00004500281267D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "TOIL - Management List MASTER - 15 10 - JS.TOILBooked"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "77.6860340054597D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "TOIL - Management List MASTER - 15 10 - JS.TOILRequired?"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "139.06642874742036D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "openair_toil.user_name"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "97D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "openair_toil.week_commencing"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "92.35671858385354D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "openair_toil.project_working_hours"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "64.25000943419445D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "openair_toil.flag_toil_last4w"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "70D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "openair_toil.flag_toil_next4w"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "67.25002565053708D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "openair_toil.flag_TO_last4w"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "73.25004564590256D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "openair_toil.flag_TO_next4w"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "150.23378562115266D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "openair_toil.toil_reason"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "79.49999326817928D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "openair_toil.toil_required"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "124.34844125178932D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "openair_toil.toil_approver_name"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "70.7015163497305D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_measure.hours_worked"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "69.9104422837042D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_measure.hours_weekend"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "397.4990328338744D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "openair_toil.main_project_name"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "142.7313687020661D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "TOIL - Management List MASTER - 15 10 - JS.ReasonforTOIL"
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "1L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "openair_toil.project_working_hours"
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'TOIL requirements over the last 4-weeks'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Arial'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "5D"
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "preset": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "f33d08bdadcf918da19c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "openair_toil"
+              }
+            },
+            "Property": "toil_required"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "o",
+              "Entity": "openair_toil",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "o"
+                          }
+                        },
+                        "Property": "toil_required"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Yes'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      },
+      {
+        "name": "4cb163b65a3ed5494b46",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "TOIL - Management List MASTER - 15 10 - JS"
+              }
+            },
+            "Property": "MainProjectName"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "t",
+              "Entity": "TOIL - Management List MASTER - 15 10 - JS",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "t"
+                              }
+                            },
+                            "Property": "MainProjectName"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'DE - Sales'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'FR - Sales'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'UK - Administrative (TIMESHEETS ONLY)'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'UK - IT'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'UK - Property'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'UK - Sales'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'US - P&ST'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'US - Sales'"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

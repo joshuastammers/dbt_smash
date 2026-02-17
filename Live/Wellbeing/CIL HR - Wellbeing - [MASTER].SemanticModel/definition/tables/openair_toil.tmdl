@@ -1,0 +1,385 @@
+table openair_toil
+	lineageTag: b4852799-186d-49fa-90d7-de7913daa37c
+
+	column user_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 1f374541-cd80-4d77-8d6f-104a640053eb
+		summarizeBy: none
+		sourceColumn: user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_name
+		dataType: string
+		lineageTag: 7af5a759-4232-43ca-864b-4c2dd465d712
+		summarizeBy: none
+		sourceColumn: user_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column week_commencing
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 92e640bf-ffb8-4670-845b-d8420f2b777a
+		summarizeBy: none
+		sourceColumn: week_commencing
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	column working_hours_wk0
+		dataType: double
+		lineageTag: 5ebbdb9e-a9b4-4aeb-9385-a66a8a1f7de3
+		summarizeBy: sum
+		sourceColumn: working_hours_wk0
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column working_hours_4wa
+		dataType: double
+		lineageTag: 163e087b-46ce-4f52-8488-c47ed4292660
+		summarizeBy: sum
+		sourceColumn: working_hours_4wa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column main_project_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 1ded5fb9-05a5-418c-91f6-e06ac34ee7dc
+		summarizeBy: sum
+		sourceColumn: main_project_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column main_project_name
+		dataType: string
+		lineageTag: 555868ac-7c8b-41bc-a3de-dcf9ded4a4b0
+		summarizeBy: none
+		sourceColumn: main_project_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_working_hours
+		dataType: double
+		formatString: 0.0
+		lineageTag: 0165b02a-900c-4a4b-b87d-d4ae8ccc650b
+		summarizeBy: sum
+		sourceColumn: project_working_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekend_hours
+		dataType: double
+		lineageTag: 78e103fa-ca45-453d-9b8f-0c71cd8b34a4
+		summarizeBy: sum
+		sourceColumn: weekend_hours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column toil_approver_id
+		dataType: int64
+		formatString: 0
+		lineageTag: b2385b36-f9ed-4f72-b055-4904cdffc0b7
+		summarizeBy: sum
+		sourceColumn: toil_approver_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column toil_approver_name
+		dataType: string
+		lineageTag: fd885a09-08a2-4f0d-9c8c-832c01d6644c
+		summarizeBy: none
+		sourceColumn: toil_approver_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column toil_required
+		dataType: string
+		lineageTag: 8c89b5ff-f7e5-4240-a6b7-7aca1872f868
+		summarizeBy: none
+		sourceColumn: toil_required
+
+		annotation SummarizationSetBy = Automatic
+
+	column toil_reason
+		dataType: string
+		lineageTag: 17f76dbe-4ad9-4848-915e-fae0873c3d37
+		summarizeBy: none
+		sourceColumn: toil_reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column Yes/No = IF('openair_toil'[toil_required] = 1, "Yes", "No")
+		lineageTag: 7baef5da-7c28-4a8a-a383-4cf0c54803a5
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column
+		type: calculated
+		lineageTag: ef321e7c-a36e-4a15-8fde-f0e49f01361c
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Column 2'
+		type: calculated
+		lineageTag: 2726d452-4b7f-42dd-878c-658b4a62df5c
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":null}
+
+		annotation 277cc1b9-af89-4597-8e15-cacc25c0886b = To use special characters in a column name, enclose the entire name in brackets ( [] ) and add a ] to any closing brackets in the name.
+
+	column working_hours_wk1
+		dataType: double
+		lineageTag: da3ed218-1270-450c-8cb2-0df95bdc1a7e
+		summarizeBy: sum
+		sourceColumn: working_hours_wk1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column working_hours_wk2
+		dataType: double
+		lineageTag: 338bba96-46c5-4b8a-a6eb-ab4af64676cf
+		summarizeBy: sum
+		sourceColumn: working_hours_wk2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column working_hours_wk3
+		dataType: double
+		lineageTag: a3ec370c-2655-46d4-9b83-ade87564c441
+		summarizeBy: sum
+		sourceColumn: working_hours_wk3
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column flag_toil_last4w
+		dataType: string
+		lineageTag: fe13603a-3210-4a46-ad7b-173e8e229d80
+		summarizeBy: none
+		sourceColumn: flag_toil_last4w
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_toil_next4w
+		dataType: string
+		lineageTag: 24221d41-588c-4558-99e7-ad2d7028f4f5
+		summarizeBy: none
+		sourceColumn: flag_toil_next4w
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_TO_last4w
+		dataType: string
+		lineageTag: 36dc0714-160c-40a9-83fd-df9cfb7c678b
+		summarizeBy: none
+		sourceColumn: flag_TO_last4w
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_TO_next4w
+		dataType: string
+		lineageTag: b937dcea-83e1-49db-861b-d441e1d9213f
+		summarizeBy: none
+		sourceColumn: flag_TO_next4w
+
+		annotation SummarizationSetBy = Automatic
+
+	column week_last_toil
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: af510c41-acf7-434a-be50-912d93503535
+		summarizeBy: none
+		sourceColumn: week_last_toil
+
+		variation Variation
+			isDefault
+			relationship: de37965c-3a65-4206-baad-98a3ab2b3765
+			defaultHierarchy: LocalDateTable_b9469569-f7dd-4a03-b183-a547d7a5b4ed.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column week_next_toil
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ff4ecc81-0ff7-4464-ae7d-3ec79cbe9ab4
+		summarizeBy: none
+		sourceColumn: week_next_toil
+
+		variation Variation
+			isDefault
+			relationship: 36cedc6b-e96d-4140-aa24-6c55407da957
+			defaultHierarchy: LocalDateTable_aab56fe6-6103-490c-8744-b3fac2e784d8.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column week_last_TO
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c73f4433-f71f-4047-bb70-b2dca7001dbb
+		summarizeBy: none
+		sourceColumn: week_last_TO
+
+		variation Variation
+			isDefault
+			relationship: 7b1e1d44-c07a-4b7e-b4be-fe7a1f5bfdd7
+			defaultHierarchy: LocalDateTable_f0aa8d39-c76a-4370-94d1-76ffcf722db1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column week_next_TO
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 189aa48c-5546-409a-a1d7-41d860376fdd
+		summarizeBy: none
+		sourceColumn: week_next_TO
+
+		variation Variation
+			isDefault
+			relationship: b3fb012f-bfd3-4667-ae68-20b93d6df004
+			defaultHierarchy: LocalDateTable_02785d42-cdfb-46b1-a016-25799ffb07b0.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_week
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0cd1fb0e-b2ff-4259-87da-5461eb50cd7e
+		summarizeBy: none
+		sourceColumn: current_week
+
+		variation Variation
+			isDefault
+			relationship: 181db263-c004-412b-8a05-f4d6981d7cdf
+			defaultHierarchy: LocalDateTable_366a488e-0e95-4a44-947c-334a93571d2b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column working_hours_12wa
+		dataType: double
+		lineageTag: dec07101-5b8e-42c5-99b0-479fe66fcc66
+		summarizeBy: sum
+		sourceColumn: working_hours_12wa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column working_hours_wk4
+		dataType: double
+		lineageTag: 6bd3bcff-6f79-42cc-b066-cbf5d57d1f94
+		summarizeBy: sum
+		sourceColumn: working_hours_wk4
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'TOIL last 4w' =
+			
+			
+			IF(openair_toil[flag_toil_last4w] = "Yes", "Yes", "No")
+		lineageTag: 5341db9d-05ea-43ef-bdf3-d86088591310
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'TOIL next 4w' =
+			
+			
+			IF(openair_toil[flag_toil_next4w] = "Yes", "Yes", "No")
+		lineageTag: b93a0fd8-466d-4e1c-a58e-fb9782546f35
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Time-off next 4w' =
+			
+			
+			IF(openair_toil[flag_TO_next4w] = "Yes", "Yes", "No")
+		lineageTag: a5c694e1-6b14-4b5a-a035-87c17505d6c8
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'user_name Hierarchy'
+		lineageTag: 60b1eb4c-a8ab-4379-9dbe-ab534b6aa743
+
+		level user_name
+			lineageTag: 973dcc4b-4deb-4176-87ba-552771ade705
+			column: user_name
+
+		level project_working_hours
+			lineageTag: 7b3be6c4-2755-435b-abeb-2aa90bf9b750
+			column: project_working_hours
+
+		level main_project_name
+			lineageTag: ba02ca2a-0bee-45dd-9682-3164519edc2a
+			column: main_project_name
+
+		level weekend_hours
+			lineageTag: 425be236-efbd-4178-8172-f62474a4febf
+			column: weekend_hours
+
+		level working_hours_4wa
+			lineageTag: ab6c4a80-e6bc-44e4-8cf1-ebf8d21e302c
+			column: working_hours_4wa
+
+		level working_hours_wk0
+			lineageTag: 9605addc-679b-43bd-8fe4-5afc010ccaad
+			column: working_hours_wk0
+
+		level week_commencing
+			lineageTag: 8e5dc680-1bfd-4ecf-9e80-92c2ffcb8748
+			column: week_commencing
+
+	partition openair_toil = m
+		mode: import
+		source =
+				let
+				    Source = Databricks.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "/sql/1.0/warehouses/27755f6f39df3c3f", [Catalog=null, Database=null, EnableAutomaticProxyDiscovery=null, Implementation=null]),
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_visualisation_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_visualisation",Kind="Schema"]}[Data],
+				    openair_toil_View = production_visualisation_Schema{[Name="openair_toil",Kind="View"]}[Data],
+				    #"Reordered Columns" = Table.ReorderColumns(openair_toil_View,{"user_id", "user_name", "main_project_id", "main_project_name", "week_commencing", "working_hours_wk0", "project_working_hours", "working_hours_4wa", "weekend_hours", "toil_required", "toil_approver_id", "toil_approver_name", "toil_reason"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Reordered Columns",{{"week_commencing", type date}, {"week_last_toil", type date}, {"week_last_TO", type date}, {"current_week", type date}}),
+				    #"Rounded Off" = Table.TransformColumns(#"Changed Type",{{"working_hours_wk2", each Number.Round(_, 1), type number}}),
+				    #"Rounded Off1" = Table.TransformColumns(#"Rounded Off",{{"working_hours_wk3", each Number.Round(_, 1), type number}}),
+				    #"Rounded Off2" = Table.TransformColumns(#"Rounded Off1",{{"working_hours_wk1", each Number.Round(_, 1), type number}}),
+				    #"Rounded Off3" = Table.TransformColumns(#"Rounded Off2",{{"working_hours_wk0", each Number.Round(_, 1), type number}}),
+				    #"Rounded Off4" = Table.TransformColumns(#"Rounded Off3",{{"project_working_hours", each Number.Round(_, 1), type number}}),
+				    #"Rounded Off5" = Table.TransformColumns(#"Rounded Off4",{{"working_hours_4wa", each Number.Round(_, 1), type number}})
+				in
+				    #"Rounded Off5"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

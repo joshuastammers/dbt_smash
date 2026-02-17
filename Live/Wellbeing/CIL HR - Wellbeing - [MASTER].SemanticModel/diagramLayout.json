@@ -1,0 +1,229 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 1373.4285023869531,
+            "y": 0
+          },
+          "nodeIndex": "openair_toil",
+          "nodeLineageTag": "b4852799-186d-49fa-90d7-de7913daa37c",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 14
+        },
+        {
+          "location": {
+            "x": 1064.0356452440963,
+            "y": 184.46270074318517
+          },
+          "nodeIndex": "openair_timesheets_weekly",
+          "nodeLineageTag": "bcebf2b2-d05c-4f39-be5f-fc659cb4d8f9",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 104.39810765209268
+          },
+          "nodeIndex": "dim_capability_lookup",
+          "nodeLineageTag": "06659dd1-d188-4e01-a2de-ce714511b725",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 284.8808833393341,
+            "y": 784.52224998402414
+          },
+          "nodeIndex": "dim_date",
+          "nodeLineageTag": "5e993238-34fa-4c76-811d-929c9c61b03e",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 306.67174139442238,
+            "y": 507.5
+          },
+          "nodeIndex": "dim_grades",
+          "nodeLineageTag": "f05f8cfa-9677-45c9-a5b7-4fb98f552f70",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 535.00000000000011
+          },
+          "nodeIndex": "dim_projects",
+          "nodeLineageTag": "3551e61e-8c47-45b1-99e7-4ab88e0c1b32",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 546.71421667266736,
+            "y": 0
+          },
+          "nodeIndex": "dim_users",
+          "nodeLineageTag": "3152091f-0a5b-4f71-b4d1-efdd4c9aa209",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 1040.9517315737826,
+            "y": 867.82118295765918
+          },
+          "nodeIndex": "fact_timesheets",
+          "nodeLineageTag": "0b398a13-0099-4614-80e2-a449c516eee2",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 1696.5475500060006,
+            "y": 227.34444560968791
+          },
+          "nodeIndex": "Query1",
+          "nodeLineageTag": "35ea1560-c501-4ad0-8556-72590288c238",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 1043.0475500060006,
+            "y": 544.34444560968791
+          },
+          "nodeIndex": "TOIL - Management List MASTER - 15 10 - JS",
+          "nodeLineageTag": "d128645e-5ee0-43cc-849b-0b6302bce180",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 16
+        },
+        {
+          "location": {
+            "x": 1621.0475500060002,
+            "y": 372.84444560968791
+          },
+          "nodeIndex": "CY vs PY",
+          "nodeLineageTag": "5a981784-c716-4fad-ba3c-cfc036e8c36e",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 15
+        },
+        {
+          "location": {
+            "x": 1650.0475500060002,
+            "y": 537.84444560968791
+          },
+          "nodeIndex": "Time Intelligence",
+          "nodeLineageTag": "e3413149-880d-416f-82a8-acaaeb2825e2",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 1746.5475500060002,
+            "y": 77.344445609687909
+          },
+          "nodeIndex": "_measure",
+          "nodeLineageTag": "0476adec-7bee-4b78-924f-1efac213b752",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 1679.0475500060002,
+            "y": 702.84444560968791
+          },
+          "nodeIndex": "Time Intelligence_%",
+          "nodeLineageTag": "40a0f568-e580-427d-ab7c-5cb2eeb42b71",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 2030.5475500060002,
+            "y": 483.91059147882959
+          },
+          "nodeIndex": "Person_slicer",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 2314.547550006,
+            "y": 531.91059147882959
+          },
+          "nodeIndex": "_refresh",
+          "nodeLineageTag": "8f634524-5e9e-4fcf-a07c-c634839d7346",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 2
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 55.687227426389875,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

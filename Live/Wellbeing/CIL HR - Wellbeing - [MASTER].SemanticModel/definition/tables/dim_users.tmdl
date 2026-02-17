@@ -1,0 +1,161 @@
+table dim_users
+	lineageTag: 3152091f-0a5b-4f71-b4d1-efdd4c9aa209
+
+	column user_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 8fb6f0fb-e203-4bc4-b906-d04aa7c4d9bc
+		summarizeBy: none
+		sourceColumn: user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: 946fecf7-34a8-4dcb-93fd-02d661e64a0b
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_location
+		dataType: string
+		lineageTag: c8f0eb8a-70c5-438b-b0c9-02d342cb1fbf
+		summarizeBy: none
+		sourceColumn: user_location
+
+		annotation SummarizationSetBy = Automatic
+
+	column currency
+		dataType: string
+		lineageTag: 3d16400e-7a51-4e59-8059-93e251531234
+		summarizeBy: none
+		sourceColumn: currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost_center
+		dataType: string
+		lineageTag: 7959930c-277e-415e-a6c0-f17e7a973a3e
+		summarizeBy: none
+		sourceColumn: cost_center
+
+		annotation SummarizationSetBy = Automatic
+
+	column job_code_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 15b34426-c39b-45d9-aaf6-588d4052e353
+		summarizeBy: none
+		sourceColumn: job_code_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column job_code_current
+		dataType: string
+		lineageTag: cd5772a7-45d0-4e78-a0a9-d15250a2c8ef
+		summarizeBy: none
+		sourceColumn: job_code_current
+
+		annotation SummarizationSetBy = Automatic
+
+	column career_manager
+		dataType: string
+		lineageTag: abe0b15f-9946-4e09-80d5-3be21b778fa3
+		summarizeBy: none
+		sourceColumn: career_manager
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_start_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 684d5ad9-0700-4c5a-ac58-df4eb4f47fb4
+		summarizeBy: none
+		sourceColumn: employee_start_date
+
+		variation Variation
+			isDefault
+			relationship: ed7da726-4e63-4166-b465-0fde2769a505
+			defaultHierarchy: LocalDateTable_413ce70f-c777-4d9e-b0c8-62efb3f51e9b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column freelancer_level
+		dataType: string
+		lineageTag: f40e3225-e7e8-428f-b4b9-8b995bdadcc9
+		summarizeBy: none
+		sourceColumn: freelancer_level
+
+		annotation SummarizationSetBy = Automatic
+
+	column fusioo_user_id
+		dataType: string
+		lineageTag: a5c4780e-c5d0-43bb-9a56-d9155ae26442
+		summarizeBy: none
+		sourceColumn: fusioo_user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column active
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3869b675-f49c-45a1-9fa6-049b45be5128
+		summarizeBy: none
+		sourceColumn: active
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 64a5b29d-8026-420b-916b-3f5b749cbbb9
+		summarizeBy: none
+		sourceColumn: created_date
+
+		variation Variation
+			isDefault
+			relationship: 62e8fbf9-ef58-4e87-b848-e606b7660717
+			defaultHierarchy: LocalDateTable_df5bff9d-a05b-42c3-a813-89cc2cc5ab59.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column updated_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0e538956-6c07-40eb-ae38-2973a3243a3a
+		summarizeBy: none
+		sourceColumn: updated_date
+
+		variation Variation
+			isDefault
+			relationship: 670236f5-f4f3-4673-a3cf-52c17f5af590
+			defaultHierarchy: LocalDateTable_73b71bcc-12cd-4a7e-b98c-520740d315dc.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column email
+		dataType: string
+		lineageTag: b514bbcd-7d65-4ef5-9052-6b1366ba7fd4
+		summarizeBy: none
+		sourceColumn: email
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_users = m
+		mode: import
+		source =
+				let
+				    Source = Databricks.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "/sql/1.0/warehouses/27755f6f39df3c3f", [Catalog=null, Database=null, EnableAutomaticProxyDiscovery=null, Implementation=null]),
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    dim_users_View = production_modelled_Schema{[Name="dim_users",Kind="View"]}[Data]
+				in
+				    dim_users_View
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,156 @@
+relationship 0ee1d6e2-1254-4f87-894c-4005c97d4d0a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.date
+	toColumn: LocalDateTable_1d468fc1-55fd-4b56-afbe-fb06167c46b0.Date
+
+relationship 934a8d6a-16d5-4e46-8d2f-37d6f10287fe
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.week_end_date
+	toColumn: LocalDateTable_dc69e3b6-e7ca-4aac-b5c2-555e453e423a.Date
+
+relationship 10a265be-fec2-4595-8fc5-b320fffa1e2b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.date_week_commencing
+	toColumn: LocalDateTable_39b116bd-4640-4ea2-90c4-6b38cc0890b9.Date
+
+relationship 6dc30144-4346-466e-8382-36f881b6aeb7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.date_month
+	toColumn: LocalDateTable_a59dacdc-ec8c-48f8-86a8-128d424fa238.Date
+
+relationship ed7da726-4e63-4166-b465-0fde2769a505
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_users.employee_start_date
+	toColumn: LocalDateTable_413ce70f-c777-4d9e-b0c8-62efb3f51e9b.Date
+
+relationship 62e8fbf9-ef58-4e87-b848-e606b7660717
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_users.created_date
+	toColumn: LocalDateTable_df5bff9d-a05b-42c3-a813-89cc2cc5ab59.Date
+
+relationship 670236f5-f4f3-4673-a3cf-52c17f5af590
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_users.updated_date
+	toColumn: LocalDateTable_73b71bcc-12cd-4a7e-b98c-520740d315dc.Date
+
+relationship 016eb04b-dcae-4c1e-858b-2b279ce4b303
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_projects.live_date
+	toColumn: LocalDateTable_151791bc-532f-4cb9-aab4-042e61fe26cd.Date
+
+relationship bcceab52-e863-49c5-9787-91ef58fa35db
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_projects.backstop_date
+	toColumn: LocalDateTable_893d5dc9-e376-4122-8e65-e66b4281ec19.Date
+
+relationship 9f24146a-f1c1-4df8-bb82-ecaa1e1ca2cb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_projects.created_date
+	toColumn: LocalDateTable_fef56edc-6170-4695-8776-17fbb3f1fbbf.Date
+
+relationship f64fb1ab-5fe9-4f2e-a896-d3b08a5d5345
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_projects.updated_date
+	toColumn: LocalDateTable_e52abfdd-1518-4dad-a819-a20c06e311ce.Date
+
+relationship 5f964035-78e5-4ccf-a040-8a5df8804136
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_timesheets.date_stamp
+	toColumn: LocalDateTable_04bbf1b5-0610-4095-a4ba-89bfc0f026fa.Date
+
+relationship AutoDetected_d1989526-7fed-4f30-a513-b08dc02ad566
+	fromColumn: openair_toil.user_id
+	toColumn: dim_users.user_id
+
+relationship AutoDetected_1edb79f7-0101-4cb3-9dda-620e57f613b1
+	fromColumn: openair_timesheets_weekly.user_id
+	toColumn: dim_users.user_id
+
+relationship AutoDetected_ed9b4b5d-147c-43c7-8a0e-81f0f738e96f
+	fromColumn: fact_timesheets.user_id
+	toColumn: dim_users.user_id
+
+relationship AutoDetected_844af3b4-2711-40c1-8973-2945ad7716e4
+	fromColumn: openair_timesheets_weekly.project_name
+	toColumn: dim_projects.project_name
+
+relationship AutoDetected_883b2f72-9316-43e6-aff0-5cacb343f731
+	fromColumn: dim_capability_lookup.project_id
+	toColumn: dim_projects.project_id
+
+relationship AutoDetected_eb748bbc-2068-44d5-a896-10e9812a2b25
+	fromColumn: fact_timesheets.project_id
+	toColumn: dim_projects.project_id
+
+relationship AutoDetected_3e4a8ae7-62e0-4762-a7e3-6306c7d66ecb
+	fromColumn: dim_users.job_code_id
+	toColumn: dim_grades.job_code_id
+
+relationship f3597f15-6582-f8aa-f6a4-d4c7c9fad2ec
+	fromColumn: openair_timesheets_weekly.week_commencing
+	toColumn: dim_date.date
+
+relationship 2119b2c9-f4c1-a066-f7a0-d4f2a23dd245
+	fromColumn: openair_toil.week_commencing
+	toColumn: dim_date.date
+
+relationship de37965c-3a65-4206-baad-98a3ab2b3765
+	joinOnDateBehavior: datePartOnly
+	fromColumn: openair_toil.week_last_toil
+	toColumn: LocalDateTable_b9469569-f7dd-4a03-b183-a547d7a5b4ed.Date
+
+relationship 36cedc6b-e96d-4140-aa24-6c55407da957
+	joinOnDateBehavior: datePartOnly
+	fromColumn: openair_toil.week_next_toil
+	toColumn: LocalDateTable_aab56fe6-6103-490c-8744-b3fac2e784d8.Date
+
+relationship 7b1e1d44-c07a-4b7e-b4be-fe7a1f5bfdd7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: openair_toil.week_last_TO
+	toColumn: LocalDateTable_f0aa8d39-c76a-4370-94d1-76ffcf722db1.Date
+
+relationship b3fb012f-bfd3-4667-ae68-20b93d6df004
+	joinOnDateBehavior: datePartOnly
+	fromColumn: openair_toil.week_next_TO
+	toColumn: LocalDateTable_02785d42-cdfb-46b1-a016-25799ffb07b0.Date
+
+relationship 181db263-c004-412b-8a05-f4d6981d7cdf
+	joinOnDateBehavior: datePartOnly
+	fromColumn: openair_toil.current_week
+	toColumn: LocalDateTable_366a488e-0e95-4a44-947c-334a93571d2b.Date
+
+relationship 87b5b955-f320-46a1-bdf8-7d4fc66111fb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'TOIL - Management List MASTER - 15 10 - JS'.WeekCommencing
+	toColumn: LocalDateTable_35ad9b98-429f-4ba7-9227-02cc113c75ef.Date
+
+relationship 23fa14eb-2102-902c-96a0-5b030b5bbfae
+	fromColumn: 'TOIL - Management List MASTER - 15 10 - JS'.UserID
+	toColumn: dim_users.user_id
+
+relationship 6cf42e18-1229-dc55-8d88-4a702b31afdd
+	isActive: false
+	fromColumn: 'TOIL - Management List MASTER - 15 10 - JS'.'Week Commencing'
+	toColumn: dim_date.date
+
+relationship 30b4df02-7af9-88d5-0140-430d8ae302a2
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: openair_timesheets_weekly.user_id
+	toColumn: openair_toil.user_id
+
+relationship aba309d8-b438-4c3c-b9ab-8852a39f20e2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: _refresh.last_refresh
+	toColumn: LocalDateTable_0d071096-59fd-4a86-be19-6abd61f31ffa.Date
+
+relationship b83855c3-9e35-489d-be5d-a1de28fc5bd7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_projects.start_date
+	toColumn: LocalDateTable_8de775db-1e3d-432f-a827-4eef7ce34246.Date
+
+relationship 61ef865b-d708-4b1c-b367-34f8a689236d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'TOIL - Management List MASTER - 15 10 - JS'.'Date notified'
+	toColumn: LocalDateTable_e04364b2-4b8e-4469-b333-084c9a77dda3.Date
+

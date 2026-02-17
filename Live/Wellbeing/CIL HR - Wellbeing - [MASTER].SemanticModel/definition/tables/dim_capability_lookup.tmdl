@@ -1,0 +1,35 @@
+table dim_capability_lookup
+	lineageTag: 06659dd1-d188-4e01-a2de-ce714511b725
+
+	column project_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 433f29dd-b693-42b3-92c8-cebc4e972662
+		summarizeBy: none
+		sourceColumn: project_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column capability
+		dataType: string
+		lineageTag: 4e8f9c6c-84bc-4c43-bd71-edc281b86b27
+		summarizeBy: none
+		sourceColumn: capability
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_capability_lookup = m
+		mode: import
+		source =
+				let
+				    Source = Databricks.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "/sql/1.0/warehouses/27755f6f39df3c3f", [Catalog=null, Database=null, EnableAutomaticProxyDiscovery=null, Implementation=null]),
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    dim_capability_lookup_View = production_modelled_Schema{[Name="dim_capability_lookup",Kind="View"]}[Data]
+				in
+				    dim_capability_lookup_View
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
