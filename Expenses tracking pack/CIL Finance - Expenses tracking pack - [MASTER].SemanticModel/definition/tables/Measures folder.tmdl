@@ -1,0 +1,655 @@
+table 'Measures folder'
+	lineageTag: 341866cc-7a40-47b8-8f12-6c207ba5c7d3
+
+	measure Budget = CALCULATE(SUM(fact_project_budgets[budget_gbp]), USERELATIONSHIP(dim_date[Date], dim_projects[live_date]))*SELECTEDVALUE(Currencies[conversion_rate])
+		formatString: #,0
+		displayFolder: Fees
+		lineageTag: 730e436e-98f2-4724-a6df-0d013fb7b9a7
+
+		changedProperty = IsHidden
+
+	measure 'Final fee' = SUM(dim_projects[fee_final_gbp])*SELECTEDVALUE(Currencies[conversion_rate])
+		formatString: 0
+		displayFolder: Fees
+		lineageTag: 1867c5de-d9ab-4996-9365-2f2db43847cc
+
+		changedProperty = IsHidden
+
+	measure Revenue = CALCULATE(SUM(fact_revenue[allocation_gbp]), fact_revenue[record_type] = "Committed", USERELATIONSHIP(dim_date[Date], fact_revenue[date_stamp]))*SELECTEDVALUE(Currencies[conversion_rate])
+		formatString: #,0
+		displayFolder: Revenue
+		lineageTag: 9bde657b-6323-410b-b7ee-e921fbbfac96
+
+		changedProperty = IsHidden
+
+	measure 'Spend to date' = CALCULATE(SUM(fact_timesheets[outcome_gbp]), fact_timesheets[booking_type] = "Timesheet")*SELECTEDVALUE(Currencies[conversion_rate])
+		formatString: #,0
+		displayFolder: Timesheet
+		lineageTag: e0f87fcc-312b-4c91-a51e-eed82a8eb215
+
+		changedProperty = IsHidden
+
+	measure 'Hours to date' = CALCULATE(SUM(fact_timesheets[total_hours]), fact_timesheets[booking_type] = "Timesheet")
+		displayFolder: Timesheet
+		lineageTag: e5587cef-eb53-461f-ab59-3afebee3bdc5
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Hours to go' = CALCULATE(SUM(fact_timesheets[total_hours]), fact_timesheets[booking_type] <> "Timesheet")
+		displayFolder: Timesheet
+		lineageTag: 75100ba3-e26e-4276-96f5-41dd8118e65f
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Spend to go' = CALCULATE(DIVIDE(SUM(fact_timesheets[outcome_gbp]), 7.5, BLANK()), fact_timesheets[booking_type] <> "Timesheet") * 10 *SELECTEDVALUE(Currencies[conversion_rate])
+		formatString: #,0
+		displayFolder: Timesheet
+		lineageTag: 0a45f904-8d4d-42b4-95ec-eeada68de12e
+
+		changedProperty = IsHidden
+
+	measure 'Projected outcome' = COALESCE([Spend to date] + [Spend to go], 0)
+		formatString: #,0
+		displayFolder: KPIs
+		lineageTag: 4e32e31c-b640-4440-8ff2-95ec45823448
+
+		changedProperty = IsHidden
+
+	measure Recovery = DIVIDE([Final fee], [Projected outcome], BLANK())
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: KPIs
+		lineageTag: ba1e0dd5-ba8e-4e27-b1a5-d08ed71c0518
+
+		changedProperty = IsHidden
+
+	measure 'Market study' = CALCULATE(SUM(fact_invoice_line_items[total_gbp]), fact_invoice_line_items[category_name] = "Market study", fact_invoice_line_items[approval_status] = "Approved", USERELATIONSHIP(dim_date[Date], fact_invoice[date_stamp]))*SELECTEDVALUE(Currencies[conversion_rate])
+		formatString: 0
+		displayFolder: Invoices
+		lineageTag: 3ecc8a5f-ad7d-4562-8b97-12f36e633419
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Bidder meetings' = CALCULATE(SUM(fact_invoice_line_items[total_gbp]), fact_invoice_line_items[category_name] = "Bidder meetings", fact_invoice_line_items[approval_status] = "Approved", USERELATIONSHIP(dim_date[Date], fact_invoice[date_stamp]))*SELECTEDVALUE(Currencies[conversion_rate])
+		formatString: "£"#,0.00;-"£"#,0.00;"£"#,0.00
+		displayFolder: Invoices
+		lineageTag: f9eb7278-134e-4bd7-89b9-cf2485cb7602
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure Uplift = CALCULATE(SUM(fact_invoice_line_items[total_gbp]), fact_invoice_line_items[category_name] = "Uplift", fact_invoice_line_items[approval_status] = "Approved", USERELATIONSHIP(dim_date[Date], fact_invoice[date_stamp]))*SELECTEDVALUE(Currencies[conversion_rate])*SELECTEDVALUE(Currencies[conversion_rate])
+		formatString: "£"#,0.00;-"£"#,0.00;"£"#,0.00
+		displayFolder: Invoices
+		lineageTag: 3025240c-af78-48c9-b775-48071e6a0a7f
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure Other = CALCULATE(SUM(fact_invoice_line_items[total_gbp]), fact_invoice_line_items[category_name] = "Other", fact_invoice_line_items[approval_status] = "Approved", USERELATIONSHIP(dim_date[Date], fact_invoice[date_stamp]))*SELECTEDVALUE(Currencies[conversion_rate])
+		formatString: "£"#,0.00;-"£"#,0.00;"£"#,0.00
+		displayFolder: Invoices
+		lineageTag: 8026ace9-599d-489b-9f65-8e29d86644c3
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure Expenses = CALCULATE(SUM(fact_invoice_line_items[total_gbp]), fact_invoice_line_items[category_name] = "Expenses", USERELATIONSHIP(dim_date[Date], fact_invoice[date_stamp]))*SELECTEDVALUE(Currencies[conversion_rate])
+		formatString: 0.00
+		displayFolder: Invoices
+		lineageTag: 9d82e816-cb19-437d-8163-7ccfaf622b8b
+
+		changedProperty = IsHidden
+
+	measure Outlays = CALCULATE(SUM(fact_invoice_line_items[total_gbp]), fact_invoice_line_items[category_name] = "Outlays", USERELATIONSHIP(dim_date[Date], fact_invoice[date_stamp]))*SELECTEDVALUE(Currencies[conversion_rate])
+		formatString: "£"#,0.00;-"£"#,0.00;"£"#,0.00
+		displayFolder: Invoices
+		lineageTag: f83558f8-a4b5-4f1c-b4f3-6557bcc28b2a
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure Invoiced = [Market study] + [Bidder meetings] + [Uplift] + [Other]
+		formatString: #,0
+		displayFolder: Invoices
+		lineageTag: ca943f64-6965-4784-a377-4ae858a6b745
+
+		changedProperty = IsHidden
+
+	measure 'WIP *' = [Revenue Booked *] - [Invoiced]
+		formatString: #,0
+		displayFolder: WIP
+		lineageTag: 17906e9e-e008-49e1-916e-2ffb4cec61c2
+
+		changedProperty = IsHidden
+
+	measure 'Recovery YTD (previous month)' =
+			
+			CALCULATE(
+			    [Recovery],
+			    DATESYTD(dim_date[Date], "6/30"),
+			    dim_date[Date] <= EOMONTH(TODAY(), -1)
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: KPIs
+		lineageTag: c08b103f-b629-4bd5-9fc0-0e4969917450
+
+		changedProperty = IsHidden
+
+	measure 'Revenue Booked (previous month)' =
+			
+			CALCULATE(
+			    [Revenue],
+			    DATESYTD(dim_date[Date], "6/30"),
+			    dim_date[Date] <= EOMONTH(TODAY(), -1)
+			)
+		formatString: "£"#,0.00;-"£"#,0.00;"£"#,0.00
+		displayFolder: KPIs
+		lineageTag: 6288c975-4134-41e1-8567-786493a846e6
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure 'Revenue PY' = CALCULATE([Revenue], SAMEPERIODLASTYEAR(dim_date[Date]))
+		formatString: "£"#,0.00;-"£"#,0.00;"£"#,0.00
+		displayFolder: Revenue
+		lineageTag: cf173549-80f4-4e3a-9503-e6c189d37382
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure 'Min fee' = CALCULATE(SUM(dim_projects[fee_minimum_gbp]), USERELATIONSHIP(dim_date[Date], dim_projects[live_date]))*SELECTEDVALUE(Currencies[conversion_rate])
+		formatString: #,0
+		displayFolder: Fees
+		lineageTag: bcd40a77-2ceb-4a4d-8df4-aebab0b61b59
+
+	measure 'Number of orders' = CALCULATE(DISTINCTCOUNT(dim_projects[project_id]), USERELATIONSHIP(dim_date[Date], dim_projects[live_date]))
+		formatString: 0
+		displayFolder: Orders
+		lineageTag: 3d3e1aa5-3afa-4de3-bb9d-733ce04ad411
+
+	measure 'Min fee - small client' = CALCULATE([Min fee], dim_projects[client_target_size_category] = "Small")
+		displayFolder: Fees
+		lineageTag: 8bb5517f-2bae-447d-9eab-390fbedf983d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Min fee - large client' = CALCULATE([Min fee], dim_projects[client_target_size_category] = "Large")
+		displayFolder: Fees
+		lineageTag: 7038a1a3-1c13-4bf8-bf19-4148e6127aa9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Min fee - not specified client size' = CALCULATE([Min fee], dim_projects[client_target_size_category] = "Not specified")
+		displayFolder: Fees
+		lineageTag: 98ef6978-d833-4317-9444-004fca0db8fd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Min fee % - client target size' = DIVIDE([Min fee], [Min fee - small client] + [Min fee - large client] + [Min fee - not specified client size], BLANK())
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Fees
+		lineageTag: c279d16b-f163-4d2e-8db9-bfcac4104b2d
+
+	measure 'Allocation %' = AVERAGEX(fact_revenue, AVERAGE(fact_revenue[allocation_pct]))
+		formatString: 0%;-0%;0%
+		displayFolder: Revenue
+		lineageTag: d9c1a289-e173-4ead-b07d-ee399288d6ec
+
+	measure Allocation = ```
+			[Final fee] * [Allocation %]
+			
+			```
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		displayFolder: Revenue
+		lineageTag: 4af78656-2c97-469d-8c88-48f6d85ed8c9
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure 'Final fee - live date' = CALCULATE([Final fee], USERELATIONSHIP(dim_date[Date], dim_projects[live_date]))
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		displayFolder: Fees
+		lineageTag: faac1f47-bb13-4e2d-891d-ad019d4fe197
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure Discount = CALCULATE(SUM(dim_projects[fee_discount_gbp]), USERELATIONSHIP(dim_date[Date], dim_projects[live_date]))
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		displayFolder: Fees
+		lineageTag: cfac37ac-b36a-46cd-bd08-1a746dea34bd
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure 'Discount %' = CALCULATE(AVERAGE(dim_projects[discount_percent]), USERELATIONSHIP(dim_date[Date], dim_projects[live_date]))
+		formatString: 0%;-0%;0%
+		displayFolder: Fees
+		lineageTag: 8841eea3-936e-44f1-af2e-f525eba5862d
+
+	measure 'Delivery variance' = IF([Budget] > 0, [Budget] - [Projected outcome], BLANK())
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		displayFolder: KPIs
+		lineageTag: 3b6565f9-9664-40b9-a16d-db9c0c68da16
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure 'Delivery variance %' = DIVIDE([Delivery variance], [Budget], BLANK())
+		formatString: 0%;-0%;0%
+		displayFolder: KPIs
+		lineageTag: 7d8f417c-32be-4e4e-93db-a9d68d707d35
+
+	measure Tax = CALCULATE(SUM(fact_invoice_line_items[tax_gbp]), USERELATIONSHIP(dim_date[Date], fact_invoice[date_stamp]))*SELECTEDVALUE(Currencies[conversion_rate])
+		formatString: #,0
+		displayFolder: Invoices
+		lineageTag: 48f97852-2b22-481f-954c-d761bc57e17a
+
+	measure 'Total (Debtors)' = [Invoiced] + [Expenses & outlays] + [Tax]
+		formatString: "£"#,0.00;-"£"#,0.00;"£"#,0.00
+		displayFolder: Debtors
+		lineageTag: d6fc2ea1-dacf-4439-8a74-56d5560a61af
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure Payments = CALCULATE(SUM(fact_payments[total_incl_tax_gbp]), USERELATIONSHIP(fact_invoice[invoice_id], fact_payments[invoice_id]))
+		formatString: "£"#,0.00;-"£"#,0.00;"£"#,0.00
+		displayFolder: Payments
+		lineageTag: 7522b07f-3f26-4f9d-b80b-d3d4796c64cc
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure 'Due (Debtors)' = [Total (Debtors)] - [Payments]
+		formatString: "£"#,0.00;-"£"#,0.00;"£"#,0.00
+		displayFolder: Debtors
+		lineageTag: 24d1107c-8411-4b55-ac41-e9d20a080f61
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure 'Combined revenue' = CALCULATE(SUM(fact_revenue[allocation_gbp]))
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		displayFolder: Revenue
+		lineageTag: 8befa613-bbae-488b-a6a9-bab4fa18813f
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure 'Budget Rev' = CALCULATE(SUM(fact_revenue[allocation_gbp]), fact_revenue[record_type] = "Budget", USERELATIONSHIP(dim_date[Date], fact_revenue[date_stamp]))
+		formatString: "£"#,0.00;-"£"#,0.00;"£"#,0.00
+		displayFolder: Revenue
+		lineageTag: 16a997c4-740a-4cd3-a065-ac7fb1b2b6d9
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure 'Budget vs. Revenue %' = IF(DIVIDE([Budget Rev] - [Revenue], [Budget Rev])>0, DIVIDE([Budget Rev] - [Revenue], [Budget Rev]), 0)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Revenue
+		lineageTag: c976b81a-da81-47de-997b-bbd1604d43a4
+
+	measure 'Revenue vs. Budget %' = IF(DIVIDE([Revenue], [Budget Rev])>0, DIVIDE([Revenue], [Budget Rev]), 0)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Revenue
+		lineageTag: 73d97e92-c5b2-4f8d-be76-52c79fe24ca6
+
+	measure 'Invoiced (incl. tax)' = CALCULATE(SUM(fact_invoice[total_incl_tax_gbp]), USERELATIONSHIP(dim_date[Date], fact_invoice[date_stamp]))
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		displayFolder: Invoices
+		lineageTag: 00be2cc5-8767-4160-9359-c936d6c878c1
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure 'Invoiced (excl. tax)' = CALCULATE(SUM(fact_invoice[total_excl_tax_gbp]), USERELATIONSHIP(dim_date[Date], fact_invoice[date_stamp]))*SELECTEDVALUE(Currencies[conversion_rate])
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		displayFolder: Invoices
+		lineageTag: 3698ca84-49fa-4528-b712-7985a234d765
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure 'Cash collected (incl. tax)' = CALCULATE(SUM(fact_payments[total_incl_tax_gbp]), USERELATIONSHIP(dim_date[Date], fact_payments[date_stamp]))
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		displayFolder: Payments
+		lineageTag: e4f62894-ca1e-4bd1-bce9-122b7383e30d
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure 'Cash collected (excl. tax)' = CALCULATE(SUM(fact_payments[total_excl_tax_gbp]), USERELATIONSHIP(dim_date[Date], fact_payments[date_stamp]))*SELECTEDVALUE(Currencies[conversion_rate])
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		displayFolder: Payments
+		lineageTag: cb1283dc-55d6-49df-8bf4-5678e78faebb
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure 'Num opportunities' = COALESCE(CALCULATE(DISTINCTCOUNT(dim_opportunity_sector[opportunity_id])),0)
+		formatString: 0
+		displayFolder: Opportunities
+		lineageTag: c43782a2-787a-4ece-b427-a0c42ebf2135
+
+	measure 'Weighted fee' = COALESCE(CALCULATE(SUM(fact_opportunities[weighted_fee_gbp])),0)
+		formatString: "£"#,0.00;-"£"#,0.00;"£"#,0.00
+		displayFolder: Opportunities
+		lineageTag: 272205f0-155f-4e12-8a8f-f9017d735d25
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure 'Expenses & outlays' = [Expenses] + [Outlays]
+		formatString: #,0
+		displayFolder: Invoices
+		lineageTag: 37c6d492-a1e2-4ad3-8bc3-58c83a3de622
+
+	measure 'WIP > 180 days' = CALCULATE([WIP *], FILTER(dim_projects, dim_projects[days_since_live] >= 180))
+		displayFolder: WIP
+		lineageTag: da66eb88-ccf0-47db-a1e6-8b918397cf27
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'WIP > 180 days %' = DIVIDE([WIP > 180 days], [WIP *], 0)
+		formatString: 0%;-0%;0%
+		displayFolder: WIP
+		lineageTag: ce6fbbee-3544-45da-8c0d-ff0d0eae7970
+
+	measure 'WIP 30 - 60 days' = CALCULATE([WIP *], FILTER(dim_projects, dim_projects[days_since_live] >= 30 && dim_projects[days_since_live] < 60))
+		displayFolder: WIP
+		lineageTag: bec7ec74-8306-4ef4-b4ca-e24123a577ff
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'WIP 30 - 60 days %' = DIVIDE([WIP 30 - 60 days], [WIP *], 0)
+		formatString: 0%;-0%;0%
+		displayFolder: WIP
+		lineageTag: beb22a69-7be5-421e-b50a-72e313d1505c
+
+	measure 'WIP 90 - 180 days' = CALCULATE([WIP *], FILTER(dim_projects, dim_projects[days_since_live] >= 90 && dim_projects[days_since_live] < 180))
+		displayFolder: WIP
+		lineageTag: 1b21c7b8-f375-474f-9d25-258ed6cd05e6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'WIP 90 - 180 days %' = DIVIDE([WIP 90 - 180 days], [WIP *], 0)
+		formatString: 0%;-0%;0%
+		displayFolder: WIP
+		lineageTag: f3a519f4-a694-40ee-8325-f5c5f2316a20
+
+	measure 'WIP 60 - 90 days' = CALCULATE([WIP *], FILTER(dim_projects, dim_projects[days_since_live] >= 60 && dim_projects[days_since_live] < 90))
+		displayFolder: WIP
+		lineageTag: 9efd26cc-20c6-4d08-85ec-2660210c3d60
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'WIP 60 - 90 days %' = DIVIDE([WIP 60 - 90 days], [WIP *], 0)
+		formatString: 0%;-0%;0%
+		displayFolder: WIP
+		lineageTag: 2fb9f217-c493-43df-b070-66ee56f4e07d
+
+	measure 'WIP < 30 days' = CALCULATE([WIP *], FILTER(dim_projects, dim_projects[days_since_live] < 30))
+		displayFolder: WIP
+		lineageTag: 3a7f8079-8e7b-4419-9b91-3df929932720
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'WIP < 30 days %' = DIVIDE([WIP < 30 days], [WIP *], 0)
+		formatString: 0%;-0%;0%
+		displayFolder: WIP
+		lineageTag: 04240c1e-a9f6-4a23-9b87-42b1b7909636
+
+	measure 'Due (debtors) 90 - 180 days' = CALCULATE([Due (Debtors)], FILTER(fact_invoice, fact_invoice[age] >= 90 && fact_invoice[age] < 180))
+		displayFolder: Debtors
+		lineageTag: 2af03c34-5a5c-45c5-ba8e-46c4360a03c0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Due (debtors) > 180 days' = CALCULATE([Due (debtors)], FILTER(fact_invoice, fact_invoice[age] >= 180))
+		displayFolder: Debtors
+		lineageTag: b72448cb-cb81-4084-bbae-79a3fb00e1cf
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Due (debtors) > 180 days %' = DIVIDE([Due (debtors) > 180 days], [Due (debtors)], 0)
+		formatString: 0%;-0%;0%
+		displayFolder: Debtors
+		lineageTag: c423570e-0cc8-4e76-a962-3781f95876f7
+
+	measure 'Due (debtors) 90 - 180 days %' = DIVIDE([Due (debtors) 90 - 180 days], [Due (debtors)], 0)
+		formatString: 0%;-0%;0%
+		displayFolder: Debtors
+		lineageTag: dd353785-e359-4ca4-8c74-4cf8174ce526
+
+	measure 'Due (debtors) 60 - 90 days' = CALCULATE([Due (debtors)], FILTER(fact_invoice, fact_invoice[age] >= 60 && fact_invoice[age] < 90))
+		displayFolder: Debtors
+		lineageTag: 576de499-134f-48c0-82ed-4d21cc01559a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Due (debtors) 60 - 90 days %' = DIVIDE([Due (debtors) 60 - 90 days], [Due (debtors)], 0)
+		formatString: 0%;-0%;0%
+		displayFolder: Debtors
+		lineageTag: aff9bf17-7e71-4728-8fb5-4189587e6bd7
+
+	measure 'Due (debtors) 30 - 60 days' = CALCULATE([Due (debtors)], FILTER(fact_invoice, fact_invoice[age] >= 30 && fact_invoice[age] < 60))
+		displayFolder: Debtors
+		lineageTag: ff16fd16-a938-4d25-80f7-d103bc4727fa
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Due (debtors) 30 - 60 days %' = DIVIDE([Due (debtors) 30 - 60 days], [Due (debtors)], 0)
+		formatString: 0%;-0%;0%
+		displayFolder: Debtors
+		lineageTag: b412db6f-c370-4f5a-8bd2-c14ba5d4ac43
+
+	measure 'Due (debtors) < 30 days' = CALCULATE([Due (debtors)], FILTER(fact_invoice, fact_invoice[age] < 30))
+		displayFolder: Debtors
+		lineageTag: 30316043-7bbf-4064-a7d4-1441c9944436
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Due (debtors) < 30 days %' = DIVIDE([Due (debtors) < 30 days], [Due (debtors)], 0)
+		formatString: 0%;-0%;0%
+		displayFolder: Debtors
+		lineageTag: 278f1af2-38e6-450e-b5e7-e46cfd32f2dc
+
+	measure 'Available Hours' = CALCULATE(SUM(fact_timesheets[total_hours]), not fact_timesheets[project_task] in {"Annual leave", "Additional unpaid leave", "CIL day", "Furlough", "TOIL", "Sick", "Sabbatical", "Rest Days", "Federal Holiday", "Public holiday", "Jury service", "Parental leave"}, USERELATIONSHIP(dim_date[Date], fact_timesheets[date_stamp]))
+		displayFolder: Timesheet
+		lineageTag: 60a8e733-440d-402c-8e62-89e734631a98
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Invoiced (coalesce)' = COALESCE([Market study] + [Bidder meetings] + [Uplift] + [Other],0)
+		displayFolder: Invoices
+		lineageTag: 6c1109c6-81fb-4d10-b8fc-b7c92f50bacd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Debtors (PT)' = COALESCE(CALCULATE([Invoiced], FILTER(fact_invoice, fact_invoice[paid_status] = "Unpaid")), 0)
+		displayFolder: Debtors
+		lineageTag: 984e1304-e62a-465d-b6fd-c9e8a6f733d0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Project budget' = SUM(fact_project_budgets[budget_gbp])*SELECTEDVALUE(Currencies[conversion_rate])
+		formatString: #,0
+		displayFolder: KPIs
+		lineageTag: b7abdaad-daf4-45af-abe6-fe39809e875c
+
+	measure 'Revenue Booked *' =
+			
+			CALCULATE(
+			    [Revenue],
+			    fact_revenue[date_stamp] <= EOMONTH(TODAY(), 0)
+			)
+		displayFolder: KPIs
+		lineageTag: 71d9e0a6-f147-4ac6-89f8-c18be9120d32
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Phases = CALCULATE(SUM(dim_projects[fee_phases_gbp]), USERELATIONSHIP(dim_date[Date], dim_projects[live_date]))*SELECTEDVALUE(Currencies[conversion_rate])
+		formatString: #,0
+		displayFolder: Fees
+		lineageTag: c16dfc15-c914-4327-8b80-24abd0dbc47e
+
+	measure Success = CALCULATE(SUM(dim_projects[fee_success_gbp]), USERELATIONSHIP(dim_date[Date], dim_projects[live_date]))*SELECTEDVALUE(Currencies[conversion_rate])
+		formatString: #,0
+		displayFolder: Fees
+		lineageTag: d3439042-c5a0-4ee6-8fc4-1423850f8f96
+
+	measure 'Bidder meetings fee' = CALCULATE(SUM(dim_projects[fee_bidder_meeetings_gbp]), USERELATIONSHIP(dim_date[Date], dim_projects[live_date]))*SELECTEDVALUE(Currencies[conversion_rate])
+		formatString: #,0
+		displayFolder: Fees
+		lineageTag: cc9906cd-d9dc-411c-8157-d323394ca3d0
+
+	measure 'Uplift fee' = CALCULATE(SUM(dim_projects[fee_uplift_gbp]), USERELATIONSHIP(dim_date[Date], dim_projects[live_date]))*SELECTEDVALUE(Currencies[conversion_rate])
+		formatString: #,0
+		displayFolder: Fees
+		lineageTag: debbb429-5022-4506-b2e2-397889087131
+
+	measure Reduction = CALCULATE(SUM(dim_projects[fee_reduction_gbp]), USERELATIONSHIP(dim_date[Date], dim_projects[live_date]))*SELECTEDVALUE(Currencies[conversion_rate])
+		formatString: #,0
+		displayFolder: Fees
+		lineageTag: 670f0637-9e7f-40f4-8ae7-b2b869566e6a
+
+	measure 'Total invoiced' = [Invoiced] + [Expenses & outlays] + [Tax]
+		formatString: #,0
+		displayFolder: Invoices
+		lineageTag: 34179684-a68b-43cb-ae6e-f0dda8cfdca1
+
+	measure 'Freelancers Spend' = CALCULATE(SUM(fact_timesheets[outcome_gbp]), fact_timesheets[booking_type] = "Timesheet", fact_timesheets[job_code_contemporaneous] = "9. Interviewer")
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		displayFolder: Timesheet
+		lineageTag: cfdb99c9-2cd4-4080-a9a2-01b70858318e
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure Cash = COALESCE(CALCULATE([Invoiced], FILTER(fact_invoice, fact_invoice[paid_status] = "Paid")), 0)
+		displayFolder: Debtors
+		lineageTag: 24a46640-5008-4410-802b-f7c44309f157
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Spend to date %' = DIVIDE([Spend to date], [Projected outcome], 0)
+		formatString: 0%;-0%;0%
+		displayFolder: Timesheet
+		lineageTag: a3cb38cc-91c3-445d-a917-31718120830e
+
+	measure 'Spend to go %' = DIVIDE([Spend to go], [Projected outcome], 0)
+		formatString: 0%;-0%;0%
+		displayFolder: Timesheet
+		lineageTag: af04ff62-f09b-4db4-a87f-0b63749b6ecc
+
+	measure 'Project Outcome and Budget' = COALESCE([Project budget] + [Projected outcome], 0)
+		displayFolder: KPIs
+		lineageTag: b1a970e0-60e1-4820-94f9-9778d7afb571
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Hours total' = [Hours to date] + [Hours to go]
+		displayFolder: Timesheet
+		lineageTag: 537b5647-830a-4c3e-9ddc-d6879d489280
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Engagement support costs' =
+			
+			
+			([Min fee] + [Phases]) * 0.03
+		lineageTag: 671a1d69-64df-4787-b9cb-cc4564121937
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total spend - Purchases box' =
+			
+			COALESCE((SUM(fact_purchase_item_line_items[total_gbp])*SELECTEDVALUE(Currencies[conversion_rate])),0)
+		lineageTag: 505b49b9-6bed-4727-89b1-7caae25405cc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total spend ex.Tax - Expenses' = ```
+			
+			CALCULfact_purchase_item_line_items[total]invoice_line_items[slip_type] = "Expense"
+			)
+			
+			```
+		lineageTag: 64c150bb-d7d8-4fb2-922f-9926ca8c3081
+
+	measure 'Total costs' =
+			
+			
+			[Total spend - Purchases box] + [Total spend - Expenses table] + [Engagement support costs]
+		lineageTag: 1ebdc37c-0679-4632-b653-bf55c009b494
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% of budget used' = ```
+			
+			DIVIDE([Total costs], [Total spend - Expense cap])
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e85b714c-ead7-46df-8bb8-66d6ae696c71
+
+	measure 'Total spend - Expenses table' =
+			
+			
+			SUM(fact_expenses[total_gbp])*SELECTEDVALUE(Currencies[conversion_rate])
+		lineageTag: 51c3d789-7a83-4faa-82b1-e8ad6f2b1e9e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total spend - Expense cap' = ```
+			
+			VAR CapOg =
+			    SUM(dim_projects[expense_cap_gbp]) * SELECTEDVALUE(Currencies[conversion_rate])
+			RETURN
+			    IF(
+			        ISBLANK(CapOg) || CapOg = 0,
+			        [Min fee] * 0.15,
+			        CapOg
+			    )
+			
+			```
+		lineageTag: 0e9d7739-1b60-4903-a9c4-2ae926a2ba9d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ticket - URL' =
+			
+			
+			MAX(fact_expenses[ticket_url])
+		lineageTag: c7fb93a5-77f0-43f4-8f1b-3e7bec959956
+
+	measure 'Total spend - Purchases table' =
+			
+			SUM(fact_purchase_item_line_items[total_gbp])*SELECTEDVALUE(Currencies[conversion_rate])
+		lineageTag: 778c00ee-68ad-4e79-985f-a7b419b7cafe
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total spend - Expenses box' =
+			
+			COALESCE((SUM(fact_expenses[total_gbp])*SELECTEDVALUE(Currencies[conversion_rate])),0)
+		lineageTag: 43001349-9baf-48d9-b8e5-5ff8721ef212
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Purchase item - URL' =
+			
+			
+			MAX(fact_purchase_item_line_items[purchase_url])
+		lineageTag: 691eeedb-7e65-4082-bdd1-bbe22546b539
+
+	partition 'Measures folder' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

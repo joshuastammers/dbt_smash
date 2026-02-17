@@ -1,0 +1,275 @@
+relationship 7397984f-0082-44e7-939a-c3cca95cd0b5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_projects.backstop_date
+	toColumn: LocalDateTable_cb6527ad-0b95-4eff-85ce-6e3bb4b6e9d4.Date
+
+relationship b440c797-3514-4c09-88b9-d2d1d57135ef
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_projects.created_date
+	toColumn: LocalDateTable_aac8da27-0698-4128-bea8-1fa39cc1d7ae.Date
+
+relationship 3682b12e-c844-4267-a066-9f8c6ee05b13
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_projects.updated_date
+	toColumn: LocalDateTable_abd65276-df40-41c0-80f0-ea0a19c02b36.Date
+
+relationship 196f5a56-8d40-458f-a6ad-6937201de3cb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_users.employee_start_date
+	toColumn: LocalDateTable_ea4a3ea9-80f9-4333-b081-c669c8fd8cb2.Date
+
+relationship cb9a06d8-6a22-4727-8229-ded5f96e98f8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_users.created_date
+	toColumn: LocalDateTable_acb1d69d-1aa1-48e1-8e9e-88184c31bd67.Date
+
+relationship b0c28ff4-4e70-4e3e-abae-8f3d28c8012a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_users.updated_date
+	toColumn: LocalDateTable_cdeb12c2-2e8c-4d0b-9f8c-18f784efaacb.Date
+
+relationship AutoDetected_9cbb6b22-583c-44ca-bccb-d7bb789eadbc
+	fromColumn: fact_project_budgets.project_id
+	toColumn: dim_projects.project_id
+
+relationship AutoDetected_fd5ee69d-fe5c-4f1a-a95f-fbfe903349d3
+	crossFilteringBehavior: bothDirections
+	fromColumn: fact_revenue.project_id
+	toColumn: dim_projects.project_id
+
+relationship AutoDetected_5f8baa0d-7c98-4260-9b93-773c93608156
+	crossFilteringBehavior: bothDirections
+	fromColumn: dim_capability_lookup.project_id
+	toColumn: dim_projects.project_id
+
+relationship 93cf8a2e-12ff-4a0f-9496-e7d638f550ea
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_invoice_line_items.created_date
+	toColumn: LocalDateTable_24b17796-ae31-42e8-a098-2b9f1821d84c.Date
+
+relationship 22426768-9133-4338-8984-190be76644ec
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_invoice_line_items.updated_date
+	toColumn: LocalDateTable_6042ac7e-e0ef-473d-a189-2d9ffb3ff8e6.Date
+
+relationship 24e7ef18-d96b-4f2f-a5d5-8106ea7bfa6c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_invoice.created_date
+	toColumn: LocalDateTable_0c464030-0847-4401-8e6b-480f7bd2ae00.Date
+
+relationship 7ceb82b6-b9ce-464d-a68f-79b668895942
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_invoice.updated_date
+	toColumn: LocalDateTable_138abaa0-65fd-4f84-891b-f0005452d488.Date
+
+relationship 54941398-2670-4f21-a2a1-89303d6af9c9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_invoice.submitted_date
+	toColumn: LocalDateTable_d4a72002-0a2f-47a6-9d3d-c73d59aa928a.Date
+
+relationship 4bfa01aa-0063-4e77-8e15-2be1c6f2bddb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_invoice.approved_date
+	toColumn: LocalDateTable_fe3a966d-fc76-4596-ae55-b810ba27975d.Date
+
+relationship b96adff8-025c-409a-b7e4-b39b5aa85ab9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_invoice.accounting_period_date
+	toColumn: LocalDateTable_9e2ddb3a-cdd3-4f96-925d-c48d99a017b7.Date
+
+relationship AutoDetected_b3126282-723f-4d15-a527-7a1b42b13676
+	fromColumn: fact_invoice.project_id
+	toColumn: dim_projects.project_id
+
+relationship AutoDetected_e9636b50-e767-4566-9690-472782a11f31
+	fromColumn: fact_payments.project_id
+	toColumn: dim_projects.project_id
+
+relationship 8f968288-3fe5-464a-ac61-1a3c379372db
+	joinOnDateBehavior: datePartOnly
+	fromColumn: _refresh.last_refresh
+	toColumn: LocalDateTable_5be87ece-f49a-4b8f-b570-a79f055c5104.Date
+
+relationship ca9c5c1f-8b3c-7399-da3e-ef278b79a011
+	fromColumn: fact_invoice_line_items.invoice_id
+	toColumn: fact_invoice.invoice_id
+
+relationship 46634c81-bb77-4504-8aa7-6c4c10c8c0b6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_invoice_line_items.date_stamp
+	toColumn: LocalDateTable_3f55d6f9-7f89-4512-9eec-2fb2398dc23b.Date
+
+relationship 957b76ce-9eaf-5af2-1904-80d2cec27d49
+	isActive: false
+	fromColumn: fact_payments.invoice_id
+	toColumn: fact_invoice.invoice_id
+
+relationship 2d4c7e2d-365b-44c3-b5cf-f24987666485
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_teams_free.Date
+	toColumn: LocalDateTable_277e5ea4-a9f0-4bbd-a368-86a72ec4dcbe.Date
+
+relationship ca85526d-f498-4462-a33c-dcea4798acf2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_teams_free.'Week referring to'
+	toColumn: LocalDateTable_3f4486bf-c222-4a38-a181-b1afcf270a0e.Date
+
+relationship 728d9cf8-0317-4619-afca-934d6f86966a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_resourcing.Date
+	toColumn: LocalDateTable_7e5be5e7-081c-4436-a8ac-6b0be51c775f.Date
+
+relationship 7891f1dd-ded2-418e-a900-7480ae14d2d2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_resourcing.'Week referring to'
+	toColumn: LocalDateTable_1fb59a58-8a05-4128-8dc3-62a565cf033b.Date
+
+relationship de5d5dca-6a3f-4f26-ba60-1b81c1b30a5c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_opportunities.created_date
+	toColumn: LocalDateTable_286eac0d-b70c-4b85-a2cd-39b98dbb96ef.Date
+
+relationship a5a43768-71be-4571-a98b-4702ebb7defc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_opportunities.last_modified
+	toColumn: LocalDateTable_4b721880-cb85-4aca-9698-ea73ec39493c.Date
+
+relationship AutoDetected_3249149b-1dcc-48a5-8b4c-4388487c337e
+	crossFilteringBehavior: bothDirections
+	fromColumn: dim_opportunity_responsible.opportunity_id
+	toColumn: fact_opportunities.opportunity_id
+
+relationship AutoDetected_fc3a7f1c-3ad7-41b0-807e-8c9985b1a8c4
+	crossFilteringBehavior: bothDirections
+	fromColumn: dim_opportunity_sector.opportunity_id
+	toColumn: fact_opportunities.opportunity_id
+
+relationship AutoDetected_f4e3665d-d728-43b3-a67c-f38c08669c82
+	crossFilteringBehavior: bothDirections
+	fromColumn: dim_opportunity_capability.opportunity_id
+	toColumn: fact_opportunities.opportunity_id
+
+relationship AutoDetected_d1205432-3cd6-4ac6-abdb-24e3efa9dcaf
+	fromColumn: fact_pipeline_evolution.opportunity_id
+	toColumn: fact_opportunities.opportunity_id
+
+relationship 0ebcf44e-f78c-47ab-b80c-e9c46341f3b2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.date
+	toColumn: LocalDateTable_3cf01029-99ff-4eb9-b247-289a91ed497b.Date
+
+relationship 7c4bd3a9-b0e6-443a-901f-fe7b9f23d56c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.week_end_date
+	toColumn: LocalDateTable_4918471d-61aa-473c-b75c-7cea8069c653.Date
+
+relationship 575b5323-8f96-44b2-980f-b23a47785d98
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.date_week_commencing
+	toColumn: LocalDateTable_026a7655-f225-4943-91d4-427a827d24af.Date
+
+relationship 755f8fff-1e12-4697-a00f-30242ebbc8a9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.date_month
+	toColumn: LocalDateTable_880eac2c-f055-48e8-9289-7f0855fb821d.Date
+
+relationship 4664d0a0-b4a7-ef84-8960-eb54b204b5de
+	fromColumn: fact_pipeline_evolution.scaffold_date
+	toColumn: dim_date.date
+
+relationship beb6d287-7af6-766f-4aea-d526803343d2
+	fromColumn: fact_revenue.date_stamp
+	toColumn: dim_date.date
+
+relationship 697546b3-e787-5b5a-8e03-c3b7301c6b6b
+	fromColumn: fact_invoice.date_stamp
+	toColumn: dim_date.date
+
+relationship db3f8b96-fb9c-85bb-f33f-05baa8c41a1d
+	isActive: false
+	fromColumn: fact_payments.date_stamp
+	toColumn: dim_date.date
+
+relationship a9aa6a5b-fb6b-72ca-6612-36570d98bf9b
+	isActive: false
+	fromColumn: dim_projects.live_date
+	toColumn: dim_date.date
+
+relationship c4f8ffc3-f3cc-1138-00c8-ee7fdb14c976
+	fromColumn: fact_project_budgets.job_code
+	toColumn: dim_grades.job_code_current
+
+relationship c5a3da7a-97c5-2f9e-2314-344ee4f0ba4c
+	fromColumn: dim_users.job_code_current
+	toColumn: dim_grades.job_code_current
+
+relationship b7aba50e-971a-4050-b21d-99ae1eb9a11d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_projects.start_date
+	toColumn: LocalDateTable_3703aecf-8c4f-480a-97c0-8015ea14248d.Date
+
+relationship 27a2c47a-c24c-4fb3-94aa-6cb1aece2b70
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_purchase_item_line_items.date_stamp
+	toColumn: LocalDateTable_00df8df4-5d40-419c-9ff6-206e973cf955.Date
+
+relationship 759ff386-8ab5-4529-96ac-bfa7d80b7973
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_purchase_item_line_items.updated_date
+	toColumn: LocalDateTable_4832c10b-5a33-4a69-b37f-abf61e87c395.Date
+
+relationship 017e76ec-d031-47e0-818e-ed75d3d6ec1c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fact_purchase_item_line_items.created_date
+	toColumn: LocalDateTable_eba7af1e-38e6-4c44-a993-cb305153e876.Date
+
+relationship AutoDetected_ab9d63d7-b35a-4313-9a34-6864f6937617
+	fromColumn: fact_purchase_item_line_items.project_id
+	toColumn: dim_projects.project_id
+
+relationship AutoDetected_5bf5f3c1-4ef9-4d73-aec9-b0d3cb176a96
+	fromColumn: fact_purchase_item_line_items.user_id
+	toColumn: dim_users.user_id
+
+relationship e9e49b66-9d2b-320f-353b-841543a53f30
+	fromColumn: fact_invoice_line_items.user_id
+	toColumn: dim_users.user_id
+
+relationship AutoDetected_945a6808-f8b1-4ae5-b997-30db41e04fec
+	fromColumn: fact_expenses.project_id
+	toColumn: dim_projects.project_id
+
+relationship AutoDetected_97788e81-cd0e-4282-8fc4-56d94ca79d9e
+	fromColumn: fact_expenses.user_id
+	toColumn: dim_users.user_id
+
+relationship AutoDetected_f34edff2-613d-477b-9689-5a9061464997
+	isActive: false
+	fromColumn: fact_expenses.slip_id
+	toColumn: fact_invoice_line_items.slip_id
+
+relationship 026b5ade-7605-84d7-8d91-09706d9fb54e
+	fromColumn: fact_expenses.expense_type_id
+	toColumn: ExpenseItems.'Internal id'
+
+relationship ca4bbcbb-5535-5f0a-bca2-dcc05fa7b8a3
+	fromColumn: fact_expenses.date_stamp
+	toColumn: dim_date.date
+
+relationship AutoDetected_3f161d94-164f-436c-80e5-01b66c8b1902
+	fromColumn: fact_timesheets.project_id
+	toColumn: dim_projects.project_id
+
+relationship AutoDetected_2f9d25a6-32c1-4cdd-8dab-b4e5e20ab685
+	fromColumn: fact_timesheets.user_id
+	toColumn: dim_users.user_id
+
+relationship AutoDetected_721c7838-7725-481a-abd2-f48bcca8a7a8
+	isActive: false
+	fromColumn: fact_timesheets.job_code_id
+	toColumn: dim_grades.job_code_id
+
+relationship 1db5d444-0e03-a3bd-c443-3232dcd48a04
+	fromColumn: fact_timesheets.date_stamp
+	toColumn: dim_date.date
+

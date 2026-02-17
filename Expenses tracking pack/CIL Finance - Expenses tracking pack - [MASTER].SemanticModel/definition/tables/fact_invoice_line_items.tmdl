@@ -1,0 +1,242 @@
+table fact_invoice_line_items
+	lineageTag: 8e452fca-bd5b-4886-986f-3c32d5360495
+
+	column slip_id
+		dataType: int64
+		formatString: 0
+		lineageTag: db75615e-80be-4f5c-9c16-d0a7c30c394f
+		summarizeBy: sum
+		sourceColumn: slip_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column invoice_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 70e17907-fbd8-431c-a21a-84779ce7a40f
+		summarizeBy: none
+		sourceColumn: invoice_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 86f35cdf-933b-4b6b-b2a8-7d5d5e1d6d9e
+		summarizeBy: sum
+		sourceColumn: project_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_task
+		dataType: string
+		lineageTag: af2708d0-1259-4e59-82c9-be7d2f917a3c
+		summarizeBy: none
+		sourceColumn: project_task
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 4a64cc74-6d00-4c05-8859-0609990aee2d
+		summarizeBy: none
+		sourceColumn: user_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost_center
+		dataType: string
+		lineageTag: deac00b8-1a98-4cb2-b181-c55107ed691f
+		summarizeBy: none
+		sourceColumn: cost_center
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column currency
+		dataType: string
+		lineageTag: 98677272-77cf-4f3f-80df-b46ae04bc9d1
+		summarizeBy: none
+		sourceColumn: currency
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: 025752b0-2278-4c26-9ba6-3904c7c7e336
+		summarizeBy: none
+		sourceColumn: description
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column tax_location_name
+		dataType: string
+		lineageTag: 35bd86c3-a9e5-4a7a-840a-07113d130841
+		summarizeBy: none
+		sourceColumn: tax_location_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column slip_type
+		dataType: string
+		lineageTag: 20b61702-5d9e-42d8-82d2-6ce7dd11268c
+		summarizeBy: none
+		sourceColumn: slip_type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column category_name
+		dataType: string
+		lineageTag: eced28d3-9ad9-4d83-812f-45ac17bd5024
+		summarizeBy: none
+		sourceColumn: category_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost_gbp
+		dataType: double
+		lineageTag: acbcf89d-52a0-4b9d-8f23-94ec736ec7c1
+		summarizeBy: sum
+		sourceColumn: cost_gbp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_gbp
+		dataType: double
+		lineageTag: 3f808c52-1775-43fb-b92c-f297605b9ff8
+		summarizeBy: sum
+		sourceColumn: total_gbp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column tax_gbp
+		dataType: double
+		lineageTag: 7b973aeb-45db-4bed-ad0e-a87482e75cf4
+		summarizeBy: sum
+		sourceColumn: tax_gbp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_incl_tax_gbp
+		dataType: double
+		lineageTag: 34df4009-7893-4b82-98d4-08223e6eec2c
+		summarizeBy: sum
+		sourceColumn: total_incl_tax_gbp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column date_stamp
+		dataType: dateTime
+		formatString: dd mmm yy
+		lineageTag: d28ac6b8-e35e-4e1c-bb48-55c79d4c30c7
+		summarizeBy: none
+		sourceColumn: date_stamp
+
+		variation Variation
+			isDefault
+			relationship: 46634c81-bb77-4504-8aa7-6c4c10c8c0b6
+			defaultHierarchy: LocalDateTable_3f55d6f9-7f89-4512-9eec-2fb2398dc23b.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	column created_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0d2b5c60-486a-4798-a2b6-01df032ed87d
+		summarizeBy: none
+		sourceColumn: created_date
+
+		variation Variation
+			isDefault
+			relationship: 93cf8a2e-12ff-4a0f-9496-e7d638f550ea
+			defaultHierarchy: LocalDateTable_24b17796-ae31-42e8-a098-2b9f1821d84c.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column updated_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 78e6263a-85bf-4ed7-aa81-e1e926b1e995
+		summarizeBy: none
+		sourceColumn: updated_date
+
+		variation Variation
+			isDefault
+			relationship: 22426768-9133-4338-8984-190be76644ec
+			defaultHierarchy: LocalDateTable_6042ac7e-e0ef-473d-a189-2d9ffb3ff8e6.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column approval_status
+		dataType: string
+		lineageTag: 1fbbf946-f3db-49d1-8317-892544240c73
+		summarizeBy: none
+		sourceColumn: approval_status
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_invoice_line_items = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "sql/protocolv1/o/3058398146968468/0131-095141-lazpgcnw", null),
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    fact_invoice_line_items_View = production_modelled_Schema{[Name="fact_invoice_line_items",Kind="View"]}[Data]
+				in
+				    fact_invoice_line_items_View
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

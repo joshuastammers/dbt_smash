@@ -1,0 +1,120 @@
+table fact_pipeline_bridge
+	lineageTag: e8a52215-4e72-4d8b-a649-a37345a592c9
+
+	measure New = ```
+			
+			VAR _THIS_WEEK = CALCULATE(MAX(fact_pipeline_evolution[scaffold_date]), ALL(fact_pipeline_evolution))
+			
+			RETURN
+			COALESCE(
+			    CALCULATE(
+			        DISTINCTCOUNT(fact_pipeline_evolution[opportunity_id]),
+			        fact_pipeline_evolution[scaffold_date] = _THIS_WEEK,
+			        OR(
+			            AND(
+			                fact_pipeline_evolution[this_week_stage] IN {"-1 Hot", "0 Imminent"},
+			                fact_pipeline_evolution[last_week_stage] IN {"-2 Warm", "-3 Lead", "-4 Prospect", "Duplicate entry", BLANK(), "Archive"}
+			            ),
+			            AND(
+			                fact_pipeline_evolution[this_week_stage] IN {"1 Won"},
+			                ISBLANK(fact_pipeline_evolution[last_week_stage])
+			            )
+			        )
+			    ),
+			    0
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 49d0f470-826f-4003-b712-9d54c442f883
+
+	measure Lost =
+			
+			
+			VAR _THIS_WEEK = CALCULATE(MAX(fact_pipeline_evolution[scaffold_date]), ALL(fact_pipeline_evolution))
+			
+			RETURN COALESCE(CALCULATE(DISTINCTCOUNT(fact_pipeline_evolution[opportunity_id]), fact_pipeline_evolution[scaffold_date] = _THIS_WEEK,
+			        AND(
+			            fact_pipeline_evolution[this_week_stage] IN {"Lost"},
+			            fact_pipeline_evolution[last_week_stage] in {"0 Imminent", "-1 Hot"}
+			            )),0)
+		formatString: 0
+		lineageTag: 64481919-3de8-4a18-9d63-3eb2b4fa0e66
+
+	measure Downgraded = ```
+			
+			
+			VAR _THIS_WEEK = CALCULATE(MAX(fact_pipeline_evolution[scaffold_date]), ALL(fact_pipeline_evolution))
+			
+			RETURN COALESCE(CALCULATE(DISTINCTCOUNT(fact_pipeline_evolution[opportunity_id]),
+			        fact_pipeline_evolution[scaffold_date] = _THIS_WEEK,
+			        AND(
+			            fact_pipeline_evolution[this_week_stage] IN {"-2 Warm", "-3 Lead", "-4 Prospect", "Duplicate entry"},
+			            fact_pipeline_evolution[last_week_stage] IN {"-1 Hot", "0 Imminent"}
+			            )
+			        
+			), 0)
+			```
+		formatString: 0
+		lineageTag: 99b7e374-4c98-4101-b990-7f87de92a105
+
+	measure Won = ```
+			
+			 
+			VAR _THIS_WEEK = CALCULATE(MAX(fact_pipeline_evolution[scaffold_date]), ALL(fact_pipeline_evolution))
+			 
+			RETURN
+			    COALESCE(
+			        CALCULATE(DISTINCTCOUNT(fact_pipeline_evolution[opportunity_id]), fact_pipeline_evolution[scaffold_date] = _THIS_WEEK,
+			            AND(
+			                fact_pipeline_evolution[this_week_stage] IN {"1 Won"},
+			                fact_pipeline_evolution[last_week_stage] IN {"-1 Hot", "0 Imminent", BLANK()}
+			            )
+			        ),
+			    0)
+			```
+		formatString: 0
+		lineageTag: 5db4e64f-1e66-4128-847e-1e8d29d94982
+
+	measure 'Pipeline measures' =
+			
+			
+			
+			VAR _THIS_WEEK = CALCULATE(MAX(fact_pipeline_evolution[scaffold_date]), ALL(fact_pipeline_evolution))
+			
+			VAR _LAST_WEEK = CALCULATE(MAX(fact_pipeline_evolution[scaffold_date]), ALL(fact_pipeline_evolution)) - 7
+			
+			
+			RETURN SWITCH(SELECTEDVALUE(fact_pipeline_bridge[Label]),
+			        "Last week", CALCULATE([Hot and Imminent], fact_pipeline_evolution[scaffold_date] = _LAST_WEEK),
+			        "Won", -[Won],
+			        "Lost", -[Lost],
+			        "Down graded", -[Downgraded],
+			        "New", [New],
+			        BLANK()
+			        )
+		lineageTag: aea72a92-cea2-4046-bf77-fc9620ac7276
+
+	measure 'Hot and Imminent' = CALCULATE(DISTINCTCOUNT(fact_pipeline_evolution[opportunity_id]), OR(fact_pipeline_evolution[this_week_stage] = "0 Imminent", fact_pipeline_evolution[this_week_stage] = "-1 Hot"))
+		formatString: 0
+		lineageTag: 3095c826-d18b-4850-b7ab-a07b9a602196
+
+	column Label
+		dataType: string
+		lineageTag: 2f8fe473-7f66-495c-8a10-7680155bf08e
+		summarizeBy: none
+		sourceColumn: Label
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_pipeline_bridge = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45W8kksLlEoT03NVorViVYKz88D0z75xSVghkt+eZ5CelFiSmoKmO+XWg6mQzIyi6HaYgE=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Label = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Label", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

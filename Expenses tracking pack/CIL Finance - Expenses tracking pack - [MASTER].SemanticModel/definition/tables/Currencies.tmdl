@@ -1,0 +1,49 @@
+table Currencies
+	lineageTag: 2108bccf-8921-48df-b5a8-cf01c5955c56
+
+	measure Flag_valid = ```
+			
+			IF (
+			    [Project budget] <> 0 || [Projected outcome] <> 0,
+			    1,
+			    0
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 95b77311-6804-402e-b9c1-45b854005558
+
+	column currency
+		lineageTag: 1f948f80-6d4e-49b2-9ab7-6a8b01ed9b48
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [currency]
+
+		annotation SummarizationSetBy = Automatic
+
+	column conversion_rate
+		lineageTag: bf1c6d50-75e5-41e5-a284-80114707d275
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [conversion_rate]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Currencies = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "currency", STRING,
+				    "conversion_rate", DOUBLE,
+				    {
+				        {"GBP (£)", 1},
+				        {"USD ($)", 1.4},
+				        {"EUR (€)", 1.2}
+				    }
+				)
+
+	annotation PBI_Id = f5834d97eae043ffb7f0f6e96229cf42
+

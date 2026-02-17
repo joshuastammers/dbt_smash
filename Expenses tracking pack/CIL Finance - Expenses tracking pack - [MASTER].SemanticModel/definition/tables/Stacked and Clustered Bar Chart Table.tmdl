@@ -1,0 +1,71 @@
+table 'Stacked and Clustered Bar Chart Table'
+	lineageTag: 0ac2ed29-92cf-4720-b1a3-c4d82fd85676
+
+	measure 'Chart Budget' = ```
+			SUMX('Stacked and Clustered Bar Chart Table',
+			    VAR CurrentType = 'Stacked and Clustered Bar Chart Table'[Type]
+			    Return
+			    
+			    IF(
+			        CurrentType=" ",
+			        COALESCE([Project budget], 0)
+			    )
+			)
+			```
+		formatString: 0
+		lineageTag: 27cdc562-4424-4c62-9ee7-9aaf872e3aeb
+
+	measure 'Chart To date' = ```
+			SUMX('Stacked and Clustered Bar Chart Table',
+			    VAR CurrentType = 'Stacked and Clustered Bar Chart Table'[Type]
+			    Return
+			    
+			    IF(
+			        CurrentType="  ",
+			        COALESCE(CALCULATE([Spend to date], USERELATIONSHIP(fact_timesheets[job_code_contemporaneous], dim_grades[job_code_current])), 0)
+			    )
+			)
+			```
+		formatString: 0
+		lineageTag: 228e0e90-03ce-4aa3-a438-55f869404aae
+
+	measure 'Chart To go' = ```
+			SUMX('Stacked and Clustered Bar Chart Table',
+			    VAR CurrentType = 'Stacked and Clustered Bar Chart Table'[Type]
+			    Return
+			    
+			    IF(
+			        CurrentType="  ",
+			        COALESCE(CALCULATE([Spend to go], USERELATIONSHIP(fact_timesheets[job_code_contemporaneous], dim_grades[job_code_current])), 0)
+			    )
+			)
+			```
+		formatString: 0
+		lineageTag: cbee63ee-cb77-49a8-b676-f0cf97073b85
+
+	measure 'Project Outcome and Budget - Chart' = COALESCE([Chart Budget] + [Chart To date] + [Chart To go], 0)
+		lineageTag: 22755b50-d4d7-4a83-bec9-852185441cc8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Type
+		lineageTag: 5d3bb3df-1f45-4c62-8629-aa6e2714277e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Type]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Stacked and Clustered Bar Chart Table' = calculated
+		mode: import
+		source =
+				DATATABLE(
+				    "Type", STRING,
+				    {
+				        {" "},
+				        {"  "}
+				    }
+				)
+
+	annotation PBI_Id = 3204564b1bca4fc1aa7c0ac100c63ff5
+

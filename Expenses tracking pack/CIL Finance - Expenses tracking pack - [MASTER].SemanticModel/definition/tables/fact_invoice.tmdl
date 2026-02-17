@@ -1,0 +1,392 @@
+table fact_invoice
+	lineageTag: fb501b9e-a04e-4ffa-a843-89f327f286b3
+
+	column invoice_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 2c0599ef-0ffc-4903-8771-a47299ef4542
+		summarizeBy: none
+		sourceColumn: invoice_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column original_invoice_id
+		dataType: int64
+		formatString: 0
+		lineageTag: c9ff31df-48dc-4278-a34e-4a66c1aa08b2
+		summarizeBy: sum
+		sourceColumn: original_invoice_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column invoice_number
+		dataType: string
+		lineageTag: 240f3165-e857-4e91-98a8-0f4761e05d46
+		summarizeBy: none
+		sourceColumn: invoice_number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 55e1d354-a8e4-493c-82c9-d62f576e444c
+		summarizeBy: none
+		sourceColumn: project_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column tax_rate
+		dataType: double
+		lineageTag: 8a049b8b-79c9-4897-b2c5-e90870b32d48
+		summarizeBy: sum
+		sourceColumn: tax_rate
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column balance_incl_tax_gbp
+		dataType: double
+		lineageTag: 98ff47fc-2a15-4881-b6f0-fa505f4bacc9
+		summarizeBy: sum
+		sourceColumn: balance_incl_tax_gbp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column credit_gbp
+		dataType: double
+		lineageTag: 769df7ab-9cff-4be9-b743-8e3791deefbc
+		summarizeBy: sum
+		sourceColumn: credit_gbp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column tax_gbp
+		dataType: double
+		lineageTag: 6714e3a3-68e1-4524-b956-7f5d14d60df2
+		summarizeBy: sum
+		sourceColumn: tax_gbp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_incl_tax_gbp
+		dataType: double
+		lineageTag: 45411717-4dbc-4c76-a104-4ade124646c2
+		summarizeBy: sum
+		sourceColumn: total_incl_tax_gbp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_excl_tax_gbp
+		dataType: double
+		lineageTag: 25dbdb03-ebb6-46d7-b81d-28c8c7a815b4
+		summarizeBy: sum
+		sourceColumn: total_excl_tax_gbp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column balance_excl_tax_gbp
+		dataType: double
+		lineageTag: 8c6aaddc-c69d-4ee8-9f52-b28bcf1f60ca
+		summarizeBy: sum
+		sourceColumn: balance_excl_tax_gbp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column age
+		dataType: int64
+		formatString: 0
+		lineageTag: 6b629bde-7c21-461b-aebd-7e7da638a737
+		summarizeBy: sum
+		sourceColumn: age
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column age_bracket
+		dataType: string
+		lineageTag: 45a9b41e-53e6-4d4f-91b5-44d955978419
+		summarizeBy: none
+		sourceColumn: age_bracket
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column approval_status
+		dataType: string
+		lineageTag: 0c11df86-c741-447e-bf62-22cce7679561
+		summarizeBy: none
+		sourceColumn: approval_status
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column bad_debt
+		dataType: string
+		lineageTag: eacbb42e-d767-4db0-a85e-6a454263d760
+		summarizeBy: none
+		sourceColumn: bad_debt
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column chasing_protocol
+		dataType: string
+		lineageTag: 7a636751-cbae-4465-a207-a39c94e24c34
+		summarizeBy: none
+		sourceColumn: chasing_protocol
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column contact_email
+		dataType: string
+		lineageTag: 6554aea5-8658-44db-895c-32338d8754a3
+		summarizeBy: none
+		sourceColumn: contact_email
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column debt_collection_stage
+		dataType: string
+		lineageTag: 55dfa3e2-fc9a-4b0f-a237-e4a6d407e3c0
+		summarizeBy: none
+		sourceColumn: debt_collection_stage
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column invoice_contact_name
+		dataType: string
+		lineageTag: 19943d1c-cd12-4a4b-8b27-8e35f4aec795
+		summarizeBy: none
+		sourceColumn: invoice_contact_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column invoice_notes
+		dataType: string
+		lineageTag: 53ff321e-ea2c-4d28-9d16-2477bd271aea
+		summarizeBy: none
+		sourceColumn: invoice_notes
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column credit_reason
+		dataType: string
+		lineageTag: 83923e2b-d72c-4676-8058-e6314be84b3f
+		summarizeBy: none
+		sourceColumn: credit_reason
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column currency
+		dataType: string
+		lineageTag: 057745cc-0711-483d-ac8b-7f07affb218c
+		summarizeBy: none
+		sourceColumn: currency
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 28c19622-9afc-4fc2-b5eb-0b71961a8e4c
+		summarizeBy: none
+		sourceColumn: status
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column invoice_terms
+		dataType: string
+		lineageTag: 679a71ee-f97e-49e2-a2fb-97f8db03d8f0
+		summarizeBy: none
+		sourceColumn: invoice_terms
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_stamp
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 62c491c3-bc74-4f0c-91e0-2d921765bceb
+		summarizeBy: none
+		sourceColumn: date_stamp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column created_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4d51a097-8d58-4b06-bb4e-5c87ace07626
+		summarizeBy: none
+		sourceColumn: created_date
+
+		variation Variation
+			isDefault
+			relationship: 24e7ef18-d96b-4f2f-a5d5-8106ea7bfa6c
+			defaultHierarchy: LocalDateTable_0c464030-0847-4401-8e6b-480f7bd2ae00.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column updated_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 746adedd-d02d-4451-8f73-51ffb6fc3ebc
+		summarizeBy: none
+		sourceColumn: updated_date
+
+		variation Variation
+			isDefault
+			relationship: 7ceb82b6-b9ce-464d-a68f-79b668895942
+			defaultHierarchy: LocalDateTable_138abaa0-65fd-4f84-891b-f0005452d488.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column submitted_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 845c9587-cd39-403b-8304-6ce4cdb962be
+		summarizeBy: none
+		sourceColumn: submitted_date
+
+		variation Variation
+			isDefault
+			relationship: 54941398-2670-4f21-a2a1-89303d6af9c9
+			defaultHierarchy: LocalDateTable_d4a72002-0a2f-47a6-9d3d-c73d59aa928a.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column approved_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f3a5a000-81db-43f7-b667-eeae665e6671
+		summarizeBy: none
+		sourceColumn: approved_date
+
+		variation Variation
+			isDefault
+			relationship: 4bfa01aa-0063-4e77-8e15-2be1c6f2bddb
+			defaultHierarchy: LocalDateTable_fe3a966d-fc76-4596-ae55-b810ba27975d.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column accounting_period_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 472f632c-b2a5-420d-ba1e-4db715a9739b
+		summarizeBy: none
+		sourceColumn: accounting_period_date
+
+		variation Variation
+			isDefault
+			relationship: b96adff8-025c-409a-b7e4-b39b5aa85ab9
+			defaultHierarchy: LocalDateTable_9e2ddb3a-cdd3-4f96-925d-c48d99a017b7.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column paid_status =
+			
+			IF(
+			    COUNTROWS(
+			        CALCULATETABLE(
+			            fact_payments,
+			            USERELATIONSHIP(fact_payments[invoice_id], fact_invoice[invoice_id])
+			        )
+			    ) > 0,
+			    "Paid",
+			    "Unpaid"
+			)
+		lineageTag: 6c0ed98e-09b6-484e-9351-848359706b85
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_invoice = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "sql/protocolv1/o/3058398146968468/0131-095141-lazpgcnw", null),
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    fact_invoice_View = production_modelled_Schema{[Name="fact_invoice",Kind="View"]}[Data]
+				in
+				    fact_invoice_View
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

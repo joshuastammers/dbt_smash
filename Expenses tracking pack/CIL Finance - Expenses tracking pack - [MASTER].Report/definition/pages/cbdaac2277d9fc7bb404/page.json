@@ -1,0 +1,50 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "cbdaac2277d9fc7bb404",
+  "displayName": "Individual Expenses",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "visualInteractions": [
+    {
+      "source": "0c6a7a0b3ea65cf10d22",
+      "target": "a8174ce0c9099ffa480f",
+      "type": "DataFilter"
+    },
+    {
+      "source": "0c6a7a0b3ea65cf10d22",
+      "target": "96348d086264d46a7a67",
+      "type": "DataFilter"
+    },
+    {
+      "source": "0c6a7a0b3ea65cf10d22",
+      "target": "b4a3d226cacfa740d55a",
+      "type": "NoFilter"
+    },
+    {
+      "source": "0c6a7a0b3ea65cf10d22",
+      "target": "2338b3c0f63cb3eba621",
+      "type": "DataFilter"
+    },
+    {
+      "source": "b4a3d226cacfa740d55a",
+      "target": "2338b3c0f63cb3eba621",
+      "type": "DataFilter"
+    },
+    {
+      "source": "a8174ce0c9099ffa480f",
+      "target": "b4a3d226cacfa740d55a",
+      "type": "DataFilter"
+    },
+    {
+      "source": "96348d086264d46a7a67",
+      "target": "b4a3d226cacfa740d55a",
+      "type": "DataFilter"
+    },
+    {
+      "source": "2338b3c0f63cb3eba621",
+      "target": "b4a3d226cacfa740d55a",
+      "type": "NoFilter"
+    }
+  ]
+}

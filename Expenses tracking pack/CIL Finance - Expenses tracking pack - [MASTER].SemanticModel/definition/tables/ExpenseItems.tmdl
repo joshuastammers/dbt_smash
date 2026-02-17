@@ -1,0 +1,100 @@
+table ExpenseItems
+	lineageTag: e98a421f-3389-4496-b63e-5ea68bae2cd3
+
+	column 'Internal id'
+		formatString: 0
+		lineageTag: 9d653068-879d-4649-87c8-632e929e080e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Internal id]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Expense item'
+		lineageTag: d79cd7ce-b7eb-48fd-a84d-7e97fce4a7af
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Expense item]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Expense category'
+		lineageTag: e2cda06e-be43-4da9-a276-075970c05a8c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Expense category]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ExpenseItems = calculated
+		mode: import
+		source = ```
+				
+				DATATABLE (
+				    "Internal id", INTEGER,
+				    "Expense item", STRING,
+				    "Expense category", STRING,
+				    {
+				        { 1,  "Travel - Mileage (INCLUDE journey details)",                 "Travel" },
+				        { 2,  "Travel - Hotel/accommodation",                              "Accomodation" },
+				        { 3,  "Stationery Printing Postage & couriers",                    "Other" },
+				        { 4,  "Travel - Flights",                                          "Travel" },
+				        { 6,  "Travel - Taxis",                                            "Travel" },
+				        { 7,  "Travel - Parking",                                          "Travel" },
+				        { 8,  "Phone Calls",                                               "Other" },
+				        { 9,  "Travel - Tube Train & Railcards",                           "Travel" },
+				        { 10, "Other Kitchen / Office items",                              "Other" },
+				        { 11, "Office refreshments (tea coffee milk biscuits fruit etc)",  "Other" },
+				        { 12, "Market Reports and intel",                                  "Market reports" },
+				        { 13, "Meals/drinks - After 9pm",                                  "Late night meal" },
+				        { 15, "Meals/drinks - With employees",                             "Meals" },
+				        { 16, "Meals/drinks - With externals / Clients",                   "Meals" },
+				        { 17, "Meals/drinks - While travelling",                           "Travel" },
+				        { 19, "Travel - Other travel",                                     "Travel" },
+				        { 20, "Travel - Taxis after 9pm",                                  "Late night taxi" },
+				        { 21, "Employee birthday cakes & cards",                           "Other" },
+				        { 24, "Training - Study materials and exam fees",                  "Other" },
+				        { 25, "Professional Body Membership fees",                         "Other" },
+				        { 28, "Expert interviews / incentives",                            "Expert interviews" },
+				        { 29, "Employee Gifts",                                            "Other" },
+				        { 31, "Travel - Mileage (US only)",                                 "Travel" },
+				        { 34, "Credit card fees",                                          "Other" },
+				        { 36, "CIL Sport booking",                                         "Other" },
+				        { 37, "Donations and Sponsorships (inc Charity name)",             "Other" },
+				        { 38, "Office Cleaning",                                           "Other" },
+				        { 39, "Flu Jabs & Eye tests",                                      "Other" },
+				        { 40, "Resource Subscriptions (inc period covered)",               "Resource subscriptions" },
+				        { 41, "Maintenance, Repairs & Renewals",                           "Other" },
+				        { 43, "Marketing - Events & Hospitality (Inc Event & date)",       "Other" },
+				        { 44, "Marketing - Print and design",                              "Other" },
+				        { 46, "Offsite Storage costs",                                     "Other" },
+				        { 47, "Phone cases",                                               "Other" },
+				        { 50, "Conference / Event - Admission fees",                       "Other" },
+				        { 51, "Travel - Rental Cars",                                      "Travel" },
+				        { 53, "Visa Fees",                                                 "Travel" },
+				        { 54, "Online Training",                                           "Other" },
+				        { 55, "In Person Training",                                        "Other" },
+				        { 56, "Software Subscriptions (SaaS)",                             "Resource subscriptions" },
+				        { 57, "IT - Other Office Equipment",                               "Other" },
+				        { 58, "IT - Mobile / Ipad Accessories and Warranties",             "Other" },
+				        { 59, "IT - Backpacks",                                            "Other" },
+				        { 60, "IT - Computer Accessories and Warranties",                  "Other" },
+				        { 61, "IT - Web Hosting and Domains",                              "Other" },
+				        { 62, "IT - Telephones",                                           "Other" },
+				        { 63, "IT - CAPEX Computer Equipment",                             "Other" },
+				        { 64, "Equipment Hire",                                            "Other" },
+				        { 65, "Branded Goods",                                             "Other" },
+				        { 66, "Memberships",                                               "Resource subscriptions" },
+				        { 67, "Newspapers, Magazines and Periodicals",                     "Resource subscriptions" },
+				        { 68, "Room / Venue Hire",                                         "Other" },
+				        { 69, "IT - External Support",                                     "Other" },
+				        { 70, "Entertainment Hire / Fees",                                 "Other" },
+				        { 71, "Speaker Fees",                                              "Other" },
+				        { 72, "Company / Commercial Registrations and Licences",           "Other" }
+				    }
+				)
+				
+				```
+
+	annotation PBI_Id = 23734bde666a46a5aee73003983974e0
+

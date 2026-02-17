@@ -1,0 +1,265 @@
+table fact_expenses
+	lineageTag: 1eed714f-ba41-48f4-8714-bafac041fdfb
+
+	column ticket_id
+		dataType: int64
+		formatString: 0
+		lineageTag: d6e8e5b9-caaa-4cf6-9d06-8999b6823bb2
+		summarizeBy: sum
+		sourceColumn: ticket_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column slip_id
+		dataType: int64
+		formatString: 0
+		lineageTag: a1d17199-b349-4c02-bd49-a1289246b8e5
+		summarizeBy: sum
+		sourceColumn: slip_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column envelope_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 455b3634-8cc3-4de3-8e1e-5a8becc3ea09
+		summarizeBy: sum
+		sourceColumn: envelope_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column expense_type_id
+		dataType: int64
+		formatString: 0
+		lineageTag: ec696c85-9825-46f6-af21-4a27696fa5ae
+		summarizeBy: none
+		sourceColumn: expense_type_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column reference_number
+		dataType: string
+		lineageTag: dc3c32a0-825f-4b8d-869e-20c034c5ef56
+		summarizeBy: none
+		sourceColumn: reference_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_id
+		dataType: int64
+		formatString: 0
+		lineageTag: addd8440-d3c3-423f-9270-25201012def6
+		summarizeBy: none
+		sourceColumn: user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 940d5d41-830c-403d-956e-0e893319406b
+		summarizeBy: none
+		sourceColumn: project_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_stamp
+		dataType: dateTime
+		formatString: dd mmm yy
+		lineageTag: 5f779d48-0496-41d1-99e2-50bc51c35295
+		summarizeBy: none
+		sourceColumn: date_stamp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	column category_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 156c0993-2104-48c0-8b9f-0d17c9d409e4
+		summarizeBy: sum
+		sourceColumn: category_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: 154004a1-cdac-4f0d-85c2-25783335b9a4
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column notes
+		dataType: string
+		lineageTag: ec58855d-1b7a-4090-b1fa-58feb1d3030c
+		summarizeBy: none
+		sourceColumn: notes
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity
+		dataType: double
+		lineageTag: d97af095-f3d8-418e-9a41-e6e51a48a63b
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column currency
+		dataType: string
+		lineageTag: 7af455e7-ac5a-4658-b995-4288e546b543
+		summarizeBy: none
+		sourceColumn: currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost_actual
+		dataType: double
+		lineageTag: 611a1d5e-fb25-4093-872c-e7627b357458
+		summarizeBy: sum
+		sourceColumn: cost_actual
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cost_gbp
+		dataType: double
+		lineageTag: 4e8ae1ec-d03a-4cd1-b548-c06d40739d94
+		summarizeBy: sum
+		sourceColumn: cost_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_gbp
+		dataType: double
+		lineageTag: 1817b744-8bd3-4e46-a533-cb1e643613aa
+		summarizeBy: sum
+		sourceColumn: total_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_tax_paid_gbp
+		dataType: double
+		lineageTag: 1e9de9d3-d0be-412c-8029-5941e88faf3d
+		summarizeBy: sum
+		sourceColumn: total_tax_paid_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_no_tax_gbp
+		dataType: double
+		lineageTag: c2aacb41-5e54-400d-b4ab-7ebe1affbb50
+		summarizeBy: sum
+		sourceColumn: total_no_tax_gbp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_actual
+		dataType: double
+		lineageTag: bf9d2603-481b-4e76-8754-90ee08078008
+		summarizeBy: sum
+		sourceColumn: total_actual
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_tax_paid_actual
+		dataType: double
+		lineageTag: b34d6763-b346-467a-90ac-3f3c7edf97d3
+		summarizeBy: sum
+		sourceColumn: total_tax_paid_actual
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_no_tax_actual
+		dataType: double
+		lineageTag: 060a01a3-20f9-4f14-9758-319616c4cb71
+		summarizeBy: sum
+		sourceColumn: total_no_tax_actual
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column tax_location_name
+		dataType: string
+		lineageTag: 7a07f3ec-4cb4-4736-8dfe-f80e268459ed
+		summarizeBy: none
+		sourceColumn: tax_location_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column non_billable
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 21b5c366-ca11-459b-aa51-13f09e940bda
+		summarizeBy: none
+		sourceColumn: non_billable
+
+		annotation SummarizationSetBy = Automatic
+
+	column missing_receipt
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 2addace1-8b1f-4115-979d-23d16dd9111d
+		summarizeBy: none
+		sourceColumn: missing_receipt
+
+		annotation SummarizationSetBy = Automatic
+
+	column expense_url
+		dataType: string
+		lineageTag: 3f9c4a84-4675-4c7d-b015-922c37382129
+		summarizeBy: none
+		sourceColumn: expense_url
+
+		annotation SummarizationSetBy = Automatic
+
+	column ticket_url
+		dataType: string
+		lineageTag: 003f97a2-55e1-452a-8bd1-1edad74cc405
+		summarizeBy: none
+		sourceColumn: ticket_url
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Internal flag'
+		type: calculated
+		lineageTag: 3275b980-ef49-4f61-9d81-08c13341259a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_expenses = m
+		mode: import
+		source =
+				let
+				    Source = Databricks.Catalogs("adb-3058398146968468.8.azuredatabricks.net", "/sql/1.0/warehouses/27755f6f39df3c3f", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation=null]),
+				    cil_dbw_lakehouse_uksouth_Database = Source{[Name="cil_dbw_lakehouse_uksouth",Kind="Database"]}[Data],
+				    production_modelled_Schema = cil_dbw_lakehouse_uksouth_Database{[Name="production_modelled",Kind="Schema"]}[Data],
+				    fact_expenses_View = production_modelled_Schema{[Name="fact_expenses",Kind="View"]}[Data]
+				in
+				    fact_expenses_View
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
